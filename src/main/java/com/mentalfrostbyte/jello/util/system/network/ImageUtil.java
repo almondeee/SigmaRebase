@@ -1,5 +1,6 @@
 package com.mentalfrostbyte.jello.util.system.network;
 
+import com.mentalfrostbyte.Client;
 import com.mentalfrostbyte.jello.managers.GuiManager;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import net.minecraft.client.Minecraft;
@@ -235,7 +236,8 @@ public class ImageUtil {
         try (InputStream inputStream = getInputStreamFromURL(urlString)) {
             return TextureLoader.getTexture("PNG", inputStream);
         } catch (IOException e) {
-            throw new IllegalStateException("Unable to load texture from URL: " + urlString, e);
+            Client.LOGGER.error("Failed to load texture from URL: {}", urlString, e);
+            return null;
         }
     }
 
