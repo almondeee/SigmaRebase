@@ -188,7 +188,7 @@ public class Account {
 
     public Texture setHeadTexture() {
         if (this.head == null) {
-            this.head = ImageUtil.loadTextureFromURL("https://crafatar.com/avatars/" + getFormattedUUID());
+            this.head = ImageUtil.loadTextureFromURL("https://minotar.net/helm/" + getFormattedUUID() + "/75.png");
         }
 
         return this.head != null ? this.head : Resources.head;
