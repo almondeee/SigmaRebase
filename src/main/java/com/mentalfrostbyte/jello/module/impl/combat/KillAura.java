@@ -366,7 +366,7 @@ public class KillAura extends Module {
                         yawField.set(event, JelloAI.getCurrentYaw());
                         pitchField.set(event, JelloAI.getCurrentPitch());
                     } catch (Exception e) {
-                        Client.logger.error("Error setting rotation values", e);
+                        Client.LOGGER.error("Error setting rotation values", e);
                     }
                 } else {
                     // Use reflection for non-JelloAI rotations too
@@ -380,7 +380,7 @@ public class KillAura extends Module {
                         yawField.set(event, this.currentRotation.yaw);
                         pitchField.set(event, this.currentRotation.pitch);
                     } catch (Exception e) {
-                        Client.logger.error("Error setting rotation values", e);
+                        Client.LOGGER.error("Error setting rotation values", e);
                     }
                 }
             }

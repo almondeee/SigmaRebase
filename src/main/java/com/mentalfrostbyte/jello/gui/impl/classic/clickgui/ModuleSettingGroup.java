@@ -29,7 +29,7 @@ public class ModuleSettingGroup extends ClickGuiPanel {
       }
 
       Exit var14;
-      this.addToList(var14 = new Exit(this, "exit", this.getWidthA() - 47, 18));
+      this.addToList(var14 = new Exit(this, "exit", this.getWidth() - 47, 18));
       var14.onClick((var1x, var2x) -> {
          if (this.field21181 == null) {
             ((ClassicClickGui)this.getParent()).method13417();
@@ -50,9 +50,9 @@ public class ModuleSettingGroup extends ClickGuiPanel {
    }
 
    public void method13486(Module var1) {
-      this.runThisOnDimensionUpdate(() -> {
+      this.addRunnable(() -> {
          if (this.field21181 == null) {
-            this.addToList(this.field21181 = new Class4345(this, "settings", 5, 70, this.getWidthA() - 10, this.getHeightA() - 75, var1));
+            this.addToList(this.field21181 = new Class4345(this, "settings", 5, 70, this.getWidth() - 10, this.getHeight() - 75, var1));
             this.field21181.setReAddChildren(true);
          }
       });
@@ -63,10 +63,10 @@ public class ModuleSettingGroup extends ClickGuiPanel {
       super.draw(partialTicks);
       if (this.field21181 == null) {
          for (CustomGuiScreen var5 : this.getChildren()) {
-            if (var5 instanceof CategoryPanel var6 && this.field21149.calcPercent() == 1.0F && var5.method13114(this.getHeightO(), this.getWidthO())) {
-				RenderUtil.drawString(Resources.regular17, 20.0F, (float)(this.getHeightA() - 26), var6.module.getDescription(), -14540254);
-               RenderUtil.startScissor(5.0F, (float)(this.getHeightA() - 27), 12.0F, 24.0F);
-               RenderUtil.drawImage(5.0F, (float)(this.getHeightA() - 27), 24.0F, 24.0F, Resources.xmark);
+            if (var5 instanceof CategoryPanel var6 && this.field21149.calcPercent() == 1.0F && var5.method13114(this.getMouseX(), this.getMouseY())) {
+				RenderUtil.drawString(Resources.regular17, 20.0F, (float)(this.getHeight() - 26), var6.module.getDescription(), -14540254);
+               RenderUtil.startScissor(5.0F, (float)(this.getHeight() - 27), 12.0F, 24.0F);
+               RenderUtil.drawImage(5.0F, (float)(this.getHeight() - 27), 24.0F, 24.0F, Resources.xmark);
                RenderUtil.restoreScissor();
                break;
             }
@@ -75,10 +75,10 @@ public class ModuleSettingGroup extends ClickGuiPanel {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
       if (this.field21181 != null && this.field21181.method13557()) {
-         this.runThisOnDimensionUpdate(() -> {
+         this.addRunnable(() -> {
             this.removeChildren(this.field21181);
             this.field21181 = null;
          });

@@ -60,14 +60,14 @@ public class ClickGuiScreen extends Screen {
                 this.categoryPanels.put(module.getCategoryBasedOnMode(), clickGUIPanels);
                 this.addToList(clickGUIPanels);
 
-                x += clickGUIPanels.getWidthA() + 10;
+                x += clickGUIPanels.getWidth() + 10;
                 if (this.categoryPanels.size() == 4) {
                     x = 30;
-                    y += clickGUIPanels.getHeightA() - 20;
+                    y += clickGUIPanels.getHeight() - 20;
                 }
 
-                clickGUIPanels.method13507(var2 -> this.runThisOnDimensionUpdate(() -> {
-                    this.addToList(this.settingGroup = new SettingGroup(this, "settings", 0, 0, this.widthA, this.heightA, var2));
+                clickGUIPanels.method13507(var2 -> this.addRunnable(() -> {
+                    this.addToList(this.settingGroup = new SettingGroup(this, "settings", 0, 0, this.width, this.height, var2));
                     this.settingGroup.setReAddChildren(true);
                 }));
             }
@@ -76,17 +76,17 @@ public class ClickGuiScreen extends Screen {
         this.addToList(this.musicPlayer = new MusicPlayer(this, "musicPlayer"));
         this.musicPlayer.method13215(true);
         SmallImage moreButton;
-        this.addToList(moreButton = new SmallImage(this, "more", this.getWidthA() - 69, this.getHeightA() - 55, 55, 41, Resources.optionsPNG1));
+        this.addToList(moreButton = new SmallImage(this, "more", this.getWidth() - 69, this.getHeight() - 55, 55, 41, Resources.optionsPNG1));
 
         moreButton.getTextColor().setPrimaryColor(RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.3F));
         moreButton.setListening(false);
 
         this.musicPlayer.setSelfVisible(true);
-        moreButton.onClick((var1, var2) -> this.runThisOnDimensionUpdate(() -> {
+        moreButton.onClick((var1, var2) -> this.addRunnable(() -> {
             if (this.configButton != null && this.hasChild(this.configButton)) {
                 this.method13234(this.configButton);
             } else {
-                this.addToList(this.configButton = new ConfigScreen(this, "morepopover", this.getWidthA() - 14, this.getHeightA() - 14));
+                this.addToList(this.configButton = new ConfigScreen(this, "morepopover", this.getWidth() - 14, this.getHeight() - 14));
                 this.configButton.setReAddChildren(true);
             }
         }));
@@ -101,7 +101,7 @@ public class ClickGuiScreen extends Screen {
         if (Client.getInstance().musicManager.hasPython() && Client.getInstance().musicManager.hasVCRedist()) {
             return true;
         } else if (this.dependenciesAlert == null) {
-            this.runThisOnDimensionUpdate(() -> {
+            this.addRunnable(() -> {
                 List<AlertComponent> alerts = new ArrayList<>();
                 alerts.add(new AlertComponent(ComponentType.HEADER, "Music", 40));
                 alerts.add(new AlertComponent(ComponentType.FIRST_LINE, "Jello Music requires:", 20));
@@ -128,7 +128,7 @@ public class ClickGuiScreen extends Screen {
                 });
 
                 this.dependenciesAlert.method13604(thread -> new Thread(() -> {
-                    this.runThisOnDimensionUpdate(() -> {
+                    this.addRunnable(() -> {
                         this.removeChildren(this.dependenciesAlert);
                         this.dependenciesAlert = null;
                     });
@@ -149,14 +149,14 @@ public class ClickGuiScreen extends Screen {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        this.musicPlayer.setSelfVisible(this.musicPlayer.getWidthA() < this.getWidthA() && this.musicPlayer.getHeightA() < this.getHeightA());
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        this.musicPlayer.setSelfVisible(this.musicPlayer.getWidth() < this.getWidth() && this.musicPlayer.getHeight() < this.getHeight());
+        super.updatePanelDimensions(mouseX, mouseY);
         RenderUtil2.setShaderParamsRounded(Math.min(1.0F, animationProgress.calcPercent() * 4.0F));
         this.brainFreeze.setSelfVisible(Client.getInstance().moduleManager.getModuleByClass(BrainFreeze.class).isEnabled());
         if (this.configButton != null) {
-            int newHeightValue = newHeight - this.configButton.method13271();
-            int newWidthValue = newWidth - this.configButton.method13272();
+            int newHeightValue = mouseX - this.configButton.method13271();
+            int newWidthValue = mouseY - this.configButton.method13272();
             boolean conditionMet = newHeightValue >= -10 && newWidthValue >= -10;
             if (!conditionMet) {
                 this.configButton.method13613();
@@ -173,7 +173,7 @@ public class ClickGuiScreen extends Screen {
         }
 
         if (this.settingGroup != null && this.settingGroup.field20671 && this.settingGroup.animation1.calcPercent() == 0.0F) {
-            this.runThisOnDimensionUpdate(() -> {
+            this.addRunnable(() -> {
                 this.removeChildren(this.settingGroup);
                 this.settingGroup = null;
             });
@@ -257,10 +257,10 @@ public class ClickGuiScreen extends Screen {
                 : (!animationCompleted ? 1.0F : this.method13317(animationProgress.calcPercent(), 1.0F));
         float alpha = 0.2F * partialTicks * alphaFactor;
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) this.yA,
-                (float) (this.xA + this.widthA),
-                (float) (this.yA + this.heightA),
+                (float) this.x,
+                (float) this.y,
+                (float) (this.x + this.width),
+                (float) (this.y + this.height),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), alpha)
         );
         float fadeAmount = 1.0F;
@@ -278,16 +278,16 @@ public class ClickGuiScreen extends Screen {
             String configName = Client.getInstance().moduleManager.getConfigurationManager().getCurrentConfig().profileName;
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont20,
-                    (float) (this.widthA - ResourceRegistry.JelloLightFont20.getWidth(configName) - 80),
-                    (float) (this.heightA - 47),
+                    (float) (this.width - ResourceRegistry.JelloLightFont20.getWidth(configName) - 80),
+                    (float) (this.height - 47),
                     configName,
                     RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.5F * Math.max(0.0F, Math.min(1.0F, alphaFactor)))
             );
         }
 
         for (CustomGuiScreen child : this.getChildren()) {
-            float x = (float) (child.getXA() + child.getWidthA() / 2 - mc.getMainWindow().getWidth() / 2) * (1.0F - alphaFactor) * 0.5F;
-            float y = (float) (child.getYA() + child.getHeightA() / 2 - mc.getMainWindow().getHeight() / 2) * (1.0F - alphaFactor) * 0.5F;
+            float x = (float) (child.getX() + child.getWidth() / 2 - mc.getMainWindow().getWidth() / 2) * (1.0F - alphaFactor) * 0.5F;
+            float y = (float) (child.getY() + child.getHeight() / 2 - mc.getMainWindow().getHeight() / 2) * (1.0F - alphaFactor) * 0.5F;
             child.draw((int) x, (int) y);
             child.method13279(1.5F - alphaFactor * 0.5F, 1.5F - alphaFactor * 0.5F);
         }

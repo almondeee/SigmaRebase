@@ -21,10 +21,10 @@ public class SliderButton extends Button {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         float var5 = this.field20600.method13138();
-        float var6 = (float) this.getXA() / (float) (this.parent.getWidthA() - this.getWidthA());
+        float var6 = (float) this.getX() / (float) (this.parent.getWidth() - this.getWidth());
         if (!this.method13212() && !this.method13298() && !this.method13216()) {
             this.field20601.changeDirection(Animation.Direction.BACKWARDS);
         } else {
@@ -49,18 +49,18 @@ public class SliderButton extends Button {
         }
 
         int var5 = 5;
-        float var6 = (float) this.getWidthA();
+        float var6 = (float) this.getWidth();
         RenderUtil.drawRoundedRect(
-                (float) (this.getXA() + var5),
-                (float) (this.getYA() + var5),
-                (float) (this.getWidthA() - var5 * 2),
-                (float) (this.getHeightA() - var5 * 2),
+                (float) (this.getX() + var5),
+                (float) (this.getY() + var5),
+                (float) (this.getWidth() - var5 * 2),
+                (float) (this.getHeight() - var5 * 2),
                 10.0F,
                 partialTicks * 0.8F
         );
         RenderUtil.drawCircle(
-                (float) (this.getXA() + this.getWidthA() / 2),
-                (float) (this.getYA() + this.getWidthA() / 2),
+                (float) (this.getX() + this.getWidth() / 2),
+                (float) (this.getY() + this.getWidth() / 2),
                 var6,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
         );

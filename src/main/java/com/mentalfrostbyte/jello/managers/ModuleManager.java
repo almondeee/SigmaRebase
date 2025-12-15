@@ -218,7 +218,7 @@ public class ModuleManager {
         try {
             array = json.getAsJsonArray("mods");
         } catch (JsonParseException exc) {
-            Client.logger.warn(exc);
+            Client.LOGGER.warn(exc);
         }
 
         for (Module modulesFound : this.moduleMap.values()) {
@@ -239,7 +239,7 @@ public class ModuleManager {
                 try {
                     moduleName = moduleObject.get("name").getAsString();
                 } catch (JsonParseException exc) {
-                    Client.logger.warn("Invalid name in mod list config", exc);
+                    Client.LOGGER.warn("Invalid name in mod list config", exc);
                 }
 
                 for (Module module : this.moduleMap.values()) {
@@ -247,14 +247,14 @@ public class ModuleManager {
                         try {
                             module.initialize(moduleObject);
                         } catch (JsonParseException exc) {
-                            Client.logger.warn("Could not initialize mod {} from config. All settings for this mod have been erased.", module.getName(), exc);
+                            Client.LOGGER.warn("Could not initialize mod {} from config. All settings for this mod have been erased.", module.getName(), exc);
                         }
                         break;
                     }
                 }
             }
         } else {
-            Client.logger.warn("Mods array does not exist in config. Assuming a blank profile...");
+            Client.LOGGER.warn("Mods array does not exist in config. Assuming a blank profile...");
         }
 
         for (Module module : this.moduleMap.values()) {
@@ -300,7 +300,7 @@ public class ModuleManager {
             this.profile.loadProfile(profileName);
             this.keyManager.method13732(json);
         } catch (IOException exc) {
-            Client.logger.warn("Could not load profiles!", exc);
+            Client.LOGGER.warn("Could not load profiles!", exc);
         }
     }
 
@@ -315,7 +315,7 @@ public class ModuleManager {
         return obj;
     }
 
-    public void method14660(JsonObject var1) {
+    public void saveConfig(JsonObject var1) {
         var1.addProperty("profile", this.profile.getCurrentConfig().profileName);
         this.profile.getCurrentConfig().moduleConfig = this.loadCurrentConfig(new JsonObject());
 
@@ -323,7 +323,7 @@ public class ModuleManager {
             this.profile.saveAndReplaceConfigs();
             this.keyManager.getKeybindsJSONObject(var1);
         } catch (IOException exc) {
-            Client.logger.warn("Unable to save mod profiles...", exc);
+            Client.LOGGER.warn("Unable to save mod profiles...", exc);
         }
     }
 

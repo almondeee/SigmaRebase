@@ -275,7 +275,7 @@ public class GameRenderer implements IResourceManagerReloadListener, AutoCloseab
             this.mc.getProfiler().startSection("pick");
             this.mc.pointedEntity = null;
             double d0 = (double) this.mc.playerController.getBlockReachDistance();
-            this.mc.objectMouseOver = ka ? entity.customPick(d0,1.0F,RotationCore.currentYaw, RotationCore.currentPitch) : entity.pick(d0, partialTicks, false);
+            this.mc.objectMouseOver = ka ? entity.customPick(d0, 1.0F, RotationCore.currentYaw, RotationCore.currentPitch) : entity.pick(d0, partialTicks, false);
             Vector3d vector3d = entity.getEyePosition(partialTicks);
             boolean flag = false;
             int i = 3;
@@ -298,7 +298,7 @@ public class GameRenderer implements IResourceManagerReloadListener, AutoCloseab
                 d1 = this.mc.objectMouseOver.getHitVec().squareDistanceTo(vector3d);
             }
 
-            Vector3d vector3d1 = ka ? entity.getLookCustom(1.0F,RotationCore.currentYaw,RotationCore.currentPitch) : entity.getLook(1.0F);
+            Vector3d vector3d1 = ka ? entity.getLookCustom(1.0F, RotationCore.currentYaw, RotationCore.currentPitch) : entity.getLook(1.0F);
 
             Vector3d vector3d2 = vector3d.add(vector3d1.x * d0, vector3d1.y * d0, vector3d1.z * d0);
             float f = 1.0F;
@@ -635,7 +635,7 @@ public class GameRenderer implements IResourceManagerReloadListener, AutoCloseab
 
                     Client.textureList.clear();
                 } catch (ConcurrentModificationException exception) {
-                    Client.logger.warn(exception);
+                    Client.LOGGER.warn(exception);
                 }
             }
 
@@ -691,17 +691,11 @@ public class GameRenderer implements IResourceManagerReloadListener, AutoCloseab
                     CrashReport crashreport1 = CrashReport.makeCrashReport(throwable1, "Rendering screen");
                     CrashReportCategory crashreportcategory1 = crashreport1.makeCategory("Screen render details");
                     crashreportcategory1.addDetail("Screen name", () ->
-                    {
-                        return this.mc.currentScreen.getClass().getCanonicalName();
-                    });
+                            this.mc.currentScreen.getClass().getCanonicalName());
                     crashreportcategory1.addDetail("Mouse location", () ->
-                    {
-                        return String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%f, %f)", i, j, this.mc.mouseHelper.getMouseX(), this.mc.mouseHelper.getMouseY());
-                    });
+                            String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%f, %f)", i, j, this.mc.mouseHelper.getMouseX(), this.mc.mouseHelper.getMouseY()));
                     crashreportcategory1.addDetail("Screen size", () ->
-                    {
-                        return String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%d, %d). Scale factor of %f", this.mc.getMainWindow().getScaledWidth(), this.mc.getMainWindow().getScaledHeight(), this.mc.getMainWindow().getFramebufferWidth(), this.mc.getMainWindow().getFramebufferHeight(), this.mc.getMainWindow().getGuiScaleFactor());
-                    });
+                            String.format(Locale.ROOT, "Scaled: (%d, %d). Absolute: (%d, %d). Scale factor of %f", this.mc.getMainWindow().getScaledWidth(), this.mc.getMainWindow().getScaledHeight(), this.mc.getMainWindow().getFramebufferWidth(), this.mc.getMainWindow().getFramebufferHeight(), this.mc.getMainWindow().getGuiScaleFactor()));
                     throw new ReportedException(crashreport1);
                 }
             }

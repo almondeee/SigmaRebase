@@ -28,15 +28,15 @@ public class ColorPickerBlock extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         if (this.field21350) {
-            int var5 = this.getHeightO() - this.method13271();
-            this.method13680((float) var5 / (float) this.getWidthA());
-            int var6 = this.getWidthO() - this.method13272();
-            this.method13683(1.0F - (float) var6 / (float) this.getHeightA());
+            int var5 = this.getMouseX() - this.method13271();
+            this.method13680((float) var5 / (float) this.getWidth());
+            int var6 = this.getMouseY() - this.method13272();
+            this.method13683(1.0F - (float) var6 / (float) this.getHeight());
         }
 
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -44,31 +44,31 @@ public class ColorPickerBlock extends Element {
         int var4 = RenderUtil2.applyAlpha(Color.HSBtoRGB(this.field21347, 0.0F, 1.0F), partialTicks);
         int var5 = RenderUtil2.applyAlpha(Color.HSBtoRGB(this.field21347, 1.0F, 1.0F), partialTicks);
         int var6 = RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks);
-        RenderUtil.method11415(this);
+        RenderUtil.startScissor(this);
         RenderUtil.drawQuad(
-                this.getXA(), this.getYA(), this.getXA() + this.getWidthA(), this.getYA() + this.getHeightA(), var4, var5, var5, var4
+                this.getX(), this.getY(), this.getX() + this.getWidth(), this.getY() + this.getHeight(), var4, var5, var5, var4
         );
         RenderUtil.drawQuad(
-                this.getXA(),
-                this.getYA(),
-                this.getXA() + this.getWidthA(),
-                this.getYA() + this.getHeightA(),
+                this.getX(),
+                this.getY(),
+                this.getX() + this.getWidth(),
+                this.getY() + this.getHeight(),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.0F),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.0F),
                 var6,
                 var6
         );
         ColorPicker.method13052(
-                this.xA + Math.round((float) this.widthA * this.method13679()),
-                this.yA + Math.round((float) this.heightA * (1.0F - this.method13682())),
+                this.x + Math.round((float) this.width * this.method13679()),
+                this.y + Math.round((float) this.height * (1.0F - this.method13682())),
                 Color.HSBtoRGB(this.field21347, this.field21348, this.field21349),
                 partialTicks
         );
         RenderUtil.method11428(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) (this.getXA() + this.getWidthA()),
-                (float) (this.getYA() + this.getHeightA()),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) (this.getX() + this.getWidth()),
+                (float) (this.getY() + this.getHeight()),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.25F * partialTicks)
         );
         RenderUtil.restoreScissor();

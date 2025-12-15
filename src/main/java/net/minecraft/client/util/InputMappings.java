@@ -3,6 +3,7 @@ package net.minecraft.client.util;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
@@ -12,6 +13,7 @@ import java.util.Objects;
 import java.util.OptionalInt;
 import java.util.function.BiFunction;
 import javax.annotation.Nullable;
+
 import net.minecraft.util.LazyValue;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.LanguageMap;
@@ -25,30 +27,22 @@ import org.lwjgl.glfw.GLFWKeyCallbackI;
 import org.lwjgl.glfw.GLFWMouseButtonCallbackI;
 import org.lwjgl.glfw.GLFWScrollCallbackI;
 
-public class InputMappings
-{
+public class InputMappings {
     @Nullable
     private static final MethodHandle GLFW_RAW_MOUSE_SUPPORTED;
     private static final int GLFW_RAW_MOUSE;
     public static final InputMappings.Input INPUT_INVALID;
 
-    public static InputMappings.Input getInputByCode(int keyCode, int scanCode)
-    {
+    public static InputMappings.Input getInputByCode(int keyCode, int scanCode) {
         return keyCode == -1 ? InputMappings.Type.SCANCODE.getOrMakeInput(scanCode) : InputMappings.Type.KEYSYM.getOrMakeInput(keyCode);
     }
 
-    public static InputMappings.Input getInputByName(String name)
-    {
-        if (InputMappings.Input.REGISTRY.containsKey(name))
-        {
+    public static InputMappings.Input getInputByName(String name) {
+        if (InputMappings.Input.REGISTRY.containsKey(name)) {
             return InputMappings.Input.REGISTRY.get(name);
-        }
-        else
-        {
-            for (InputMappings.Type inputmappings$type : InputMappings.Type.values())
-            {
-                if (name.startsWith(inputmappings$type.name))
-                {
+        } else {
+            for (InputMappings.Type inputmappings$type : InputMappings.Type.values()) {
+                if (name.startsWith(inputmappings$type.name)) {
                     String s = name.substring(inputmappings$type.name.length() + 1);
                     return inputmappings$type.getOrMakeInput(Integer.parseInt(s));
                 }
@@ -58,69 +52,53 @@ public class InputMappings
         }
     }
 
-    public static boolean isKeyDown(long p_216506_0_, int p_216506_2_)
-    {
+    public static boolean isKeyDown(long p_216506_0_, int p_216506_2_) {
         return GLFW.glfwGetKey(p_216506_0_, p_216506_2_) == 1;
     }
 
-    public static void setKeyCallbacks(long p_216505_0_, GLFWKeyCallbackI p_216505_2_, GLFWCharModsCallbackI p_216505_3_)
-    {
+    public static void setKeyCallbacks(long p_216505_0_, GLFWKeyCallbackI p_216505_2_, GLFWCharModsCallbackI p_216505_3_) {
         GLFW.glfwSetKeyCallback(p_216505_0_, p_216505_2_);
         GLFW.glfwSetCharModsCallback(p_216505_0_, p_216505_3_);
     }
 
-    public static void setMouseCallbacks(long p_216503_0_, GLFWCursorPosCallbackI p_216503_2_, GLFWMouseButtonCallbackI p_216503_3_, GLFWScrollCallbackI p_216503_4_, GLFWDropCallbackI p_216503_5_)
-    {
+    public static void setMouseCallbacks(long p_216503_0_, GLFWCursorPosCallbackI p_216503_2_, GLFWMouseButtonCallbackI p_216503_3_, GLFWScrollCallbackI p_216503_4_, GLFWDropCallbackI p_216503_5_) {
         GLFW.glfwSetCursorPosCallback(p_216503_0_, p_216503_2_);
         GLFW.glfwSetMouseButtonCallback(p_216503_0_, p_216503_3_);
         GLFW.glfwSetScrollCallback(p_216503_0_, p_216503_4_);
         GLFW.glfwSetDropCallback(p_216503_0_, p_216503_5_);
     }
 
-    public static void setCursorPosAndMode(long p_216504_0_, int p_216504_2_, double p_216504_3_, double p_216504_5_)
-    {
+    public static void setCursorPosAndMode(long p_216504_0_, int p_216504_2_, double p_216504_3_, double p_216504_5_) {
         GLFW.glfwSetCursorPos(p_216504_0_, p_216504_3_, p_216504_5_);
         GLFW.glfwSetInputMode(p_216504_0_, 208897, p_216504_2_);
     }
 
-    public static boolean func_224790_a()
-    {
-        try
-        {
+    public static boolean func_224790_a() {
+        try {
             return GLFW_RAW_MOUSE_SUPPORTED != null && (boolean) GLFW_RAW_MOUSE_SUPPORTED.invokeExact();
-        }
-        catch (Throwable throwable)
-        {
+        } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
     }
 
-    public static void setRawMouseInput(long p_224791_0_, boolean p_224791_2_)
-    {
-        if (func_224790_a())
-        {
+    public static void setRawMouseInput(long p_224791_0_, boolean p_224791_2_) {
+        if (func_224790_a()) {
             GLFW.glfwSetInputMode(p_224791_0_, GLFW_RAW_MOUSE, p_224791_2_ ? 1 : 0);
         }
     }
 
-    static
-    {
+    static {
         Lookup lookup = MethodHandles.lookup();
         MethodType methodtype = MethodType.methodType(Boolean.TYPE);
         MethodHandle methodhandle = null;
         int i = 0;
 
-        try
-        {
+        try {
             methodhandle = lookup.findStatic(GLFW.class, "glfwRawMouseMotionSupported", methodtype);
             MethodHandle methodhandle1 = lookup.findStaticGetter(GLFW.class, "GLFW_RAW_MOUSE_MOTION", Integer.TYPE);
-            i = (int)methodhandle1.invokeExact();
-        }
-        catch (NoSuchFieldException | NoSuchMethodException nosuchmethodexception)
-        {
-        }
-        catch (Throwable throwable)
-        {
+            i = (int) methodhandle1.invokeExact();
+        } catch (NoSuchFieldException | NoSuchMethodException nosuchmethodexception) {
+        } catch (Throwable throwable) {
             throw new RuntimeException(throwable);
         }
 
@@ -129,16 +107,14 @@ public class InputMappings
         INPUT_INVALID = InputMappings.Type.KEYSYM.getOrMakeInput(-1);
     }
 
-    public static final class Input
-    {
+    public static final class Input {
         private final String name;
         private final InputMappings.Type type;
         private final int keyCode;
         private final LazyValue<ITextComponent> field_237518_d_;
         public static final Map<String, InputMappings.Input> REGISTRY = Maps.newHashMap();
 
-        private Input(String nameIn, InputMappings.Type typeIn, int keyCodeIn)
-        {
+        private Input(String nameIn, InputMappings.Type typeIn, int keyCodeIn) {
             this.name = nameIn;
             this.type = typeIn;
             this.keyCode = keyCodeIn;
@@ -149,75 +125,58 @@ public class InputMappings
             REGISTRY.put(nameIn, this);
         }
 
-        public InputMappings.Type getType()
-        {
+        public InputMappings.Type getType() {
             return this.type;
         }
 
-        public int getKeyCode()
-        {
+        public int getKeyCode() {
             return this.keyCode;
         }
 
-        public String getTranslationKey()
-        {
+        public String getTranslationKey() {
             return this.name;
         }
 
-        public ITextComponent func_237520_d_()
-        {
+        public ITextComponent func_237520_d_() {
             return this.field_237518_d_.getValue();
         }
 
-        public OptionalInt func_241552_e_()
-        {
-            if (this.keyCode >= 48 && this.keyCode <= 57)
-            {
+        public OptionalInt func_241552_e_() {
+            if (this.keyCode >= 48 && this.keyCode <= 57) {
                 return OptionalInt.of(this.keyCode - 48);
-            }
-            else
-            {
+            } else {
                 return this.keyCode >= 320 && this.keyCode <= 329 ? OptionalInt.of(this.keyCode - 320) : OptionalInt.empty();
             }
         }
 
-        public boolean equals(Object p_equals_1_)
-        {
-            if (this == p_equals_1_)
-            {
+        public boolean equals(Object p_equals_1_) {
+            if (this == p_equals_1_) {
                 return true;
-            }
-            else if (p_equals_1_ != null && this.getClass() == p_equals_1_.getClass())
-            {
-                InputMappings.Input inputmappings$input = (InputMappings.Input)p_equals_1_;
+            } else if (p_equals_1_ != null && this.getClass() == p_equals_1_.getClass()) {
+                InputMappings.Input inputmappings$input = (InputMappings.Input) p_equals_1_;
                 return this.keyCode == inputmappings$input.keyCode && this.type == inputmappings$input.type;
-            }
-            else
-            {
+            } else {
                 return false;
             }
         }
 
-        public int hashCode()
-        {
+        public int hashCode() {
             return Objects.hash(this.type, this.keyCode);
         }
 
-        public String toString()
-        {
+        public String toString() {
             return this.name;
         }
     }
 
-    public static enum Type
-    {
+    public static enum Type {
         KEYSYM("key.keyboard", (p_237528_0_, p_237528_1_) -> {
             String s = GLFW.glfwGetKeyName(p_237528_0_, -1);
-            return (ITextComponent)(s != null ? new StringTextComponent(s) : new TranslationTextComponent(p_237528_1_));
+            return (ITextComponent) (s != null ? new StringTextComponent(s) : new TranslationTextComponent(p_237528_1_));
         }),
         SCANCODE("scancode", (p_237527_0_, p_237527_1_) -> {
             String s = GLFW.glfwGetKeyName(-1, p_237527_0_);
-            return (ITextComponent)(s != null ? new StringTextComponent(s) : new TranslationTextComponent(p_237527_1_));
+            return (ITextComponent) (s != null ? new StringTextComponent(s) : new TranslationTextComponent(p_237527_1_));
         }),
         MOUSE("key.mouse", (p_237524_0_, p_237524_1_) -> {
             return LanguageMap.getInstance().func_230506_b_(p_237524_1_) ? new TranslationTextComponent(p_237524_1_) : new TranslationTextComponent("key.mouse", p_237524_0_ + 1);
@@ -227,26 +186,22 @@ public class InputMappings
         private final String name;
         private final BiFunction<Integer, String, ITextComponent> field_237522_f_;
 
-        private static void registerInput(InputMappings.Type type, String nameIn, int keyCode)
-        {
+        private static void registerInput(InputMappings.Type type, String nameIn, int keyCode) {
             InputMappings.Input inputmappings$input = new InputMappings.Input(nameIn, type, keyCode);
             type.inputs.put(keyCode, inputmappings$input);
         }
 
-        private Type(String p_i232180_3_, BiFunction<Integer, String, ITextComponent> p_i232180_4_)
-        {
+        private Type(String p_i232180_3_, BiFunction<Integer, String, ITextComponent> p_i232180_4_) {
             this.name = p_i232180_3_;
             this.field_237522_f_ = p_i232180_4_;
         }
 
-        public InputMappings.Input getOrMakeInput(int keyCode)
-        {
+        public InputMappings.Input getOrMakeInput(int keyCode) {
             return this.inputs.computeIfAbsent(keyCode, (p_237525_1_) ->
             {
                 int i = p_237525_1_;
 
-                if (this == MOUSE)
-                {
+                if (this == MOUSE) {
                     i = p_237525_1_ + 1;
                 }
 

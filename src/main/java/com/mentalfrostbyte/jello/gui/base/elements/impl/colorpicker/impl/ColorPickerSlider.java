@@ -20,37 +20,37 @@ public class ColorPickerSlider extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        int var5 = this.getHeightO() - this.method13271();
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        int var5 = this.getMouseX() - this.method13271();
         if (this.field20680) {
-            this.method13097((float) var5 / (float) this.getWidthA());
+            this.method13097((float) var5 / (float) this.getWidth());
         }
 
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
     public void draw(float partialTicks) {
-        for (int var4 = 0; var4 < this.widthA; var4++) {
-            float var5 = (float) var4 / (float) this.widthA;
+        for (int var4 = 0; var4 < this.width; var4++) {
+            float var5 = (float) var4 / (float) this.width;
             RenderUtil.drawRoundedRect2(
-                    (float) (this.xA + var4),
-                    (float) this.yA,
+                    (float) (this.x + var4),
+                    (float) this.y,
                     1.0F,
-                    (float) this.heightA,
+                    (float) this.height,
                     RenderUtil2.applyAlpha(Color.HSBtoRGB(var5, 1.0F, 1.0F), partialTicks)
             );
         }
 
         RenderUtil.method11428(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) (this.getXA() + this.getWidthA()),
-                (float) (this.getYA() + this.getHeightA()),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) (this.getX() + this.getWidth()),
+                (float) (this.getY() + this.getHeight()),
                 RenderUtil2.applyAlpha(ClientColors.MID_GREY.getColor(), 0.5F * partialTicks)
         );
         ColorPicker.method13052(
-                this.xA + Math.round((float) this.widthA * this.field20679) + 1, this.yA + 4, Color.HSBtoRGB(this.field20679, 1.0F, 1.0F), partialTicks
+                this.x + Math.round((float) this.width * this.field20679) + 1, this.y + 4, Color.HSBtoRGB(this.field20679, 1.0F, 1.0F), partialTicks
         );
         super.draw(partialTicks);
     }

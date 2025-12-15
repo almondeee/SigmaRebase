@@ -70,20 +70,20 @@ public class ThumbnailButton extends AnimatedIconPanel {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        boolean var5 = this.method13298() && this.getParent().getParent().method13114(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        boolean var5 = this.method13298() && this.getParent().getParent().method13114(mouseX, mouseY);
         this.animation.changeDirection(!var5 ? Animation.Direction.BACKWARDS : Animation.Direction.FORWARDS);
 
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     public boolean method13157() {
         if (this.getParent() != null && this.getParent().getParent() != null) {
             CustomGuiScreen var3 = this.getParent().getParent();
             if (var3 instanceof ScrollableContentPanel var4) {
-				int var5 = var4.method13513() + var4.getHeightA() + this.getHeightA();
-                int var6 = var4.method13513() - this.getHeightA();
-                return this.getYA() <= var5 && this.getYA() >= var6;
+				int var5 = var4.method13513() + var4.getHeight() + this.getHeight();
+                int var6 = var4.method13513() - this.getHeight();
+                return this.getY() <= var5 && this.getY() >= var6;
             }
         }
 
@@ -124,15 +124,15 @@ public class ThumbnailButton extends AnimatedIconPanel {
             }
 
             float var4 = this.animation.calcPercent();
-            float var5 = (float) Math.round((float) (this.getXA() + 15) - 5.0F * var4);
-            float var6 = (float) Math.round((float) (this.getYA() + 15) - 5.0F * var4);
-            float var7 = (float) Math.round((float) (this.getWidthA() - 30) + 10.0F * var4);
-            float var8 = (float) Math.round((float) (this.getWidthA() - 30) + 10.0F * var4);
+            float var5 = (float) Math.round((float) (this.getX() + 15) - 5.0F * var4);
+            float var6 = (float) Math.round((float) (this.getY() + 15) - 5.0F * var4);
+            float var7 = (float) Math.round((float) (this.getWidth() - 30) + 10.0F * var4);
+            float var8 = (float) Math.round((float) (this.getWidth() - 30) + 10.0F * var4);
             RenderUtil.drawRoundedRect(
-                    (float) (this.getXA() + 15) - 5.0F * var4,
-                    (float) (this.getYA() + 15) - 5.0F * var4,
-                    (float) (this.getWidthA() - 30) + 10.0F * var4,
-                    (float) (this.getWidthA() - 30) + 10.0F * var4,
+                    (float) (this.getX() + 15) - 5.0F * var4,
+                    (float) (this.getY() + 15) - 5.0F * var4,
+                    (float) (this.getWidth() - 30) + 10.0F * var4,
+                    (float) (this.getWidth() - 30) + 10.0F * var4,
                     20.0F,
                     partialTicks
             );
@@ -181,8 +181,8 @@ public class ThumbnailButton extends AnimatedIconPanel {
 
             float var10 = 0.5F + var4 / 2.0F;
             RenderUtil.drawImage(
-                    (float) (this.getXA() + this.getWidthA() / 2) - (var9 / 2) * var10,
-                    (float) (this.getYA() + this.getWidthA() / 2) - (var9 / 2) * var10,
+                    (float) (this.getX() + this.getWidth() / 2) - (var9 / 2) * var10,
+                    (float) (this.getY() + this.getWidth() / 2) - (var9 / 2) * var10,
                     var9 * var10,
                     var9 * var10,
                     Resources.playIconPNG,
@@ -190,28 +190,28 @@ public class ThumbnailButton extends AnimatedIconPanel {
             );
             TrueTypeFont var11 = ResourceRegistry.JelloLightFont12;
             if (this.text != null) {
-                RenderUtil.method11415(this);
+                RenderUtil.startScissor(this);
                 String[] var12 = this.getText().replaceAll("\\(.*\\)", "").replaceAll("\\[.*\\]", "").split(" - ");
                 if (var12.length > 1) {
                     RenderUtil.drawString(
                             var11,
-                            (float) (this.getXA() + (this.getWidthA() - var11.getWidth(var12[1])) / 2),
-                            (float) (this.getYA() + this.getWidthA() - 2),
+                            (float) (this.getX() + (this.getWidth() - var11.getWidth(var12[1])) / 2),
+                            (float) (this.getY() + this.getWidth() - 2),
                             var12[1],
                             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
                     );
                     RenderUtil.drawString(
                             var11,
-                            (float) (this.getXA() + (this.getWidthA() - var11.getWidth(var12[0])) / 2),
-                            (float) (this.getYA() + this.getWidthA() - 2 + 13),
+                            (float) (this.getX() + (this.getWidth() - var11.getWidth(var12[0])) / 2),
+                            (float) (this.getY() + this.getWidth() - 2 + 13),
                             var12[0],
                             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
                     );
                 } else {
                     RenderUtil.drawString(
                             var11,
-                            (float) (this.getXA() + (this.getWidthA() - var11.getWidth(var12[0])) / 2),
-                            (float) (this.getYA() + this.getWidthA() - 2 + 6),
+                            (float) (this.getX() + (this.getWidth() - var11.getWidth(var12[0])) / 2),
+                            (float) (this.getY() + this.getWidth() - 2 + 6),
                             var12[0],
                             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
                     );

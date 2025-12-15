@@ -19,8 +19,8 @@ public class TextButton extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         this.lineAnim.changeDirection(!this.method13298() ? Animation.Direction.BACKWARDS : Animation.Direction.FORWARDS);
     }
 
@@ -28,17 +28,17 @@ public class TextButton extends Element {
     public void draw(float partialTicks) {
         if (this.getText() != null) {
             int var4 = this.textColor.getPrimaryColor();
-            int var5 = this.getXA()
+            int var5 = this.getX()
                     + (
                     this.textColor.method19411() != FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
                             ? 0
-                            : (this.textColor.method19411() != FontSizeAdjust.WIDTH_NEGATE ? this.getWidthA() / 2 : this.getWidthA())
+                            : (this.textColor.method19411() != FontSizeAdjust.WIDTH_NEGATE ? this.getWidth() / 2 : this.getWidth())
             );
-            int var6 = this.getYA()
+            int var6 = this.getY()
                     + (
                     this.textColor.method19413() != FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
                             ? 0
-                            : (this.textColor.method19413() != FontSizeAdjust.HEIGHT_NEGATE ? this.getHeightA() / 2 : this.getHeightA())
+                            : (this.textColor.method19413() != FontSizeAdjust.HEIGHT_NEGATE ? this.getHeight() / 2 : this.getHeight())
             );
             int var7 = this.getFont().getWidth(this.getText());
             float var8 = 18;

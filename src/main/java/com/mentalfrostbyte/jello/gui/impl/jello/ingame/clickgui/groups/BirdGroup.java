@@ -67,10 +67,10 @@ public class BirdGroup extends AnimatedIconPanel {
     @Override
     public void draw(float partialTicks) {
         this.method13184();
-        RenderUtil.method11415(this);
+        RenderUtil.startScissor(this);
 
         for (int var4 = 0; var4 < 3; var4++) {
-            RenderUtil.drawImage((float) (this.xA + 288 * var4), (float) this.yA, 288.0F, 512.0F, this.backgrnd);
+            RenderUtil.drawImage((float) (this.x + 288 * var4), (float) this.y, 288.0F, 512.0F, this.backgrnd);
         }
 
         float var16 = 60.0F / (float) Minecraft.getFps();
@@ -79,23 +79,23 @@ public class BirdGroup extends AnimatedIconPanel {
         this.field20836 = Math.max(-var5, this.field20836 * 0.965F);
         float var6 = 100;
         float var7 = 2200;
-        int var8 = this.heightA - 112;
+        int var8 = this.height - 112;
 
         for (Entry var10 : this.field20834.entrySet()) {
             int var11 = (int) ((Long) var10.getKey() - System.currentTimeMillis());
             float var12 = (float) var11 / 12.0F;
             float var13 = var7 / 12.0F;
             RenderUtil.drawImage(
-                    (float) this.xA + var13 + var12,
-					this.yA - 320 + (int) ((double) var8 * (Double) var10.getValue()) - var6 / 2,
+                    (float) this.x + var13 + var12,
+					this.y - 320 + (int) ((double) var8 * (Double) var10.getValue()) - var6 / 2,
                     52.0F,
                     320.0F,
                     this.pipe,
                     ClientColors.LIGHT_GREYISH_BLUE.getColor()
             );
             RenderUtil.drawImage(
-                    (float) this.xA + var13 + var12,
-					this.yA + (int) ((double) var8 * (Double) var10.getValue()) + var6 / 2,
+                    (float) this.x + var13 + var12,
+					this.y + (int) ((double) var8 * (Double) var10.getValue()) + var6 / 2,
                     52.0F,
                     320.0F,
                     this.pipe2,
@@ -111,12 +111,12 @@ public class BirdGroup extends AnimatedIconPanel {
         float var18 = (float) (System.currentTimeMillis() % (long) 3400) / 3400;
 
         for (int var19 = 0; var19 < 4; var19++) {
-            RenderUtil.drawImage((float) (this.xA + 288 * var19) - 288.0F * var18, (float) (this.yA + var8), 288.0F, 112.0F, this.foregrnd);
+            RenderUtil.drawImage((float) (this.x + 288 * var19) - 288.0F * var18, (float) (this.y + var8), 288.0F, 112.0F, this.foregrnd);
         }
 
         RenderUtil.drawImage(
-                (float) this.xA + var7 / 12.0F,
-                (float) this.yA + (float) var8 * (1.0F - this.field20835),
+                (float) this.x + var7 / 12.0F,
+                (float) this.y + (float) var8 * (1.0F - this.field20835),
                 40,
                 20,
                 this.bird,

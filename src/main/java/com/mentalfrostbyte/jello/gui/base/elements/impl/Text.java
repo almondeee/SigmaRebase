@@ -36,8 +36,8 @@ public class Text extends AnimatedIconPanel {
             GL11.glAlphaFunc(518, 0.01F);
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont18_1,
-                    (float) this.getXA(),
-                    (float) this.getYA(),
+                    (float) this.getX(),
+                    (float) this.getY(),
                     this.getText(),
                     RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks)
             );
@@ -47,8 +47,8 @@ public class Text extends AnimatedIconPanel {
         if (this.text != null) {
             RenderUtil.drawString(
                     this.getFont(),
-                    (float) this.getXA(),
-                    (float) this.getYA(),
+                    (float) this.getX(),
+                    (float) this.getY(),
                     this.getText(),
                     RenderUtil2.applyAlpha(this.textColor.getTextColor(), partialTicks * RenderUtil2.getAlpha(this.textColor.getTextColor()))
             );

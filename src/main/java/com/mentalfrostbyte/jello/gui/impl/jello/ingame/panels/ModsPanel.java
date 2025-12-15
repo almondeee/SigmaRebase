@@ -72,7 +72,7 @@ public class ModsPanel extends Element {
          Button var16;
          this.field21308
             .addToList(
-               var16 = new Button(this.field21308, var14.method21596(), 0, var11++ * 55, this.field21308.getWidthA(), 55, var15, var14.method21596())
+               var16 = new Button(this.field21308, var14.method21596(), 0, var11++ * 55, this.field21308.getWidth(), 55, var15, var14.method21596())
             );
          var16.onClick((var2x, var3x) -> {
             for (Entry var7 : GuiManager.screenToScreenName.entrySet()) {
@@ -94,7 +94,7 @@ public class ModsPanel extends Element {
          this.field21308
             .addToList(
                var21 = new Button(
-                  this.field21308, var19.getName(), 0, var11++ * 40, this.field21308.getWidthA(), 40, var20, new Class6984(var19).method21596()
+                  this.field21308, var19.getName(), 0, var11++ * 40, this.field21308.getWidth(), 40, var20, new Class6984(var19).method21596()
                )
             );
          var21.method13034(10);
@@ -114,9 +114,9 @@ public class ModsPanel extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
+   public void updatePanelDimensions(int mouseX, int mouseY) {
       if (this.method13212()
-         && (newHeight < this.field21304 || newWidth < this.field21303 || newHeight > this.field21304 + this.field21305 || newWidth > this.field21303 + this.field21306)) {
+         && (mouseX < this.field21304 || mouseY < this.field21303 || mouseX > this.field21304 + this.field21305 || mouseY > this.field21303 + this.field21306)) {
          this.field21311 = true;
       }
 
@@ -130,7 +130,7 @@ public class ModsPanel extends Element {
          if (!(var10 instanceof VerticalScrollBar)) {
             for (CustomGuiScreen var12 : var10.getChildren()) {
                if (var12 instanceof Button var13) {
-				   boolean var14 = var13.getHeightA() != 40;
+				   boolean var14 = var13.getHeight() != 40;
                   if (!var14 || this.field21307 != null && (this.field21307 == null || this.field21307.length() != 0)) {
                      if (!var14 && this.method13622(this.field21307, var13.getText())) {
                         var6.put(var13.getText(), var13);
@@ -151,8 +151,8 @@ public class ModsPanel extends Element {
 
       for (Button var20 : var5.values()) {
          var20.setSelfVisible(true);
-         var20.setYA(var15);
-         var15 += var20.getHeightA();
+         var20.setY(var15);
+         var15 += var20.getHeight();
       }
 
       if (var5.size() > 0) {
@@ -161,21 +161,21 @@ public class ModsPanel extends Element {
 
       for (Button var21 : var6.values()) {
          var21.setSelfVisible(true);
-         var21.setYA(var15);
-         var15 += var21.getHeightA();
+         var21.setY(var15);
+         var15 += var21.getHeight();
       }
 
       for (Button var22 : var7.values()) {
          var22.setSelfVisible(true);
-         var22.setYA(var15);
-         var15 += var22.getHeightA();
+         var22.setY(var15);
+         var15 += var22.getHeight();
       }
 
       for (Button var23 : var8) {
          var23.setSelfVisible(false);
       }
 
-      super.updatePanelDimensions(newHeight, newWidth);
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    private boolean method13621(String var1, String var2) {
@@ -200,10 +200,10 @@ public class ModsPanel extends Element {
       }
 
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)this.widthA,
-         (float)this.heightA,
+         (float)this.x,
+         (float)this.y,
+         (float)this.width,
+         (float)this.height,
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.3F * partialTicks)
       );
       super.method13224();

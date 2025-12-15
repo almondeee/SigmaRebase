@@ -17,7 +17,6 @@ import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
-import com.mentalfrostbyte.jello.util.client.render.Resources;
 import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.MainMenuHolder;
@@ -58,7 +57,7 @@ public class ClassicAltScreen extends Screen {
                         this,
                         "textbox",
                         (Minecraft.getInstance().getMainWindow().getWidth() - var9) / 2 - 140,
-                        this.getHeightA() - 40,
+                        this.getHeight() - 40,
                         140,
                         32,
                         TextField.field20741,
@@ -71,7 +70,7 @@ public class ClassicAltScreen extends Screen {
         this.altSearchBox.addChangeListener(var1 -> this.method13402());
         this.method13403();
         this.addToList(
-                this.altScreenGroup = new ClassicAltScreenGroup(this, "toolbar", (Minecraft.getInstance().getMainWindow().getWidth() - var9) / 2 + 16, this.getHeightA() - 94)
+                this.altScreenGroup = new ClassicAltScreenGroup(this, "toolbar", (Minecraft.getInstance().getMainWindow().getWidth() - var9) / 2 + 16, this.getHeight() - 94)
         );
         this.altScreenGroup.setHovered(false);
     }
@@ -81,7 +80,7 @@ public class ClassicAltScreen extends Screen {
         Account var5;
         this.altList
                 .addToList(
-                        var5 = new Account(this.altList, var1.getEmail(), 4, var4 * this.method13400() + 4, this.altList.getWidthA() - 8, var4, var1)
+                        var5 = new Account(this.altList, var1.getEmail(), 4, var4 * this.method13400() + 4, this.altList.getWidth() - 8, var4, var1)
                 );
         var5.onClick((var2, var3) -> {
             if (var3 == 0) {
@@ -137,7 +136,7 @@ public class ClassicAltScreen extends Screen {
         RenderUtil.drawString(ResourceRegistry.DefaultClientFont, 20.0F, 20.0F, Minecraft.getInstance().getSession().getUsername(), -2236963);
         RenderUtil.drawString(
                 ResourceRegistry.DefaultClientFont,
-                (float) (this.getWidthA() / 2),
+                (float) (this.getWidth() / 2),
                 20.0F,
                 "Account Manager - " + this.method13400() + " alts",
                 ClientColors.LIGHT_GREYISH_BLUE.getColor(),
@@ -146,7 +145,7 @@ public class ClassicAltScreen extends Screen {
         );
         RenderUtil.drawString(
                 ResourceRegistry.DefaultClientFont,
-                (float) (this.getWidthA() / 2),
+                (float) (this.getWidth() / 2),
                 40.0F,
                 this.status,
                 ClientColors.LIGHT_GREYISH_BLUE.getColor(),
@@ -172,7 +171,7 @@ public class ClassicAltScreen extends Screen {
 
     private void method13401() {
         //RenderUtil.drawImage(0.0F, 0.0F, (float) this.getWidthA(), (float) this.getHeightA(), Resources.mainmenubackground);
-        RenderUtil.drawRoundedRect2(0.0F, 0.0F, (float) this.getWidthA(), (float) this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.23F));
+        RenderUtil.drawRoundedRect2(0.0F, 0.0F, (float) this.getWidth(), (float) this.getHeight(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.23F));
     }
 
     @Override
@@ -203,7 +202,7 @@ public class ClassicAltScreen extends Screen {
     }
 
     public void method13402() {
-        this.runThisOnDimensionUpdate(new DimensionUpdateListener(this));
+        this.addRunnable(new DimensionUpdateListener(this));
     }
 
     public void method13403() {
@@ -214,13 +213,13 @@ public class ClassicAltScreen extends Screen {
             this.removeChildren(this.altList);
         }
 
-        CustomGuiScreen var6 = this.method13221("alts");
+        CustomGuiScreen var6 = this.getChildByName("alts");
         if (var6 != null) {
             this.removeChildren(var6);
         }
 
         int var7 = Minecraft.getInstance().getMainWindow().getWidth() - 200;
-        int var8 = this.getWidthA() - var7;
+        int var8 = this.getWidth() - var7;
         this.showAlert(this.altList = new AltList(this, "alts", var8 / 2, 69, var7, Minecraft.getInstance().getMainWindow().getHeight() - 169));
 
         for (com.mentalfrostbyte.jello.managers.util.account.microsoft.Account var10 : var4) {

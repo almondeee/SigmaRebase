@@ -22,7 +22,7 @@ public class SoundManager extends Manager {
 
     public void play(String url) {
         if (!VALID_SOUNDS.contains(url)) {
-            Client.logger.warn("Invalid audio file attempted to be played: {}", url);
+            Client.LOGGER.warn("Invalid audio file attempted to be played: {}", url);
         } else {
             try {
                 InputStream audioStream = Resources.readInputStream("com/mentalfrostbyte/gui/resources/audio/" + url + fileType);
@@ -32,11 +32,11 @@ public class SoundManager extends Manager {
                     try {
                         player.play();
                     } catch (JavaLayerException e) {
-                        Client.logger.error("Error playing audio file: {}", url, e);
+                        Client.LOGGER.error("Error playing audio file: {}", url, e);
                     }
                 }).start();
             } catch (JavaLayerException e) {
-                Client.logger.error("Unsupported audio file: {}", url, e);
+                Client.LOGGER.error("Unsupported audio file: {}", url, e);
             }
         }
     }

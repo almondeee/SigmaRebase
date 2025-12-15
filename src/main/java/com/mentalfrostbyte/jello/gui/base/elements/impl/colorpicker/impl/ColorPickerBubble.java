@@ -17,22 +17,22 @@ public class ColorPickerBubble extends Element {
     @Override
     public void draw(float partialTicks) {
         RenderUtil.drawCircle(
-                (float) this.xA + (float) this.widthA / 2.0F,
-                (float) this.yA + (float) this.widthA / 2.0F,
-                (float) this.widthA,
+                (float) this.x + (float) this.width / 2.0F,
+                (float) this.y + (float) this.width / 2.0F,
+                (float) this.width,
                 RenderUtil2.applyAlpha(RenderUtil2.shiftTowardsOther(this.field21365, ClientColors.DEEP_TEAL.getColor(), 0.8F), partialTicks)
         );
         RenderUtil.drawCircle(
-                (float) this.xA + (float) this.widthA / 2.0F,
-                (float) this.yA + (float) this.widthA / 2.0F,
-                (float) (this.widthA - 2),
+                (float) this.x + (float) this.width / 2.0F,
+                (float) this.y + (float) this.width / 2.0F,
+                (float) (this.width - 2),
                 RenderUtil2.applyAlpha(this.field21365, partialTicks)
         );
         if (this.method13212()) {
             RenderUtil.drawCircle(
-                    (float) this.xA + (float) this.widthA / 2.0F,
-                    (float) this.yA + (float) this.widthA / 2.0F,
-                    (float) (this.widthA - 2),
+                    (float) this.x + (float) this.width / 2.0F,
+                    (float) this.y + (float) this.width / 2.0F,
+                    (float) (this.width - 2),
                     RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks * 0.2F)
             );
         }

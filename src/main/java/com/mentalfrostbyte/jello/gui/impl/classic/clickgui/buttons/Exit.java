@@ -12,7 +12,7 @@ public class Exit extends Element {
 
    @Override
    public void draw(float partialTicks) {
-      RenderUtil.drawImage((float)this.xA, (float)this.yA, 30.0F, 30.0F, !this.method13298() ? Resources.xmark : Resources.xmark2);
+      RenderUtil.drawImage((float)this.x, (float)this.y, 30.0F, 30.0F, !this.method13298() ? Resources.xmark : Resources.xmark2);
       super.draw(partialTicks);
    }
 }

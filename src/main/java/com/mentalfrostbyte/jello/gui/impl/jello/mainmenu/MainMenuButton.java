@@ -34,8 +34,8 @@ public class MainMenuButton extends SmallImage {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         this.field20577 = this.method13298();
         if (!this.field20577) {
             if (this.method13029()) {
@@ -68,10 +68,10 @@ public class MainMenuButton extends SmallImage {
             var5 = this.method13031();
         }
 
-        int var6 = (int) ((double) this.getWidthA() * (1.0 + (double) var5 * 0.2));
-        int var7 = (int) ((double) this.getHeightA() * (1.0 + (double) var5 * 0.2));
-        int var8 = this.getXA() - (var6 - this.getWidthA()) / 2;
-        int var9 = (int) ((double) (this.getYA() - (var7 - this.getHeightA()) / 2) - (double) ((float) (this.getHeightA() / 2) * var5) * 0.2);
+        int var6 = (int) ((double) this.getWidth() * (1.0 + (double) var5 * 0.2));
+        int var7 = (int) ((double) this.getHeight() * (1.0 + (double) var5 * 0.2));
+        int var8 = this.getX() - (var6 - this.getWidth()) / 2;
+        int var9 = (int) ((double) (this.getY() - (var7 - this.getHeight()) / 2) - (double) ((float) (this.getHeight() / 2) * var5) * 0.2);
         float[] var10 = RenderUtil2.calculateAspectRatioFit(this.getTexture().getWidth(), this.getTexture().getHeight(), (float) var6, (float) var7);
         float var11 = 85;
         RenderUtil.drawImage(
@@ -108,7 +108,7 @@ public class MainMenuButton extends SmallImage {
             GL11.glPushMatrix();
             String var14 = this.getText() != null ? this.getText() : this.name;
             GL11.glTranslatef(
-                    (float) (this.getXA() + this.getWidthA() / 2 - font.getWidth(var14) / 2), (float) (this.getYA() + this.getHeightA() - 40), 0.0F
+                    (float) (this.getX() + this.getWidth() / 2 - font.getWidth(var14) / 2), (float) (this.getY() + this.getHeight() - 40), 0.0F
             );
             GL11.glScalef(var13, var13, var13);
             GL11.glAlphaFunc(519, 0.0F);

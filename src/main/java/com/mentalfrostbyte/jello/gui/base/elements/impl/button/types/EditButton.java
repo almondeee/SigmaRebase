@@ -19,15 +19,15 @@ public class EditButton extends AnimatedIconPanel {
 
    @Override
    public void draw(float partialTicks) {
-      if (this.getWidthA() != 0) {
+      if (this.getWidth() != 0) {
          this.method13225();
-         float var4 = 1.0F - Math.min(1.0F, Math.max((float)this.getWidthA() / (float)this.field20768, 0.0F));
+         float var4 = 1.0F - Math.min(1.0F, Math.max((float)this.getWidth() / (float)this.field20768, 0.0F));
          RenderUtil.drawRoundedRect2(
-            (float)this.xA, (float)this.yA, (float)this.field20768, (float)this.heightA, RenderUtil2.applyAlpha(-3254955, partialTicks)
+            (float)this.x, (float)this.y, (float)this.field20768, (float)this.height, RenderUtil2.applyAlpha(-3254955, partialTicks)
          );
          super.draw(partialTicks * (1.0F - var4));
          RenderUtil.drawImage(
-            0.0F, 0.0F, 20.0F, (float)this.heightA, Resources.shadowRightPNG, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var4 * partialTicks)
+            0.0F, 0.0F, 20.0F, (float)this.height, Resources.shadowRightPNG, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var4 * partialTicks)
          );
       }
    }

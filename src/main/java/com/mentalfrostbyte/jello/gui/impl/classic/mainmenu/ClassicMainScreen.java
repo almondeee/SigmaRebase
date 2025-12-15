@@ -56,7 +56,7 @@ public class ClassicMainScreen extends Screen {
         this.addToList(this.particleOverlay = new ParticleOverlay(this, "particles"));
         int var13 = 480;
         int var14 = 480;
-        this.addToList(this.field21103 = new ClassicMainScreenGroup(this, "group", (this.getWidthA() - var13) / 2, this.getHeightA() / 2 - 230, var13, var14));
+        this.addToList(this.field21103 = new ClassicMainScreenGroup(this, "group", (this.getWidth() - var13) / 2, this.getHeight() / 2 - 230, var13, var14));
         this.addToList(
                 this.field21095 = new Text(
                         this, "Copyright", 10, 8, font.getWidth(copyrightTag), 140, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), copyrightTag, ResourceRegistry.JelloLightFont18
@@ -74,8 +74,8 @@ public class ClassicMainScreen extends Screen {
                 this.field21094 = new Text(
                         this,
                         "Version",
-                        this.getWidthA() - font.getWidth(versionTag) - 9,
-                        this.getHeightA() - 31,
+                        this.getWidth() - font.getWidth(versionTag) - 9,
+                        this.getHeight() - 31,
                         114,
                         140,
                         new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()),
@@ -83,14 +83,14 @@ public class ClassicMainScreen extends Screen {
                         font
                 )
         );
-        this.addToList(new Text(this, "Hello", 10, this.getHeightA() - 55, 114, 140, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), "Hello,", font));
+        this.addToList(new Text(this, "Hello", 10, this.getHeight() - 55, 114, 140, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), "Hello,", font));
         this.addToList(
                 new Text(
-                        this, "Latest", 10, this.getHeightA() - 31, 114, 140, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), "You are using the latest version", font
+                        this, "Latest", 10, this.getHeight() - 31, 114, 140, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), "You are using the latest version", font
                 )
         );
-        this.field21104 = (float) (this.getWidthA() / 2);
-        this.field21105 = (float) (this.getHeightA() / 2);
+        this.field21104 = (float) (this.getWidth() / 2);
+        this.field21105 = (float) (this.getHeight() / 2);
     }
 
     private int method13432(int var1) {
@@ -98,18 +98,18 @@ public class ClassicMainScreen extends Screen {
         int var7 = -6;
         int var8 = 122 * var6 + var6 * var7;
         if (var1 < var6) {
-            return this.getWidthA() / 2 - var8 / 2 + var1 * 122 + var1 * var7;
+            return this.getWidth() / 2 - var8 / 2 + var1 * 122 + var1 * var7;
         } else {
             var1 -= var6;
             var6 = 3;
             var7 = 6;
             var8 = 122 * var6 + var6 * var7;
-            return this.getWidthA() / 2 - var8 / 2 + var1 * 122 + var1 * var7;
+            return this.getWidth() / 2 - var8 / 2 + var1 * 122 + var1 * var7;
         }
     }
 
     private int method13433() {
-        return this.getHeightA() / 2 - 100;
+        return this.getHeight() / 2 - 100;
     }
 
     public void method13434(net.minecraft.client.gui.screen.Screen var1) {
@@ -126,12 +126,12 @@ public class ClassicMainScreen extends Screen {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        float var5 = (float) newHeight - this.field21104;
-        float var6 = (float) newWidth - this.field21105;
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        float var5 = (float) mouseX - this.field21104;
+        float var6 = (float) mouseY - this.field21105;
         this.field21104 += var5 * 0.055F;
         this.field21105 += var6 * 0.055F;
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -141,18 +141,18 @@ public class ClassicMainScreen extends Screen {
         this.method13225();
         GL11.glPushMatrix();
         GL11.glTranslated(
-                (int) ((float) (-this.getWidthA() / 200) + this.field21104 / 200.0F),
-                (int) ((float) (-this.getHeightA() / 100) + this.field21105 / 100.0F) - var4,
+                (int) ((float) (-this.getWidth() / 200) + this.field21104 / 200.0F),
+                (int) ((float) (-this.getHeight() / 100) + this.field21105 / 100.0F) - var4,
                 0.0
         );
-        RenderUtil.drawImage(-10.0F, -10.0F, (float) (this.getWidthA() + 20), (float) (this.getHeightA() + 20), Resources.mainmenubackground);
+        RenderUtil.drawImage(-10.0F, -10.0F, (float) (this.getWidth() + 20), (float) (this.getHeight() + 20), Resources.mainmenubackground);
         GL11.glPopMatrix();
         this.field21103
                 .draw(
-                        (int) ((float) (-this.getWidthA() / 40) + this.field21104 / 40.0F), (int) ((float) (-this.getHeightA() / 40) + this.field21105 / 40.0F) + var4
+                        (int) ((float) (-this.getWidth() / 40) + this.field21104 / 40.0F), (int) ((float) (-this.getHeight() / 40) + this.field21105 / 40.0F) + var4
                 );
         this.particleOverlay
-                .draw((int) ((float) (-this.getWidthA() / 12) + this.field21104 / 12.0F), (int) ((float) (-this.getHeightA() / 12) + this.field21105 / 12.0F));
+                .draw((int) ((float) (-this.getWidth() / 12) + this.field21104 / 12.0F), (int) ((float) (-this.getHeight() / 12) + this.field21105 / 12.0F));
         super.draw(partialTicks);
     }
 }

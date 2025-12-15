@@ -125,13 +125,13 @@ public class AccountManager extends Manager {
         try {
             FileUtil.save(jsonObject, new File(Client.getInstance().file + "/alts.json"));
         } catch (IOException | JsonParseException var6) {
-            Client.logger.error(var6.getMessage());
+            Client.LOGGER.error(var6.getMessage());
         }
     }
 
     private void loadAltsFromFile() {
         try {
-            JsonObject jsonObject = FileUtil.readFile(this.altsFile);
+            JsonObject jsonObject = FileUtil.readJsonFile(this.altsFile);
             if (!jsonObject.has("alts")) {
                 jsonObject.add("alts", new JsonArray());
             }
@@ -140,7 +140,7 @@ public class AccountManager extends Manager {
                 this.accounts.add(new Account((JsonObject) obj));
             }
         } catch (IOException e) {
-            Client.logger.error(e.getMessage());
+            Client.LOGGER.error(e.getMessage());
         }
     }
 

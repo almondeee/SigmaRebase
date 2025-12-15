@@ -21,8 +21,8 @@ public class BoxedButton extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
       if (this.method13298() && (double)this.field20630.calcPercent() < 0.1) {
          this.field20630.changeDirection(Animation.Direction.FORWARDS);
       } else if (!this.method13298() && this.field20630.calcPercent() == 1.0F) {
@@ -39,9 +39,9 @@ public class BoxedButton extends Element {
 
       this.drawBackground((int)(-25.0F * var4));
       this.method13225();
-      RenderUtil.drawImage((float)(this.xA + 20), (float)this.yA, 100.0F, 100.0F, this.field20631);
-      int var5 = this.xA + 12 - (Resources.regular20.getWidth(this.name) - this.widthA) / 2;
-      int var6 = this.yA + 102;
+      RenderUtil.drawImage((float)(this.x + 20), (float)this.y, 100.0F, 100.0F, this.field20631);
+      int var5 = this.x + 12 - (Resources.regular20.getWidth(this.name) - this.width) / 2;
+      int var6 = this.y + 102;
       GL11.glAlphaFunc(516, 0.1F);
       RenderUtil.drawString(Resources.regular20, (float)var5, (float)(var6 + 1), this.name, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.5F));
       RenderUtil.drawString(Resources.regular20, (float)var5, (float)var6, this.name, ClientColors.LIGHT_GREYISH_BLUE.getColor());

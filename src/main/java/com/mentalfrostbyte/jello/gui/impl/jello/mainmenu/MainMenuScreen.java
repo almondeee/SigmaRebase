@@ -98,8 +98,8 @@ public class MainMenuScreen extends Screen {
             this.bubbles.add(new FloatingBubble(this, Integer.toString(var5), var6, var7, var8, var9, var10));
         }
 
-        this.addToList(this.mainMenuScreen = new JelloMainMenu(this, "main", 0, 0, this.widthA, this.heightA));
-        this.addToList(this.changelogScreen = new ChangelogScreen(this, "changelog", 0, 0, this.widthA, this.heightA));
+        this.addToList(this.mainMenuScreen = new JelloMainMenu(this, "main", 0, 0, this.width, this.height));
+        this.addToList(this.changelogScreen = new ChangelogScreen(this, "changelog", 0, 0, this.width, this.height));
         this.changelogScreen.setHovered(false);
         this.changelogScreen.method13294(true);
     }
@@ -120,12 +120,12 @@ public class MainMenuScreen extends Screen {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         for (CustomGuiScreen var6 : this.bubbles) {
-            var6.updatePanelDimensions(newHeight, newWidth);
+            var6.updatePanelDimensions(mouseX, mouseY);
         }
 
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -141,8 +141,8 @@ public class MainMenuScreen extends Screen {
         long elapsedTime = System.nanoTime() - currentTime;
         field20982 = Math.min(10.0F, Math.max(0.0F, (float) elapsedTime / 1.810361E7F / 2.0F));
         currentTime = System.nanoTime();
-        int offsetY = -this.getHeightO();
-        float offsetX = (float) this.getWidthO() / (float) this.getWidthA() * -114.0F;
+        int offsetY = -this.getMouseX();
+        float offsetX = (float) this.getMouseY() / (float) this.getWidth() * -114.0F;
         if (this.field20968) {
             this.field20966 = (int) offsetX;
             this.field20967 = offsetY;
@@ -166,7 +166,7 @@ public class MainMenuScreen extends Screen {
             float backgroundOpacity = 1.0F - this.field20974.calcPercent();
             float foregroundOpacity = 1.0F - this.field20975.calcPercent();
 
-            float screenScale = (float) this.getWidthA() / 1920.0F;
+            float screenScale = (float) this.getWidth() / 1920.0F;
             int backgroundWidth = (int) (600.0F * screenScale);
             int middleWidth = (int) (450.0F * screenScale);
             int foregroundWidth = 0;
@@ -174,15 +174,15 @@ public class MainMenuScreen extends Screen {
             RenderUtil.drawImage(
                     (float) this.field20967 - (float) backgroundWidth * parallaxFactor,
                     (float) this.field20966,
-                    (float) (this.getWidthA() * 2 + backgroundWidth),
-                    (float) (this.getHeightA() + 114),
+                    (float) (this.getWidth() * 2 + backgroundWidth),
+                    (float) (this.getHeight() + 114),
                     Resources.backgroundPNG
             );
             RenderUtil.drawImage(
                     (float) this.field20967 - (float) middleWidth * parallaxFactor,
                     (float) this.field20966,
-                    (float) (this.getWidthA() * 2 + middleWidth),
-                    (float) (this.getHeightA() + 114),
+                    (float) (this.getWidth() * 2 + middleWidth),
+                    (float) (this.getHeight() + 114),
                     Resources.middlePNG
             );
 
@@ -195,8 +195,8 @@ public class MainMenuScreen extends Screen {
             RenderUtil.drawImage(
                     (float) this.field20967 - (float) foregroundWidth * parallaxFactor,
                     (float) this.field20966,
-                    (float) (this.getWidthA() * 2 + foregroundWidth),
-                    (float) (this.getHeightA() + 114),
+                    (float) (this.getWidth() * 2 + foregroundWidth),
+                    (float) (this.getHeight() + 114),
                     Resources.foregroundPNG
             );
 
@@ -204,15 +204,15 @@ public class MainMenuScreen extends Screen {
             RenderUtil.drawImage(
                     (float) this.field20967,
                     (float) (this.field20966 - 50),
-                    (float) (this.getWidthA() * 2),
-                    (float) (this.getHeightA() + 200),
+                    (float) (this.getWidth() * 2),
+                    (float) (this.getHeight() + 200),
                     background,
                     RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), transitionProgress),
                     false
             );
 
             RenderUtil.drawRoundedRect2(
-                    0.0F, 0.0F, (float) this.getWidthA(), (float) this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), transitionProgress * 0.3F)
+                    0.0F, 0.0F, (float) this.getWidth(), (float) this.getHeight(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), transitionProgress * 0.3F)
             );
 
 
@@ -252,8 +252,8 @@ public class MainMenuScreen extends Screen {
             if (this.animation.getDirection() == Animation.Direction.FORWARDS) {
                 RenderUtil.drawString(
                         ResourceRegistry.JelloMediumFont50,
-                        (float) (this.widthA / 2),
-                        (float) (this.heightA / 2 - 30),
+                        (float) (this.width / 2),
+                        (float) (this.height / 2 - 30),
                         currentTitle,
                         RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), this.animation.calcPercent()),
                         FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
@@ -261,8 +261,8 @@ public class MainMenuScreen extends Screen {
                 );
                 RenderUtil.drawString(
                         ResourceRegistry.JelloLightFont18,
-                        (float) (this.widthA / 2),
-                        (float) (this.heightA / 2 + 30),
+                        (float) (this.width / 2),
+                        (float) (this.height / 2 + 30),
                         "\"" + currentMessage + "\"",
                         RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), this.animation.calcPercent() * 0.5F),
                         FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,

@@ -28,37 +28,37 @@ public class PanelGroup extends AnimatedIconPanel {
 
     public PanelGroup(CustomGuiScreen var1, String var2, int var3, int var4, ModuleCategory category) {
         super(var1, var2, var3, var4, 200, 350, true);
-        this.setWidthA(200);
-        this.setHeightA(350);
+        this.setWidth(200);
+        this.setHeight(350);
         this.field20886 = true;
         this.category = category;
         this.method13505();
     }
 
     public void method13504() {
-        this.runThisOnDimensionUpdate(() -> {
+        this.addRunnable(() -> {
             this.removeChildren(this.modListView);
-            this.addToList(this.modListView = new ModListView(this, "modListView", 0, 60, this.getWidthA(), this.getHeightA() - 60, this.category));
+            this.addToList(this.modListView = new ModListView(this, "modListView", 0, 60, this.getWidth(), this.getHeight() - 60, this.category));
         });
     }
 
     private void method13505() {
-        this.addToList(this.modListView = new ModListView(this, "modListView", 0, 60, this.getWidthA(), this.getHeightA() - 60, this.category));
+        this.addToList(this.modListView = new ModListView(this, "modListView", 0, 60, this.getWidth(), this.getHeight() - 60, this.category));
         this.modListView.setSize(new ModListViewSize());
         this.modListView.setSize((var0, var1) -> {
-            var0.setYA(60);
-            var0.setHeightA(var1.getHeightA() - 60);
+            var0.setY(60);
+            var0.setHeight(var1.getHeight() - 60);
         });
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         if (!(this.field21195 >= 1.0F)) {
             this.method13215(false);
             this.field20909 = false;
         } else {
-            this.field21197 = this.getXA();
-            this.field21198 = this.getYA();
+            this.field21197 = this.getX();
+            this.field21198 = this.getY();
             this.method13215(true);
         }
 
@@ -75,20 +75,20 @@ public class PanelGroup extends AnimatedIconPanel {
                 var12 = 0;
             }
 
-            if (var12 + var9 > this.parent.getWidthA()) {
-                var12 = this.parent.getWidthA() - var9;
+            if (var12 + var9 > this.parent.getWidth()) {
+                var12 = this.parent.getWidth() - var9;
             }
 
-            if (var11 + var10 > this.parent.getHeightA()) {
-                var11 = this.parent.getHeightA() - var10;
+            if (var11 + var10 > this.parent.getHeight()) {
+                var11 = this.parent.getHeight() - var10;
             }
         }
 
-        this.setWidthA(var9);
-        this.setHeightA(var10);
-        this.setXA(var12);
-        this.setYA(var11);
-        super.updatePanelDimensions(newHeight, newWidth);
+        this.setWidth(var9);
+        this.setHeight(var10);
+        this.setX(var12);
+        this.setY(var11);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -97,25 +97,25 @@ public class PanelGroup extends AnimatedIconPanel {
         super.method13225();
         int var4 = (int) (1.0F + 10.0F * (1.0F - this.field21195));
         RenderUtil.drawRoundedRect(
-                (float) (this.getXA() + (var4 - 1)),
-                (float) (this.getYA() + (var4 - 1)),
-                (float) (this.getWidthA() - (var4 - 1) * 2),
-                (float) (this.getHeightA() - (var4 - 1) * 2),
+                (float) (this.getX() + (var4 - 1)),
+                (float) (this.getY() + (var4 - 1)),
+                (float) (this.getWidth() - (var4 - 1) * 2),
+                (float) (this.getHeight() - (var4 - 1) * 2),
                 (float) this.field21199 + (1.0F - this.field21195) * (float) var4,
                 partialTicks
         );
         RenderUtil.drawRoundedRect(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) (this.getXA() + this.getWidthA()),
-                (float) (this.getYA() + 60),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) (this.getX() + this.getWidth()),
+                (float) (this.getY() + 60),
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), Math.min(1.0F, partialTicks * 0.9F * this.field21195))
         );
         RenderUtil.drawRoundedRect2(
-                (float) this.getXA(),
-                (float) this.getYA() + 60.0F * this.field21195,
-                (float) this.getWidthA(),
-                (float) this.getHeightA() - 60.0F * this.field21195,
+                (float) this.getX(),
+                (float) this.getY() + 60.0F * this.field21195,
+                (float) this.getWidth(),
+                (float) this.getHeight() - 60.0F * this.field21195,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
         );
         if (!(this.field21195 > 0.8F)) {
@@ -129,8 +129,8 @@ public class PanelGroup extends AnimatedIconPanel {
         String categoryName = this.getCategory().name();
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont25,
-                (float) (this.getXA() + 20),
-                (float) (this.getYA() + 30),
+                (float) (this.getX() + 20),
+                (float) (this.getY() + 30),
                 categoryName,
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks * 0.5F * this.field21195),
                 FontSizeAdjust.field14488,
@@ -141,9 +141,9 @@ public class PanelGroup extends AnimatedIconPanel {
         GL11.glPopMatrix();
         if (this.modListView.method13513() > 0) {
             RenderUtil.drawImage(
-                    (float) this.getXA(),
-                    (float) (this.getYA() + 60),
-                    (float) this.getWidthA(),
+                    (float) this.getX(),
+                    (float) (this.getY() + 60),
+                    (float) this.getWidth(),
                     18.0F,
                     Resources.shadowBottomPNG,
                     RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks * this.field21195 * 0.5F)

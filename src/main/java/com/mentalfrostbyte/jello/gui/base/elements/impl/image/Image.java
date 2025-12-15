@@ -18,10 +18,10 @@ public class Image extends AnimatedIconPanel {
     @Override
     public void draw(float partialTicks) {
         RenderUtil.drawImage(
-                (float) this.xA,
-                (float) this.yA,
-                (float) this.widthA,
-                (float) this.heightA,
+                (float) this.x,
+                (float) this.y,
+                (float) this.width,
+                (float) this.height,
                 this.image,
                 RenderUtil2.shiftTowardsOther(
                         ClientColors.DEEP_TEAL.getColor(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), !this.method13298() ? 0.0F : (!this.method13212() ? 0.15F : 0.3F)

@@ -17,12 +17,12 @@ public class Text extends Element {
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawRoundedRect(
-         (float)this.getXA(),
-         (float)this.getYA(),
-         (float)(this.getXA() + this.getWidthA()),
-         (float)(this.getYA() + this.getHeightA()),
+         (float)this.getX(),
+         (float)this.getY(),
+         (float)(this.getX() + this.getWidth()),
+         (float)(this.getY() + this.getHeight()),
          -3618616
       );
-      RenderUtil.drawString(Resources.regular17, (float)(this.getXA() + 5), (float)(this.getYA() - 2), this.setting.getDescription(), -14540254);
+      RenderUtil.drawString(Resources.regular17, (float)(this.getX() + 5), (float)(this.getY() - 2), this.setting.getDescription(), -14540254);
    }
 }

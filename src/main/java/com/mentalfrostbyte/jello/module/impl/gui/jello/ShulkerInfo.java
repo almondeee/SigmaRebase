@@ -3,7 +3,7 @@ package com.mentalfrostbyte.jello.module.impl.gui.jello;
 import com.google.common.collect.Lists;
 import com.mentalfrostbyte.jello.command.impl.Peek;
 
-import com.mentalfrostbyte.jello.event.impl.game.action.EventMouse;
+import com.mentalfrostbyte.jello.event.impl.game.action.EventMouseScroll;
 import com.mentalfrostbyte.jello.event.impl.game.render.EventRender3D;
 import com.mentalfrostbyte.jello.event.impl.game.render.EventRenderShulker;
 import com.mentalfrostbyte.jello.module.Module;
@@ -53,8 +53,8 @@ public class ShulkerInfo extends Module {
     }
 
     @EventTarget
-    public void onMouse(EventMouse var1) {
-        this.field23842 = this.field23842 - var1.method13980();
+    public void onMouse(EventMouseScroll event) {
+        this.field23842 = this.field23842 - event.getScroll();
     }
 
     public int method16670() {

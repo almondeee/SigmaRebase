@@ -13,13 +13,13 @@ public class AnimatedImageButton extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
+   public void updatePanelDimensions(int mouseX, int mouseY) {
       this.image.method23108();
    }
 
    @Override
    public void draw(float partialTicks) {
-      this.getAnimatedImage().drawImage(this.getXA(), this.getYA(), this.getWidthA(), this.getHeightA(), partialTicks);
+      this.getAnimatedImage().drawImage(this.getX(), this.getY(), this.getWidth(), this.getHeight(), partialTicks);
       super.draw(partialTicks);
    }
 

@@ -38,11 +38,11 @@ public class WaypointList extends ScrollableContentPanel {
 
     public void addWaypoint(String var1, Vector3i var2, int var3) {
         String var6 = "waypoint x" + var2.getX() + " z" + var2.getZ();
-        if (this.buttonList.method13221(var6) == null) {
+        if (this.buttonList.getChildByName(var6) == null) {
             Waypoint var7 = new Waypoint(
-                    this, var6, this.xA, this.getChildren().get(0).getChildren().size() * this.field21210, this.widthA, this.field21210, var1, var2, var3
+                    this, var6, this.x, this.getChildren().get(0).getChildren().size() * this.field21210, this.width, this.field21210, var1, var2, var3
             );
-            var7.field21288 = var7.getYA();
+            var7.field21288 = var7.getY();
             this.field21209.add(var7);
             this.addToList(var7);
             var7.onClick((var2x, var3x) -> {
@@ -62,9 +62,9 @@ public class WaypointList extends ScrollableContentPanel {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
-        this.field21209.sort((var0, var1x) -> var0.field21288 < var1x.field21288 + var0.getHeightA() / 2 ? -1 : 1);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
+        this.field21209.sort((var0, var1x) -> var0.field21288 < var1x.field21288 + var0.getHeight() / 2 ? -1 : 1);
         int var5 = 0;
         if (this.field21213 != null && !this.field21213.method13216() && this.field21212) {
             this.field21213.method13608();
@@ -76,19 +76,19 @@ public class WaypointList extends ScrollableContentPanel {
             if (!var7.method13216() && var7.field21290.getDirection() == Animation.Direction.BACKWARDS) {
                 var7.field21288 = var5 + 5;
             } else {
-                var7.field21288 = var7.getYA();
+                var7.field21288 = var7.getY();
             }
 
-            var5 += var7.getHeightA();
+            var5 += var7.getHeight();
         }
 
         for (Waypoint var11 : this.field21209) {
             if (var11.method13216()) {
                 this.field21211.changeDirection(Animation.Direction.FORWARDS);
-                if (newHeight > this.method13271() + 10
-                        && newHeight < this.method13271() + 50
-                        && newWidth < this.method13272() + this.getHeightA() - 10
-                        && newWidth > this.method13272() + this.getHeightA() - 50) {
+                if (mouseX > this.method13271() + 10
+                        && mouseX < this.method13271() + 50
+                        && mouseY < this.method13272() + this.getHeight() - 10
+                        && mouseY > this.method13272() + this.getHeight() - 50) {
                     this.field21212 = true;
                     this.field21213 = var11;
                 } else {
@@ -122,22 +122,22 @@ public class WaypointList extends ScrollableContentPanel {
 
         for (Waypoint var6 : this.field21209) {
             if (!var6.method13216()) {
-                float var7 = (float) (var6.getYA() - var6.field21288) * var4;
+                float var7 = (float) (var6.getY() - var6.field21288) * var4;
                 if (Math.round(var7) == 0 && var7 > 0.0F) {
                     var7 = 1.0F;
                 } else if (Math.round(var7) == 0 && var7 < 0.0F) {
                     var7 = -1.0F;
                 }
 
-                var6.setYA(Math.round((float) var6.getYA() - var7));
+                var6.setY(Math.round((float) var6.getY() - var7));
             }
         }
 
         super.draw(partialTicks);
         int var8 = Math.round(QuadraticEasing.easeInQuad(1.0F - this.field21211.calcPercent(), 0.0F, 1.0F, 1.0F) * 30.0F);
         RenderUtil.drawImage(
-                (float) (this.xA - var8 + 18),
-                (float) (this.heightA - 46),
+                (float) (this.x - var8 + 18),
+                (float) (this.height - 46),
                 22.0F,
                 26.0F,
                 Resources.trashcanPNG,

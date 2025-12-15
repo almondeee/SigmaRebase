@@ -26,14 +26,14 @@ public class LoadingIndicator extends AnimatedIconPanel {
       float var4 = (float)(this.field20769.getElapsedTime() / 75L % 12L);
       if (this.field20770 != 0.0F) {
          GL11.glPushMatrix();
-         GL11.glTranslatef((float)(this.xA + this.widthA / 2), (float)(this.yA + this.heightA / 2), 0.0F);
+         GL11.glTranslatef((float)(this.x + this.width / 2), (float)(this.y + this.height / 2), 0.0F);
          GL11.glRotatef(var4 * 30.0F, 0.0F, 0.0F, 1.0F);
-         GL11.glTranslatef((float)(-this.xA - this.widthA / 2), (float)(-this.yA - this.heightA / 2), 0.0F);
+         GL11.glTranslatef((float)(-this.x - this.width / 2), (float)(-this.y - this.height / 2), 0.0F);
          RenderUtil.drawImage(
-            (float)this.xA,
-            (float)this.yA,
-            (float)this.widthA,
-            (float)this.heightA,
+            (float)this.x,
+            (float)this.y,
+            (float)this.width,
+            (float)this.height,
             Resources.loadingIndicatorPNG,
             RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), this.field20770 * partialTicks)
          );

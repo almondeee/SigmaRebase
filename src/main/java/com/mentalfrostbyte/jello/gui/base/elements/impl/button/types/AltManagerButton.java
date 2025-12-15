@@ -25,24 +25,24 @@ public class AltManagerButton extends AnimatedIconPanel {
     public void draw(float partialTicks) {
         this.setFont(ResourceRegistry.DefaultClientFont);
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) this.yA,
-                (float) (this.xA + this.widthA),
-                (float) (this.yA + this.heightA),
+                (float) this.x,
+                (float) this.y,
+                (float) (this.x + this.width),
+                (float) (this.y + this.height),
                 RenderUtil2.applyAlpha(this.color, !this.isHovered() ? 0.25F : (!this.method13298() ? 0.4F : (!this.method13212() ? 0.5F : 0.6F)))
         );
         RenderUtil.method11429(
-                (float) this.xA,
-                (float) this.yA,
-                (float) (this.xA + this.widthA),
-                (float) (this.yA + this.heightA),
+                (float) this.x,
+                (float) this.y,
+                (float) (this.x + this.width),
+                (float) (this.y + this.height),
                 2,
                 RenderUtil2.applyAlpha(this.color, 0.2F)
         );
         RenderUtil.drawString(
                 ResourceRegistry.DefaultClientFont,
-                (float) (this.getXA() + this.getWidthA() / 2),
-                (float) (this.getYA() + this.getHeightA() / 2),
+                (float) (this.getX() + this.getWidth() / 2),
+                (float) (this.getY() + this.getHeight() / 2),
                 this.text,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), !this.isHovered() ? 0.5F : 1.0F),
                 FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,

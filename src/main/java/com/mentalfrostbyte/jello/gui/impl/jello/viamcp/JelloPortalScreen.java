@@ -48,7 +48,7 @@ public class JelloPortalScreen extends MultiplayerScreen {
         int newIndex = aDouble.intValue();
         if (newIndex >= 0 && newIndex < getAvailableVersions().size()) {
             ViaLoadingBase.getInstance().reload(getVersion(newIndex));
-            Client.currentVersionIndex = newIndex;
+            Client.CURRENT_VERSION_INDEX = newIndex;
         }
     }
 
@@ -66,7 +66,7 @@ public class JelloPortalScreen extends MultiplayerScreen {
     }
 
     private int getCurrentVersionIndex() {
-        return Client.currentVersionIndex;
+        return Client.CURRENT_VERSION_INDEX;
     }
 
     private List<ProtocolVersion> getAvailableVersions() {

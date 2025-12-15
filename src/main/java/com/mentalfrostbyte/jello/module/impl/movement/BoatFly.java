@@ -1,7 +1,7 @@
 package com.mentalfrostbyte.jello.module.impl.movement;
 
 import com.mentalfrostbyte.jello.event.impl.game.action.EventKeyPress;
-import com.mentalfrostbyte.jello.event.impl.game.action.EventMouse;
+import com.mentalfrostbyte.jello.event.impl.game.action.EventMouseScroll;
 import com.mentalfrostbyte.jello.event.impl.player.EventUpdate;
 import com.mentalfrostbyte.jello.module.Module;
 import com.mentalfrostbyte.jello.module.data.ModuleCategory;
@@ -53,16 +53,16 @@ public class BoatFly extends Module {
     }
 
     @EventTarget
-    public void method16418(EventMouse var1) {
+    public void method16418(EventMouseScroll event) {
         if (this.isEnabled()) {
-            if (this.field23643 && var1.method13980() == mc.gameSettings.keyBindSneak.keyCode.getKeyCode()) {
+            if (this.field23643 && event.getScroll() == mc.gameSettings.keyBindSneak.keyCode.getKeyCode()) {
                 this.field23643 = false;
             }
 
             if (mc.player.getRidingEntity() != null) {
                 if (!mc.player.getRidingEntity().onGround) {
-                    if (var1.method13980() == mc.gameSettings.keyBindSneak.keyCode.getKeyCode()) {
-                        var1.cancelled = true;
+                    if (event.getScroll() == mc.gameSettings.keyBindSneak.keyCode.getKeyCode()) {
+                        event.cancelled = true;
                         this.field23643 = false;
                     }
                 }

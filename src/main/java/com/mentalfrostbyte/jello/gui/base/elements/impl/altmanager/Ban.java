@@ -84,31 +84,31 @@ public class Ban extends AnimatedIconPanel {
                 }
             }
 
-            RenderUtil.method11415(this);
+            RenderUtil.startScissor(this);
             RenderUtil.drawRoundedRect(
-                    (float) this.xA,
-                    (float) this.yA,
-                    (float) (this.xA + this.widthA),
-                    (float) (this.yA + this.heightA),
+                    (float) this.x,
+                    (float) this.y,
+                    (float) (this.x + this.width),
+                    (float) (this.y + this.height),
                     ClientColors.LIGHT_GREYISH_BLUE.getColor()
             );
             GL11.glTexParameteri(3553, 10241, 9728);
             GL11.glPushMatrix();
-            int var9 = this.widthA / 2;
-            int var7 = this.heightA / 2;
+            int var9 = this.width / 2;
+            int var7 = this.height / 2;
             if (this.field21248.getDirection() == Animation.Direction.BACKWARDS) {
                 var4 = QuadraticEasing.easeInQuad(this.field21248.calcPercent(), 0.0F, 1.0F, 1.0F);
             }
 
-            GL11.glTranslatef((float) (this.getXA() + var9), (float) (this.getYA() + var7), 0.0F);
+            GL11.glTranslatef((float) (this.getX() + var9), (float) (this.getY() + var7), 0.0F);
             GL11.glScaled(1.0 + 0.4 * (double) var4, 1.0 + 0.4 * (double) var4, 0.0);
-            GL11.glTranslatef((float) (-this.getXA() - var9), (float) (-this.getYA() - var7), 0.0F);
+            GL11.glTranslatef((float) (-this.getX() - var9), (float) (-this.getY() - var7), 0.0F);
             if (this.field21246 != null) {
                 RenderUtil.drawImage(
-                        (float) this.xA,
-                        (float) (this.yA - (this.widthA - this.heightA) / 2),
-                        (float) this.widthA,
-                        (float) this.widthA,
+                        (float) this.x,
+                        (float) (this.y - (this.width - this.height) / 2),
+                        (float) this.width,
+                        (float) this.width,
                         this.field21246,
                         RenderUtil2.applyAlpha(RenderUtil2.shiftTowardsOther(ClientColors.LIGHT_GREYISH_BLUE.getColor(), ClientColors.DEEP_TEAL.getColor(), 0.7F), 0.8F)
                 );
@@ -117,10 +117,10 @@ public class Ban extends AnimatedIconPanel {
             GL11.glPopMatrix();
             RenderUtil.restoreScissor();
             RenderUtil.drawRoundedRect(
-                    (float) this.xA,
-                    (float) this.yA,
-                    (float) (this.xA + this.widthA),
-                    (float) (this.yA + this.heightA),
+                    (float) this.x,
+                    (float) this.y,
+                    (float) (this.x + this.width),
+                    (float) (this.y + this.height),
                     RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.3F + 0.3F * this.field21248.calcPercent())
             );
         }
@@ -143,17 +143,17 @@ public class Ban extends AnimatedIconPanel {
             var5 = QuadraticEasing.easeInQuad(this.field21248.calcPercent(), 0.0F, 1.0F, 1.0F);
         }
 
-        GL11.glTranslatef((float) (this.getXA() + 44), (float) (this.getYA() + 44), 0.0F);
+        GL11.glTranslatef((float) (this.getX() + 44), (float) (this.getY() + 44), 0.0F);
         GL11.glScaled(1.0 + 0.1 * (double) var5, 1.0 + 0.1 * (double) var5, 0.0);
-        GL11.glTranslatef((float) (-this.getXA() - 44), (float) (-this.getYA() - 44), 0.0F);
+        GL11.glTranslatef((float) (-this.getX() - 44), (float) (-this.getY() - 44), 0.0F);
         if (this.field21245 == null) {
             Minecraft.getInstance().getTextureManager().bindTexture(new ResourceLocation("textures/misc/unknown_server.png"));
             RenderUtil.method11457(
-                    (float) (this.xA + 12), (float) (this.yA + 12), 64.0F, 64.0F, ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.0F, 0.0F, 64.0F, 64.0F
+                    (float) (this.x + 12), (float) (this.y + 12), 64.0F, 64.0F, ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.0F, 0.0F, 64.0F, 64.0F
             );
         } else {
             RenderUtil.drawImage(
-                    (float) (this.xA + 12), (float) (this.yA + 12), 64.0F, 64.0F, this.field21245, ClientColors.LIGHT_GREYISH_BLUE.getColor(), true
+                    (float) (this.x + 12), (float) (this.y + 12), 64.0F, 64.0F, this.field21245, ClientColors.LIGHT_GREYISH_BLUE.getColor(), true
             );
         }
 
@@ -171,8 +171,8 @@ public class Ban extends AnimatedIconPanel {
         RenderUtil.drawBlurredBackground(
                 this.method13271() + this.method13280(),
                 this.method13272() + this.method13282(),
-                this.method13271() + this.method13280() + this.widthA,
-                this.method13272() + this.method13282() + this.heightA
+                this.method13271() + this.method13280() + this.width,
+                this.method13272() + this.method13282() + this.height
         );
         GL11.glPushMatrix();
         float var11 = EasingFunctions.easeOutBack(this.field21248.calcPercent(), 0.0F, 1.0F, 1.0F);
@@ -180,13 +180,13 @@ public class Ban extends AnimatedIconPanel {
             var11 = QuadraticEasing.easeInQuad(this.field21248.calcPercent(), 0.0F, 1.0F, 1.0F);
         }
 
-        GL11.glTranslatef((float) (this.getXA() + 76), (float) (this.getYA() + 44), 0.0F);
+        GL11.glTranslatef((float) (this.getX() + 76), (float) (this.getY() + 44), 0.0F);
         GL11.glScaled(1.0 - 0.1 * (double) var11, 1.0 - 0.1 * (double) var11, 0.0);
-        GL11.glTranslatef((float) (-this.getXA() - 76), (float) (-this.getYA() - 44), 0.0F);
+        GL11.glTranslatef((float) (-this.getX() - 76), (float) (-this.getY() - 44), 0.0F);
         RenderUtil.drawString(
                 ResourceRegistry.JelloMediumFont25,
-                (float) (this.xA + 94),
-                (float) (this.yA + 16),
+                (float) (this.x + 94),
+                (float) (this.y + 16),
                 !this.field21244.serverName.equals("Minecraft Server")
                         ? this.field21244.serverName
                         : this.field21244.serverIP.substring(0, 1).toUpperCase() + this.field21244.serverIP.substring(1),
@@ -198,24 +198,24 @@ public class Ban extends AnimatedIconPanel {
             if (var3 > 0L && this.field21243.getDate().getTime() != Long.MAX_VALUE) {
                 RenderUtil.drawString(
                         ResourceRegistry.JelloLightFont18,
-                        (float) (this.xA + var12),
-                        (float) (this.yA + var13),
+                        (float) (this.x + var12),
+                        (float) (this.y + var13),
                         "Unban: " + var8 + " days, " + var7 + "h " + var6 + "m " + var5 + "s",
                         RenderUtil2.shiftTowardsOther(ClientColors.DEEP_TEAL.getColor(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.2F)
                 );
             } else if (this.field21243.getDate().getTime() != Long.MAX_VALUE) {
                 RenderUtil.drawString(
                         ResourceRegistry.JelloLightFont18,
-                        (float) (this.xA + var12),
-                        (float) (this.yA + var13),
+                        (float) (this.x + var12),
+                        (float) (this.y + var13),
                         "Unbanned!",
                         RenderUtil2.shiftTowardsOther(ClientColors.DARK_SLATE_GREY.getColor(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.3F)
                 );
             } else {
                 RenderUtil.drawString(
                         ResourceRegistry.JelloLightFont18,
-                        (float) (this.xA + var12),
-                        (float) (this.yA + var13),
+                        (float) (this.x + var12),
+                        (float) (this.y + var13),
                         "Permanently banned!",
                         RenderUtil2.shiftTowardsOther(ClientColors.PALE_YELLOW.getColor(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.3F)
                 );
@@ -223,8 +223,8 @@ public class Ban extends AnimatedIconPanel {
         } else {
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont18,
-                    (float) (this.xA + var12),
-                    (float) (this.yA + var13),
+                    (float) (this.x + var12),
+                    (float) (this.y + var13),
                     "Compromised ban (unbannable)!",
                     RenderUtil2.shiftTowardsOther(ClientColors.DARK_OLIVE.getColor(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.3F)
             );

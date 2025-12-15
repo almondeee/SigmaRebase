@@ -64,7 +64,7 @@ public class Alert extends Element {
         this.field21285 -= 10;
         this.addToList(
                 this.screen = new CustomGuiScreen(
-                        this, "modalContent", (this.widthA - this.field21284) / 2, (this.heightA - this.field21285) / 2, this.field21284, this.field21285
+                        this, "modalContent", (this.width - this.field21284) / 2, (this.height - this.field21285) / 2, this.field21284, this.field21285
                 )
         );
         int var17 = 0;
@@ -280,17 +280,17 @@ public class Alert extends Element {
             RenderUtil.drawTexture(
                     -5.0F,
                     -5.0F,
-                    (float) (this.getWidthA() + 10),
-                    (float) (this.getHeightA() + 10),
+                    (float) (this.getWidth() + 10),
+                    (float) (this.getHeight() + 10),
                     this.field21281,
                     RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var7)
             );
             RenderUtil.drawRoundedRect(
-                    0.0F, 0.0F, (float) this.getWidthA(), (float) this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.1F * var7)
+                    0.0F, 0.0F, (float) this.getWidth(), (float) this.getHeight(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.1F * var7)
             );
             if (var4 > 0) {
                 RenderUtil.method11465(
-                        (this.widthA - var4) / 2, (this.heightA - var5) / 2, var4, var5, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var7)
+                        (this.width - var4) / 2, (this.height - var5) / 2, var4, var5, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var7)
                 );
             }
 
@@ -311,10 +311,10 @@ public class Alert extends Element {
         if (!super.onClick(mouseX, mouseY, mouseButton)) {
             int var6 = this.field21284 + 60;
             int var7 = this.field21285 + 60;
-            if (mouseX > (this.widthA - var6) / 2
-                    && mouseX < (this.widthA - var6) / 2 + var6
-                    && mouseY > (this.heightA - var7) / 2
-                    && mouseY < (this.heightA - var7) / 2 + var7) {
+            if (mouseX > (this.width - var6) / 2
+                    && mouseX < (this.width - var6) / 2 + var6
+                    && mouseY > (this.height - var7) / 2
+                    && mouseY < (this.height - var7) / 2 + var7) {
                 return false;
             } else {
                 this.method13603(false);
@@ -333,10 +333,10 @@ public class Alert extends Element {
                 }
 
                 this.field21281 = BufferedImageUtil.getTexture(
-                        "blur", ImageUtil.method35036(0, 0, this.getWidthA(), this.getHeightA(), 5, 10, ClientColors.LIGHT_GREYISH_BLUE.getColor(), true)
+                        "blur", ImageUtil.method35036(0, 0, this.getWidth(), this.getHeight(), 5, 10, ClientColors.LIGHT_GREYISH_BLUE.getColor(), true)
                 );
             } catch (IOException var5) {
-                Client.getInstance().logger.error(var5.getMessage());
+                Client.getInstance().LOGGER.error(var5.getMessage());
             }
         }
 

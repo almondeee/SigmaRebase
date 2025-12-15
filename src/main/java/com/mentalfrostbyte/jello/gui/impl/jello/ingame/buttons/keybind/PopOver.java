@@ -30,10 +30,10 @@ public class PopOver extends Element {
 
     public PopOver(CustomGuiScreen var1, String var2, int var3, int var4, int var5, String var6) {
         super(var1, var2, var3 - 125, var4, 250, 330, ColorHelper.field27961, var6, false);
-        if (this.yA + this.heightA <= Minecraft.getInstance().getMainWindow().getHeight()) {
-            this.yA += 10;
+        if (this.y + this.height <= Minecraft.getInstance().getMainWindow().getHeight()) {
+            this.y += 10;
         } else {
-            this.yA -= 400;
+            this.y -= 400;
             this.field21378 = true;
         }
 
@@ -47,8 +47,8 @@ public class PopOver extends Element {
                 var9 = new TextButton(
                         this,
                         "addButton",
-                        this.widthA - 70,
-                        this.heightA - 70,
+                        this.width - 70,
+                        this.height - 70,
                         ResourceRegistry.JelloLightFont25.getWidth("Add"),
                         70,
                         ColorHelper.field27961,
@@ -64,7 +64,7 @@ public class PopOver extends Element {
         ArrayList var4 = new ArrayList();
 
         for (CustomGuiScreen var6 : this.getChildren()) {
-            if (var6.getHeightA() != 0) {
+            if (var6.getHeight() != 0) {
                 var4.add(var6.getName());
             }
         }
@@ -77,7 +77,7 @@ public class PopOver extends Element {
             int var7 = var10.method21599();
             if (var7 == this.field21376) {
                 Class4253 var8;
-                this.addToList(var8 = new Class4253(this, var10.method21596(), 0, 20 + 55 * var3, this.widthA, 55, var10, var3++));
+                this.addToList(var8 = new Class4253(this, var10.method21596(), 0, 20 + 55 * var3, this.width, 55, var10, var3++));
                 var8.onPress(var2 -> {
                     var10.method21598(0);
                     this.callUIHandlers();
@@ -90,7 +90,7 @@ public class PopOver extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         Map<Integer, Class4253> var5 = new HashMap();
 
         for (CustomGuiScreen var7 : this.getChildren()) {
@@ -102,11 +102,11 @@ public class PopOver extends Element {
         int var9 = 75;
 
         for (Entry<Integer, Class4253> var11 : var5.entrySet()) {
-            var11.getValue().setYA(var9);
-            var9 += var11.getValue().getHeightA();
+            var11.getValue().setY(var9);
+            var9 += var11.getValue().getHeight();
         }
 
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -114,32 +114,32 @@ public class PopOver extends Element {
         partialTicks = this.field21377.calcPercent();
         float var4 = EasingFunctions.easeOutBack(partialTicks, 0.0F, 1.0F, 1.0F);
         this.method13279(0.8F + var4 * 0.2F, 0.8F + var4 * 0.2F);
-        this.method13284((int) ((float) this.widthA * 0.2F * (1.0F - var4)) * (!this.field21378 ? 1 : -1));
+        this.method13284((int) ((float) this.width * 0.2F * (1.0F - var4)) * (!this.field21378 ? 1 : -1));
         super.method13224();
         int var6 = RenderUtil2.applyAlpha(-723724, QuadraticEasing.easeOutQuad(partialTicks, 0.0F, 1.0F, 1.0F));
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + 10 / 2),
-                (float) (this.yA + 10 / 2),
-                (float) (this.widthA - 10),
-                (float) (this.heightA - 10),
+                (float) (this.x + 10 / 2),
+                (float) (this.y + 10 / 2),
+                (float) (this.width - 10),
+                (float) (this.height - 10),
                 35.0F,
                 partialTicks
         );
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + 10 / 2),
-                (float) (this.yA + 10 / 2),
-                (float) (this.xA - 10 / 2 + this.widthA),
-                (float) (this.yA - 10 / 2 + this.heightA),
+                (float) (this.x + 10 / 2),
+                (float) (this.y + 10 / 2),
+                (float) (this.x - 10 / 2 + this.width),
+                (float) (this.y - 10 / 2 + this.height),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks * 0.25F)
         );
-        RenderUtil.drawRoundedRect((float) this.xA, (float) this.yA, (float) this.widthA, (float) this.heightA, (float) 10, var6);
+        RenderUtil.drawRoundedRect((float) this.x, (float) this.y, (float) this.width, (float) this.height, (float) 10, var6);
         GL11.glPushMatrix();
-        GL11.glTranslatef((float) this.xA, (float) this.yA, 0.0F);
+        GL11.glTranslatef((float) this.x, (float) this.y, 0.0F);
         GL11.glRotatef(!this.field21378 ? -90.0F : 90.0F, 0.0F, 0.0F, 1.0F);
-        GL11.glTranslatef((float) (-this.xA), (float) (-this.yA), 0.0F);
+        GL11.glTranslatef((float) (-this.x), (float) (-this.y), 0.0F);
         RenderUtil.drawImage(
-                (float) (this.xA + (!this.field21378 ? 0 : this.heightA)),
-                (float) this.yA + (float) ((this.widthA - 47) / 2) * (!this.field21378 ? 1.0F : -1.5F),
+                (float) (this.x + (!this.field21378 ? 0 : this.height)),
+                (float) this.y + (float) ((this.width - 47) / 2) * (!this.field21378 ? 1.0F : -1.5F),
                 18.0F,
                 47.0F,
                 Resources.selectPNG,
@@ -148,16 +148,16 @@ public class PopOver extends Element {
         GL11.glPopMatrix();
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont25,
-                (float) (this.xA + 25),
-                (float) (this.yA + 20),
+                (float) (this.x + 25),
+                (float) (this.y + 20),
                 this.text + " Key",
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.8F * partialTicks)
         );
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + 25),
-                (float) (this.yA + 68),
-                (float) (this.xA + this.widthA - 25),
-                (float) (this.yA + 69),
+                (float) (this.x + 25),
+                (float) (this.y + 68),
+                (float) (this.x + this.width - 25),
+                (float) (this.y + 69),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.05F * partialTicks)
         );
         super.draw(partialTicks);

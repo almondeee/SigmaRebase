@@ -567,7 +567,7 @@ public class KeyboardListener
         if (windowPointer == this.mc.getMainWindow().getHandle())
         {
             if (Client.getInstance().guiManager.getCurrentScreen() != null) {
-                Client.getInstance().guiManager.addTypedChar(codePoint, modifiers);
+                Client.getInstance().guiManager.addTypedChar(codePoint);
                 return;
             }
             IGuiEventListener iguieventlistener = this.mc.currentScreen;

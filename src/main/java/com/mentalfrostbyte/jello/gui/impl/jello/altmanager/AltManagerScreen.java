@@ -177,7 +177,7 @@ public class AltManagerScreen extends Screen {
         this.searchBox.setFont(ResourceRegistry.JelloLightFont18);
         this.searchBox.addChangeListener(var1 -> this.updateAccountList(false));
         TextButton addButton;
-        this.addToList(addButton = new TextButton(this, "btnt", this.getWidthA() - 90, 43, 70, 30, ColorHelper.field27961, "Add +", ResourceRegistry.JelloLightFont25));
+        this.addToList(addButton = new TextButton(this, "btnt", this.getWidth() - 90, 43, 70, 30, ColorHelper.field27961, "Add +", ResourceRegistry.JelloLightFont25));
         this.alts.method13242();
         addButton.onClick((var1, var2) -> {
             if (this.method13369()) {
@@ -194,7 +194,7 @@ public class AltManagerScreen extends Screen {
                                 acc.getEmail(),
                                 this.titleOffset,
                                 (100 + this.titleOffset / 2) * this.method13370(),
-                                this.alts.getWidthA() - this.titleOffset * 2 + 4,
+                                this.alts.getWidth() - this.titleOffset * 2 + 4,
                                 100,
                                 acc
                         )
@@ -326,8 +326,8 @@ public class AltManagerScreen extends Screen {
     }
 
     private void drawTitle() {
-        int xPos = this.xA + this.titleOffset;
-        int yPos = this.yA + this.titleOffset;
+        int xPos = this.x + this.titleOffset;
+        int yPos = this.y + this.titleOffset;
         int color = RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.8F);
         RenderUtil.drawString(ResourceRegistry.JelloLightFont40, (float) xPos, (float) yPos, "Jello", color);
         RenderUtil.drawString(ResourceRegistry.JelloLightFont25, (float) (xPos + 87), (float) (yPos + 15), "Alt Manager", color);
@@ -340,13 +340,13 @@ public class AltManagerScreen extends Screen {
             if (!(var5 instanceof VerticalScrollBar)) {
                 for (CustomGuiScreen var7 : var5.getChildren()) {
                     if (var7 instanceof AccountUI accountUI) {
-                        if (var7.getYA() <= Minecraft.getInstance().getMainWindow().getHeight() && this.alts.method13513() == 0) {
+                        if (var7.getY() <= Minecraft.getInstance().getMainWindow().getHeight() && this.alts.method13513() == 0) {
                             if (var3 > 0.2F) {
                                 accountUI.field20805.changeDirection(Animation.Direction.FORWARDS);
                             }
 
                             float var9 = SmoothInterpolator.interpolate(accountUI.field20805.calcPercent(), 0.51, 0.82, 0.0, 0.99);
-                            accountUI.method13284((int) (-((1.0F - var9) * (float) (var7.getWidthA() + 30))));
+                            accountUI.method13284((int) (-((1.0F - var9) * (float) (var7.getWidth() + 30))));
                             var3 = accountUI.field20805.calcPercent();
                         } else {
                             accountUI.method13284(0);
@@ -373,7 +373,7 @@ public class AltManagerScreen extends Screen {
         for (CustomGuiScreen var5 : this.alts.getChildren()) {
             if (!(var5 instanceof VerticalScrollBar)) {
                 for (CustomGuiScreen var7 : var5.getChildren()) {
-                    if (var7.method13280() != 0 && var7.getXA() > this.widthA) {
+                    if (var7.method13280() != 0 && var7.getX() > this.width) {
                         return false;
                     }
                 }
@@ -398,8 +398,8 @@ public class AltManagerScreen extends Screen {
     }
 
     private void drawBackground() {
-        int var3 = this.getHeightO() * -1;
-        float var4 = (float) this.getWidthO() / (float) this.getWidthA() * -114.0F;
+        int var3 = this.getMouseX() * -1;
+        float var4 = (float) this.getMouseY() / (float) this.getWidth() * -114.0F;
         if (this.field21008) {
             this.field21006 = (float) ((int) var4);
             this.field21005 = var3;
@@ -408,7 +408,7 @@ public class AltManagerScreen extends Screen {
 
         float var5 = var4 - this.field21006;
         float var6 = (float) (var3 - this.field21005);
-        RenderUtil.drawImage((float) this.field21005, this.field21006, (float) (this.getWidthA() * 2), (float) (this.getHeightA() + 114), Resources.panoramaPNG);
+        RenderUtil.drawImage((float) this.field21005, this.field21006, (float) (this.getWidth() * 2), (float) (this.getHeight() + 114), Resources.panoramaPNG);
         float var7 = 0.5F;
         if (var4 != this.field21006) {
             this.field21006 += var5 * var7;
@@ -418,7 +418,7 @@ public class AltManagerScreen extends Screen {
             this.field21005 = (int) ((float) this.field21005 + var6 * var7);
         }
 
-        RenderUtil.drawRoundedRect(0.0F, 0.0F, (float) this.getWidthA(), (float) this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.95F));
+        RenderUtil.drawRoundedRect(0.0F, 0.0F, (float) this.getWidth(), (float) this.getHeight(), RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.95F));
     }
 
     @Override
@@ -450,7 +450,7 @@ public class AltManagerScreen extends Screen {
 
     public void updateAccountList(boolean forceRefresh) {
         List<Account> var5 = AccountSorter.sortByInputAltAccounts(this.accountManager.getAccounts(), this.accountSortType, this.accountFilter, this.searchBox.getText());
-        this.runThisOnDimensionUpdate(new AccountListUpdater(this, this, var5, forceRefresh));
+        this.addRunnable(new AccountListUpdater(this, this, var5, forceRefresh));
     }
 
     public int method13374() {

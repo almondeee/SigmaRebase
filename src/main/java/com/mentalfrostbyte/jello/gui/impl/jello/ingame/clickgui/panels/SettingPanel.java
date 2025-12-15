@@ -43,7 +43,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
         switch (setting.getSettingType()) {
             case BOOLEAN:
                 Text var37 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 24, Text.defaultColorHelper, setting.getName());
-                Checkbox var45 = new Checkbox(panel, setting.getName() + "checkbox", panel.getWidthA() - 24 - var5, var4 + 6, 24, 24);
+                Checkbox var45 = new Checkbox(panel, setting.getName() + "checkbox", panel.getWidth() - 24 - var5, var4 + 6, 24, 24);
                 this.field21223.put(var37, setting);
                 var45.method13705((Boolean) setting.getCurrentValue(), false);
                 setting.addObserver(var1x -> {
@@ -52,7 +52,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                     }
                 });
                 var45.onPress(var1x -> setting.setCurrentValue(((Checkbox) var1x).method13703()));
-                var45.setSize((var1x, var2x) -> var1x.setXA(var2x.getWidthA() - 24 - var5));
+                var45.setSize((var1x, var2x) -> var1x.setX(var2x.getWidth() - 24 - var5));
                 panel.addToList(var37);
                 panel.addToList(var45);
                 var4 += 24 + var5;
@@ -61,7 +61,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 Text var36 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 24, Text.defaultColorHelper, setting.getName());
                 this.field21223.put(var36, setting);
                 NumberSetting numbaSetting = (NumberSetting) setting;
-                Slider var47 = new Slider(panel, setting.getName() + "slider", panel.getWidthA() - 126 - var5, var4 + 6, 126, 24);
+                Slider var47 = new Slider(panel, setting.getName() + "slider", panel.getWidth() - 126 - var5, var4 + 6, 126, 24);
                 var47.method13137().setFont(ResourceRegistry.JelloLightFont14);
                 var47.setText(Float.toString((Float) setting.getCurrentValue()));
                 var47.method13140(Slider.method13134(numbaSetting.getMin(), numbaSetting.getMax(), (Float) numbaSetting.getCurrentValue()), false);
@@ -84,7 +84,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                         setting.setCurrentValue(var8x);
                     }
                 });
-                var47.setSize((var1x, var2x) -> var1x.setXA(var2x.getWidthA() - 126 - var5));
+                var47.setSize((var1x, var2x) -> var1x.setX(var2x.getWidth() - 126 - var5));
                 panel.addToList(var36);
                 panel.addToList(var47);
                 var4 += 24 + var5;
@@ -102,7 +102,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                         var35 = new TextField(
                                 panel,
                                 setting.getName() + "txt",
-                                panel.getWidthA() - var5 - var19,
+                                panel.getWidth() - var5 - var19,
                                 var4 + var27 / 4 - 1,
                                 var19,
                                 var27,
@@ -124,7 +124,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 Dropdown var42 = new Dropdown(
                         panel,
                         setting.getName() + "btn",
-                        panel.getWidthA() - var5,
+                        panel.getWidth() - var5,
                         var4 + 6 - 1,
                         123,
                         27,
@@ -141,7 +141,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                     ((ModeSetting) setting).setModeByIndex(((Dropdown) var2x).getIndex());
                     var42.method13656(((ModeSetting) setting).getModeIndex());
                 });
-                var42.setSize((var2x, var3x) -> var2x.setXA(panel.getWidthA() - 123 - var5));
+                var42.setSize((var2x, var3x) -> var2x.setX(panel.getWidth() - 123 - var5));
                 panel.addToList(var34);
                 panel.addToList(var42);
                 var4 += 27 + var5;
@@ -149,7 +149,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
             default:
                 break;
             case SUBOPTION:
-                CustomGuiScreen var17 = new CustomGuiScreen(panel, setting.getName() + "view", var3, var4, panel.getWidthA(), 0);
+                CustomGuiScreen var17 = new CustomGuiScreen(panel, setting.getName() + "view", var3, var4, panel.getWidth(), 0);
                 int var25 = 0;
 
                 for (Setting var41 : ((SubOptionSetting) setting).getSubSettings()) {
@@ -157,14 +157,14 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 }
 
                 new ContentSize().setWidth(var17, panel);
-                var17.setSize((var1x, var2x) -> var1x.setWidthA(var2x.getWidthA() - var5));
+                var17.setSize((var1x, var2x) -> var1x.setWidth(var2x.getWidth() - var5));
                 panel.addToList(var17);
-                var4 += var17.getHeightA() + var5;
+                var4 += var17.getHeight() + var5;
                 break;
             case TEXTBOX:
                 Text var32 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 27, Text.defaultColorHelper, setting.getName());
                 Textbox var40 = new Textbox(
-                        panel, setting.getName() + "btn", panel.getWidthA() - var5, var4 + 6, 123, 27, ((TextBoxSetting) setting).getOptions(), (Integer) setting.getCurrentValue()
+                        panel, setting.getName() + "btn", panel.getWidth() - var5, var4 + 6, 123, 27, ((TextBoxSetting) setting).getOptions(), (Integer) setting.getCurrentValue()
                 );
                 this.field21223.put(var32, setting);
                 setting.addObserver(var1x -> {
@@ -173,7 +173,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                     }
                 });
                 var40.onPress(var1x -> setting.setCurrentValue(((Textbox) var1x).method13720()));
-                var40.setSize((var2x, var3x) -> var2x.setXA(panel.getWidthA() - 123 - var5));
+                var40.setSize((var2x, var3x) -> var2x.setX(panel.getWidth() - 123 - var5));
                 panel.addToList(var32);
                 panel.addToList(var40);
                 var4 += 27 + var5;
@@ -183,7 +183,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 Picker var39 = new Picker(
                         panel,
                         setting.getName() + "picker",
-                        panel.getWidthA() - var5,
+                        panel.getWidth() - var5,
                         var4 + 5,
                         175,
                         200,
@@ -192,7 +192,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 );
                 this.field21223.put(var31, setting);
                 var39.onPress(var2x -> setting.setCurrentValue(var39.method13072()));
-                var39.setSize((var2x, var3x) -> var2x.setXA(panel.getWidthA() - 175 - var5));
+                var39.setSize((var2x, var3x) -> var2x.setX(panel.getWidth() - 175 - var5));
                 panel.addToList(var31);
                 panel.addToList(var39);
                 var4 += 200 + var5;
@@ -201,7 +201,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 ColorSetting var30 = (ColorSetting) setting;
                 Text var38 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 24, Text.defaultColorHelper, setting.getName());
                 ColorPicker var46 = new ColorPicker(
-                        panel, setting.getName() + "color", panel.getWidthA() - 160 - var5 + 10, var4, 160, 114, (Integer) setting.getCurrentValue(), var30.rainbow
+                        panel, setting.getName() + "color", panel.getWidth() - 160 - var5 + 10, var4, 160, 114, (Integer) setting.getCurrentValue(), var30.rainbow
                 );
                 this.field21223.put(var38, setting);
                 setting.addObserver(var3x -> {
@@ -222,7 +222,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 Bezier var12 = new Bezier(
                         panel,
                         setting.getName() + "color",
-                        panel.getWidthA() - 150 - var5 + 10,
+                        panel.getWidth() - 150 - var5 + 10,
                         var4,
                         150,
                         150,
@@ -262,8 +262,8 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
 
 			for (Module var10 : var18.moduleArray) {
                 int var11 = 0;
-                CustomGuiScreen var12 = new CustomGuiScreen(this, var10.getName() + "SubView", 0, var17, this.widthA, this.heightA - var4);
-                var12.setSize((var0, var1) -> var0.setWidthA(var1.getWidthA()));
+                CustomGuiScreen var12 = new CustomGuiScreen(this, var10.getName() + "SubView", 0, var17, this.width, this.height - var4);
+                var12.setSize((var0, var1) -> var0.setWidth(var1.getWidth()));
 
                 for (Setting var14 : var10.getSettingMap().values()) {
                     var11 = this.method13531(var12, var14, 20, var11, 20);
@@ -273,12 +273,12 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
 
                 for (CustomGuiScreen var20 : var12.getChildren()) {
                     if (var20 instanceof Dropdown var15) {
-						int var16 = var15.method13649() + var15.getYA() + var15.getHeightA() + 14;
+						int var16 = var15.method13649() + var15.getY() + var15.getHeight() + 14;
                         var11 = Math.max(var11, var16);
                     }
                 }
 
-                var12.setHeightA(var11);
+                var12.setHeight(var11);
                 this.addToList(var12);
                 this.field21224.put(var10, var12);
             }
@@ -291,8 +291,8 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -316,22 +316,22 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
         this.field21225.changeDirection(!var4 ? Animation.Direction.BACKWARDS : Animation.Direction.FORWARDS);
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont14,
-                (float) (this.getXA() + 10),
-                (float) (this.getYA() + this.getHeightA() + 24),
+                (float) (this.getX() + 10),
+                (float) (this.getY() + this.getHeight() + 24),
                 this.field21227,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.5F * this.field21225.calcPercent())
         );
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont14,
-                (float) (this.getXA() + 11),
-                (float) (this.getYA() + this.getHeightA() + 24),
+                (float) (this.getX() + 11),
+                (float) (this.getY() + this.getHeight() + 24),
                 this.field21227,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.5F * this.field21225.calcPercent())
         );
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont14,
-                (float) (this.getXA() + 14 + ResourceRegistry.JelloLightFont14.getWidth(this.field21227) + 2),
-                (float) (this.getYA() + this.getHeightA() + 24),
+                (float) (this.getX() + 14 + ResourceRegistry.JelloLightFont14.getWidth(this.field21227) + 2),
+                (float) (this.getY() + this.getHeight() + 24),
                 this.field21226,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.5F * this.field21225.calcPercent())
         );

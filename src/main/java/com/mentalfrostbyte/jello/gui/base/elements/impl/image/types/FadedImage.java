@@ -24,9 +24,9 @@ public class FadedImage extends Button {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         this.hover = this.method13298();
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -37,7 +37,7 @@ public class FadedImage extends Button {
             var4 = SmoothInterpolator.interpolate(this.hoverAnim.calcPercent(), 0.71, 0.18, 0.95, 0.57);
         }
 
-        RenderUtil.startScissor((float) this.getXA(), (float) this.getYA() - var4 * 3.0F, (float) this.getWidthA(), (float) this.getHeightA());
+        RenderUtil.startScissor((float) this.getX(), (float) this.getY() - var4 * 3.0F, (float) this.getWidth(), (float) this.getHeight());
         int var5 = 40;
         float var6 = -SwitchScreen.field21070 / (float) Minecraft.getInstance().getMainWindow().getWidth();
         float var7 = -SwitchScreen.field21071 / (float) Minecraft.getInstance().getMainWindow().getHeight();
@@ -51,19 +51,19 @@ public class FadedImage extends Button {
         RenderUtil.restoreScissor();
         if (this.hover) {
             RenderUtil.drawRoundedRect2(
-                    (float) this.getXA(),
-                    (float) this.getYA() - var4 * 3.0F,
-                    (float) this.getWidthA(),
-                    (float) this.getHeightA(),
+                    (float) this.getX(),
+                    (float) this.getY() - var4 * 3.0F,
+                    (float) this.getWidth(),
+                    (float) this.getHeight(),
                     RenderUtil2.applyAlpha(-12319668, 0.5F)
             );
         }
 
         RenderUtil.drawImage(
-                (float) this.getXA(),
-                (float) this.getYA() - var4 * 3.0F,
-                (float) this.getWidthA(),
-                (float) this.getHeightA(),
+                (float) this.getX(),
+                (float) this.getY() - var4 * 3.0F,
+                (float) this.getWidth(),
+                (float) this.getHeight(),
                 this.texture,
                 ClientColors.LIGHT_GREYISH_BLUE.getColor()
         );

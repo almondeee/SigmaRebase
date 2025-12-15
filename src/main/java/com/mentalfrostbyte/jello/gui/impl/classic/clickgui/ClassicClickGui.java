@@ -24,16 +24,16 @@ public class ClassicClickGui extends Screen {
     }
 
     public void method13417() {
-        this.runThisOnDimensionUpdate(() -> this.method13419());
+        this.addRunnable(() -> this.method13419());
     }
 
     public void method13418(String var1, ModuleCategory... var2) {
-        this.runThisOnDimensionUpdate(() -> {
+        this.addRunnable(() -> {
             if (this.category != null) {
                 this.removeChildren(this.category);
             }
 
-            this.addToList(this.category = new ModuleSettingGroup(this, var1, this.getWidthA() / 2, this.getHeightA() / 2, var2));
+            this.addToList(this.category = new ModuleSettingGroup(this, var1, this.getWidth() / 2, this.getHeight() / 2, var2));
         });
     }
 
@@ -42,12 +42,12 @@ public class ClassicClickGui extends Screen {
             this.removeChildren(this.category);
         }
 
-        this.addToList(this.category = new CategoryHolder(this, "Sigma", this.getWidthA() / 2, this.getHeightA() / 2));
+        this.addToList(this.category = new CategoryHolder(this, "Sigma", this.getWidth() / 2, this.getHeight() / 2));
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
@@ -78,10 +78,10 @@ public class ClassicClickGui extends Screen {
     public void draw(float partialTicks) {
         float var4 = field21079.calcPercent();
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) this.yA,
-                (float) (this.xA + this.widthA),
-                (float) (this.yA + this.heightA),
+                (float) this.x,
+                (float) this.y,
+                (float) (this.x + this.width),
+                (float) (this.y + this.height),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var4 * 0.35F)
         );
         super.draw(partialTicks);

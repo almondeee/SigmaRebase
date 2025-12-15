@@ -8,7 +8,7 @@ import com.mentalfrostbyte.jello.gui.base.animations.Animation;
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import com.mentalfrostbyte.jello.gui.base.elements.impl.Change;
 import com.mentalfrostbyte.jello.gui.impl.jello.buttons.ScrollableContentPanel;
-import com.mentalfrostbyte.jello.gui.impl.jello.mainmenu.changelog.Class576;
+import com.mentalfrostbyte.jello.gui.impl.jello.mainmenu.changelog.ChangelogLoader;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.system.math.SmoothInterpolator;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
@@ -32,13 +32,13 @@ public class ChangelogScreen extends CustomGuiScreen {
 
     public void method13490(JsonArray var1) {
         if (var1 != null) {
-            this.getParent().runThisOnDimensionUpdate(new Class576(this, var1));
+            this.getParent().addRunnable(new ChangelogLoader(this, var1));
         }
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         if (this.scrollPanel != null) {
             if (this.isHovered() && this.isSelfVisible()) {
                 for (CustomGuiScreen var9 : this.scrollPanel.getButton().getChildren()) {

@@ -91,7 +91,7 @@ public class MusicManager extends Manager implements MinecraftUtil {
         try {
             this.loadSettings();
         } catch (JsonParseException e) {
-            Client.logger.error(e);
+            Client.LOGGER.error(e);
         }
 
         if (!this.doesYTDLPExist()) {
@@ -763,7 +763,7 @@ public class MusicManager extends Manager implements MinecraftUtil {
                     }
                 }
             } catch (IOException exc) {
-                Client.logger.error("No Python version found!", exc);
+                Client.LOGGER.error("No Python version found!", exc);
             }
         }
 
@@ -798,7 +798,7 @@ public class MusicManager extends Manager implements MinecraftUtil {
                     }
                 }
             } catch (Exception exc) {
-                Client.logger.warn("Failed to check key: " + key, exc);
+                Client.LOGGER.warn("Failed to check key: " + key, exc);
             }
         }
 

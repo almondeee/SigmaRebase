@@ -50,13 +50,13 @@ public class TrainingManager {
             if (file.exists()) {
                 boolean deleted = file.delete();
                 if (deleted) {
-                    Client.logger.info("JelloAI: Deleted old training data file");
+                    Client.LOGGER.info("JelloAI: Deleted old training data file");
                 } else {
-                    Client.logger.warn("JelloAI: Failed to delete old training data file");
+                    Client.LOGGER.warn("JelloAI: Failed to delete old training data file");
                 }
             }
         } catch (Exception e) {
-            Client.logger.error("Error deleting JelloAI training data file", e);
+            Client.LOGGER.error("Error deleting JelloAI training data file", e);
         }
     }
 
@@ -124,7 +124,7 @@ public class TrainingManager {
                     // Sleep to avoid excessive CPU usage
                     Thread.sleep(30000); // Train every 30 seconds
                 } catch (Exception e) {
-                    Client.logger.error("Error in JelloAI training thread", e);
+                    Client.LOGGER.error("Error in JelloAI training thread", e);
                 }
             }
         });
@@ -157,7 +157,7 @@ public class TrainingManager {
 
             out.close();
         } catch (Exception e) {
-            Client.logger.error("Error saving JelloAI training data", e);
+            Client.LOGGER.error("Error saving JelloAI training data", e);
         }
     }
 
@@ -179,7 +179,7 @@ public class TrainingManager {
 
             in.close();
         } catch (Exception e) {
-            Client.logger.error("Error loading JelloAI training data", e);
+            Client.LOGGER.error("Error loading JelloAI training data", e);
         }
     }
 

@@ -32,12 +32,12 @@ public class Dropdown extends Element {
       this.getChildren().clear();
       this.font = Resources.regular15;
       Button var3;
-      this.addToList(var3 = new Button(this, "dropdownButton", 0, 0, this.getHeightA(), this.getHeightA(), this.textColor));
+      this.addToList(var3 = new Button(this, "dropdownButton", 0, 0, this.getHeight(), this.getHeight(), this.textColor));
       var3.setSize((var1, var2) -> {
-         var1.setXA(0);
-         var1.setYA(0);
-         var1.setWidthA(this.getWidthA());
-         var1.setHeightA(this.getHeightA());
+         var1.setX(0);
+         var1.setY(0);
+         var1.setWidth(this.getWidth());
+         var1.setHeight(this.getHeight());
       });
       var3.onClick((var1, var2) -> this.method13674(!this.method13673()));
 
@@ -48,8 +48,8 @@ public class Dropdown extends Element {
                this,
                var5,
                0,
-               this.getHeightA(),
-               this.getWidthA(),
+               this.getHeight(),
+               this.getWidth(),
                17,
                new ColorHelper(
                   -14540254,
@@ -82,7 +82,7 @@ public class Dropdown extends Element {
    }
 
    private int method13665() {
-      return this.method13673() ? this.getHeightA() * (this.field21343.size() + 1) : this.getHeightA();
+      return this.method13673() ? this.getHeight() * (this.field21343.size() + 1) : this.getHeight();
    }
 
    private int method13666() {
@@ -90,42 +90,42 @@ public class Dropdown extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
+   public void updatePanelDimensions(int mouseX, int mouseY) {
       if (!this.isFocused() && this.method13673()) {
          this.method13674(false);
       }
 
-      super.updatePanelDimensions(newHeight, newWidth);
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawRoundedRect(
-         (float)this.getXA(),
-         (float)this.getYA(),
-         (float)(this.getXA() + this.getWidthA()),
-         (float)(this.getYA() + this.getHeightA()),
+         (float)this.getX(),
+         (float)this.getY(),
+         (float)(this.getX() + this.getWidth()),
+         (float)(this.getY() + this.getHeight()),
          -14540254
       );
       RenderUtil.method11428(
-         (float)this.getXA(),
-         (float)this.getYA(),
-         (float)(this.getXA() + this.getWidthA()),
-         (float)(this.getYA() + this.getHeightA()),
+         (float)this.getX(),
+         (float)this.getY(),
+         (float)(this.getX() + this.getWidth()),
+         (float)(this.getY() + this.getHeight()),
          ClientColors.DEEP_TEAL.getColor()
       );
-      if (this.method13114(this.getHeightO(), this.getWidthO()) && this.getWidthO() - this.method13272() < this.getHeightA()) {
+      if (this.method13114(this.getMouseX(), this.getMouseY()) && this.getMouseY() - this.method13272() < this.getHeight()) {
          RenderUtil.method11428(
-            (float)(this.getXA() + 1),
-            (float)(this.getYA() + 1),
-            (float)(this.getXA() + this.getWidthA() - 1),
-            (float)(this.getYA() + this.getHeightA() - 1),
+            (float)(this.getX() + 1),
+            (float)(this.getY() + 1),
+            (float)(this.getX() + this.getWidth() - 1),
+            (float)(this.getY() + this.getHeight() - 1),
             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.25F)
          );
       }
 
-      int var4 = this.getXA() + this.getWidthA() - 11;
-      int var5 = this.getYA() + this.getHeightA() - 12;
+      int var4 = this.getX() + this.getWidth() - 11;
+      int var5 = this.getY() + this.getHeight() - 12;
       if (!this.method13673()) {
          RenderUtil.method11434((float)var4, (float)var5, (float)(var4 + 6), (float)var5, (float)(var4 + 3), (float)(var5 + 3), ClientColors.MID_GREY.getColor());
       } else {
@@ -141,11 +141,11 @@ public class Dropdown extends Element {
       }
 
       if (this.getText() != null) {
-         RenderUtil.method11415(this);
+         RenderUtil.startScissor(this);
          RenderUtil.drawString(
             this.getFont(),
-            (float)(this.getXA() + 7),
-            (float)(this.getYA() + (this.getHeightA() - this.getFont().getHeight()) / 2),
+            (float)(this.getX() + 7),
+            (float)(this.getY() + (this.getHeight() - this.getFont().getHeight()) / 2),
             this.getText(),
             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks * 0.5F)
          );
@@ -153,7 +153,7 @@ public class Dropdown extends Element {
       }
 
       if (!this.method13673()) {
-         RenderUtil.method11415(this);
+         RenderUtil.startScissor(this);
       }
 
       super.draw(partialTicks);
@@ -206,9 +206,9 @@ public class Dropdown extends Element {
    }
 
    @Override
-   public boolean method13114(int var1, int var2) {
-      var1 -= this.method13271();
-      var2 -= this.method13272();
-      return var1 >= 0 && var1 <= this.getWidthA() && var2 >= 0 && var2 <= this.method13665();
+   public boolean method13114(int mouseX, int mouseY) {
+      mouseX -= this.method13271();
+      mouseY -= this.method13272();
+      return mouseX >= 0 && mouseX <= this.getWidth() && mouseY >= 0 && mouseY <= this.method13665();
    }
 }

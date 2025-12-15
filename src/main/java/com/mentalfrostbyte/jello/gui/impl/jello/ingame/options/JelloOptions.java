@@ -24,23 +24,23 @@ public class JelloOptions extends Screen {
 
 
       this.setListening(false);
-      int var3 = Math.max((int)((float)this.heightA * 0.8F), 420);
-      int var4 = (int)((float)this.widthA * 0.8F);
+      int var3 = Math.max((int)((float)this.height * 0.8F), 420);
+      int var4 = (int)((float)this.width * 0.8F);
       this.addToList(
          this.field21114 = new JelloOptionsGroup(
-            this, "centerBlock", this.getWidthA() - var4, this.getHeightA() - var3, var4 - (this.getWidthA() - var4), var3 - (this.getHeightA() - var3)
+            this, "centerBlock", this.getWidth() - var4, this.getHeight() - var3, var4 - (this.getWidth() - var4), var3 - (this.getHeight() - var3)
          )
       );
       field21112 = new Animation(300, 100);
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
+   public void updatePanelDimensions(int mouseX, int mouseY) {
       if (field21112.getDirection() == Animation.Direction.BACKWARDS && field21112.calcPercent() == 0.0F && field21115 != null) {
          Minecraft.getInstance().displayGuiScreen(field21115);
       }
 
-      super.updatePanelDimensions(newHeight, newWidth);
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
@@ -54,15 +54,15 @@ public class JelloOptions extends Screen {
 
       int var6 = RenderUtil2.shiftTowardsOther(-1072689136, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.1F), var5);
       int var7 = RenderUtil2.shiftTowardsOther(-804253680, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.1F), var5);
-      RenderUtil.method11431(0, 0, this.getWidthA(), this.getHeightA(), var6, var7);
+      RenderUtil.method11431(0, 0, this.getWidth(), this.getHeight(), var6, var7);
       this.method13279(var4, var4);
       this.method13224();
       super.draw(field21112.calcPercent());
    }
 
    private void method13437(float var1) {
-      int var4 = this.getHeightO() * -1;
-      float var5 = (float)this.getWidthO() / (float)this.getWidthA() * -114.0F;
+      int var4 = this.getMouseX() * -1;
+      float var5 = (float)this.getMouseY() / (float)this.getWidth() * -114.0F;
       if (this.field21111) {
          this.field21109 = (int)var5;
          this.field21110 = var4;
@@ -76,8 +76,8 @@ public class JelloOptions extends Screen {
          RenderUtil.drawTexture(
                  (float)this.field21110,
                  (float)this.field21109,
-                 (float)(this.getWidthA() * 2),
-                 (float)(this.getHeightA() + 114),
+                 (float)(this.getWidth() * 2),
+                 (float)(this.getHeight() + 114),
                  this.field21113,
                  RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var1)
          );

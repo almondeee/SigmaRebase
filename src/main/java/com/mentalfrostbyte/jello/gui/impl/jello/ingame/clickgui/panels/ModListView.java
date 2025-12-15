@@ -46,7 +46,7 @@ public class ModListView extends ScrollableContentPanel implements Class4342 {
             this.getButton()
                     .addToList(
                             var13 = new Button(
-                                    this.getButton(), var5.getName() + "Button", 0, var3 * 30, this.getWidthA(), 30, var12, var5.getName(), ResourceRegistry.JelloLightFont20
+                                    this.getButton(), var5.getName() + "Button", 0, var3 * 30, this.getWidth(), 30, var12, var5.getName(), ResourceRegistry.JelloLightFont20
                             )
                     );
             if (!var5.isEnabled()) {
@@ -101,8 +101,8 @@ public class ModListView extends ScrollableContentPanel implements Class4342 {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         PanelGroup var5 = (PanelGroup) this.parent;
         float var6 = (float) (0.07F * (60.0 / (double) Minecraft.getFps()));
         this.field21218 = this.field21218 + (!this.method13525() ? 0.0F : (!this.field21217 ? var6 : -var6));

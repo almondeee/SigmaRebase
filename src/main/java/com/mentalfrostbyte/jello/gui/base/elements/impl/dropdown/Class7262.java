@@ -21,7 +21,7 @@ public class Class7262 implements Class7261 {
         CustomGuiScreen var4 = var1[0];
 
         for (CustomGuiScreen var8 : var1) {
-            if (var8.getHeightA() > var4.getHeightA()) {
+            if (var8.getHeight() > var4.getHeight()) {
                 var4 = var8;
             }
         }
@@ -44,7 +44,7 @@ public class Class7262 implements Class7261 {
                     }
 
                     CustomGuiScreen var9 = this.method22797(var6);
-                    var5.setSize((var2, var3) -> var2.setYA(var9.getYA() + var2.getHeightA() + this.field31152));
+                    var5.setSize((var2, var3) -> var2.setY(var9.getY() + var2.getHeight() + this.field31152));
                 }
 
                 CustomGuiScreen[] var8 = new CustomGuiScreen[this.field31151];
@@ -52,7 +52,7 @@ public class Class7262 implements Class7261 {
 
                 for (int var10 = 1; var10 < this.field31151; var10++) {
                     var8[var10] = var1.getChildren().get(var4 + var10);
-                    this.method22797(var8).setSize((var1x, var2) -> var1x.setYA(var5.getYA() + var5.getHeightA() / 2));
+                    this.method22797(var8).setSize((var1x, var2) -> var1x.setY(var5.getY() + var5.getHeight() / 2));
                 }
 
                 var4 += this.field31151;

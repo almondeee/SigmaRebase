@@ -35,8 +35,8 @@ public class MapsScreen extends Screen {
       this.field21035 = new Date();
       int var3 = Math.max(300, Math.min(850, Minecraft.getInstance().getMainWindow().getWidth() - 40));
       int var4 = Math.max(200, Math.min(550, Minecraft.getInstance().getMainWindow().getHeight() - 80));
-      this.addToList(this.field21036 = new MapPanel(this, "mapView", (this.widthA - var3) / 2, (this.heightA - var4) / 2, var3, var4));
-      this.field21036.field20614.method13080((var2, var3x, var4x, var5) -> this.runThisOnDimensionUpdate(new Class774(this, this, var3x, var4x, var5)));
+      this.addToList(this.field21036 = new MapPanel(this, "mapView", (this.width - var3) / 2, (this.height - var4) / 2, var3, var4));
+      this.field21036.field20614.method13080((var2, var3x, var4x, var5) -> this.addRunnable(new Class774(this, this, var3x, var4x, var5)));
       this.field21036.field20614.method13082(var1 -> this.method13390());
       RenderUtil2.blur();
    }
@@ -54,14 +54,14 @@ public class MapsScreen extends Screen {
 
       for (CustomGuiScreen var5 : this.getChildren()) {
          if (var5 instanceof WaypointPanel var6) {
-			 this.runThisOnDimensionUpdate(new Waypoint(this, var3, var5));
+			 this.addRunnable(new Waypoint(this, var3, var5));
          }
       }
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
       this.setListening(false);
    }
 
@@ -86,10 +86,10 @@ public class MapsScreen extends Screen {
       this.method13279(0.8F + var4 * 0.2F, 0.8F + var4 * 0.2F);
       float var5 = 0.25F * partialTicks;
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)(this.xA + this.widthA),
-         (float)(this.yA + this.heightA),
+         (float)this.x,
+         (float)this.y,
+         (float)(this.x + this.width),
+         (float)(this.y + this.height),
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var5)
       );
       super.method13224();

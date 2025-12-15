@@ -100,7 +100,7 @@ public class WaypointsManager extends Manager {
             try {
                 FileUtil.save(var8, var3);
             } catch (IOException | JsonParseException exc) {
-                Client.logger.error(exc);
+                Client.LOGGER.error(exc);
             }
         }
     }
@@ -109,7 +109,7 @@ public class WaypointsManager extends Manager {
         File var3 = new File(this.field36371 + "/waypoints.json");
 
         try {
-            JsonObject var4 = FileUtil.readFile(var3);
+            JsonObject var4 = FileUtil.readJsonFile(var3);
             if (!var4.has("waypoints")) {
                 var4.add("waypoints", new JsonArray());
             }
@@ -120,7 +120,7 @@ public class WaypointsManager extends Manager {
 
             this.field36369 = true;
         } catch (IOException exc) {
-            Client.logger.error(exc);
+            Client.LOGGER.error(exc);
         }
     }
 
@@ -134,7 +134,7 @@ public class WaypointsManager extends Manager {
             this.method29991();
             this.method29997();
         } catch (IOException var5) {
-            Client.logger.error(var5);
+            Client.LOGGER.error(var5);
         }
 
         this.field36371 = this.method29999();
@@ -169,7 +169,7 @@ public class WaypointsManager extends Manager {
                                     ((Class7927) var7.getValue()).method26603(var15);
                                     var15.close();
                                 } catch (IOException exc) {
-                                    Client.logger.warn(exc);
+                                    Client.LOGGER.warn(exc);
                                 }
 
                                 this.field36373 = Math.max(0, this.field36373 - ((Class7927) var7.getValue()).field33959.size());
@@ -224,7 +224,7 @@ public class WaypointsManager extends Manager {
 
                                         this.field36373++;
                                     } catch (IOException exc) {
-                                        Client.logger.warn(exc);
+                                        Client.LOGGER.warn(exc);
                                     }
                                 }).start();
                                 if (++var24 > 6) {
@@ -240,7 +240,7 @@ public class WaypointsManager extends Manager {
                         try {
                             this.method29997();
                         } catch (IOException exc) {
-                            Client.logger.warn(exc);
+                            Client.LOGGER.warn(exc);
                         }
                     }
                 }
@@ -279,7 +279,7 @@ public class WaypointsManager extends Manager {
                     var6.close();
                 }
             } catch (ConcurrentModificationException exc) {
-                Client.logger.warn(exc);
+                Client.LOGGER.warn(exc);
             }
         }
     }
@@ -347,7 +347,7 @@ public class WaypointsManager extends Manager {
                         }
                     }
                 } catch (IOException exc) {
-                    Client.logger.warn(exc);
+                    Client.LOGGER.warn(exc);
                 }
             }
 

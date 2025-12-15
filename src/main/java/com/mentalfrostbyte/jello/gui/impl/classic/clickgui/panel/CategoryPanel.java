@@ -32,30 +32,30 @@ public class CategoryPanel extends Element {
    public void draw(float partialTicks) {
       RenderUtil.drawString(
               Resources.regular17,
-         (float)(this.xA + 10),
-         (float)(this.yA + 8),
+         (float)(this.x + 10),
+         (float)(this.y + 8),
          this.module.getFormattedName(),
          RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), !this.module.isEnabled() ? 0.5F : 0.9F)
       );
       RenderUtil.drawString(
               Resources.regular15,
-         (float)(this.xA + 15),
-         (float)(this.yA + 33),
+         (float)(this.x + 15),
+         (float)(this.y + 33),
          "Bind",
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 1.0F)
       );
       RenderUtil.drawString(
               Resources.regular15,
-         (float)(this.xA + 15),
-         (float)(this.yA + 52),
+         (float)(this.x + 15),
+         (float)(this.y + 52),
               RenderUtil.getKeyName(this.module.parseSettingValueToIntBySettingName("Keybind")),
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.7F)
       );
       if (this.module.getSettingMap().size() > 1) {
          RenderUtil.drawString(
                  Resources.regular12,
-            (float)(this.xA + 84),
-            (float)(this.yA + 34),
+            (float)(this.x + 84),
+            (float)(this.y + 34),
             "Settings",
                  RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 1.0F)
          );

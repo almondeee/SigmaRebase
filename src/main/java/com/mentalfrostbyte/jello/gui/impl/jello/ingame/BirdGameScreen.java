@@ -30,7 +30,7 @@ public class BirdGameScreen extends Screen {
       int var5 = 14;
       int var6 = var3 * var5;
       int var7 = var4 * var5;
-      this.addToList(this.field21046 = new BirdGroup(this, "bird", (this.widthA - var6) / 2, (this.getHeightA() - var7) / 2 + 30, var3, 27, var5));
+      this.addToList(this.field21046 = new BirdGroup(this, "bird", (this.width - var6) / 2, (this.getHeight() - var7) / 2 + 30, var3, 27, var5));
    }
 
    @Override
@@ -40,38 +40,38 @@ public class BirdGameScreen extends Screen {
       this.method13279(0.8F + var4 * 0.2F, 0.8F + var4 * 0.2F);
       float var5 = 0.25F * partialTicks;
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)(this.xA + this.widthA),
-         (float)(this.yA + this.heightA),
+         (float)this.x,
+         (float)this.y,
+         (float)(this.x + this.width),
+         (float)(this.y + this.height),
          RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var5)
       );
       super.method13224();
       RenderUtil.drawRoundedRect(
-         (float)this.field21046.getXA(),
-         (float)this.field21046.getYA(),
-         (float)this.field21046.getWidthA(),
-         (float)this.field21046.getHeightA(),
+         (float)this.field21046.getX(),
+         (float)this.field21046.getY(),
+         (float)this.field21046.getWidth(),
+         (float)this.field21046.getHeight(),
          40.0F,
               partialTicks
       );
       RenderUtil.drawRoundedRect(
-         (float)(this.field21046.getXA() - 20),
-         (float)(this.field21046.getYA() - 20),
-         (float)(this.field21046.getWidthA() + 40),
-         (float)(this.field21046.getHeightA() + 40),
+         (float)(this.field21046.getX() - 20),
+         (float)(this.field21046.getY() - 20),
+         (float)(this.field21046.getWidth() + 40),
+         (float)(this.field21046.getHeight() + 40),
          14.0F,
          ClientColors.LIGHT_GREYISH_BLUE.getColor()
       );
       super.draw(partialTicks);
-      int var6 = (this.widthA - this.field21046.getWidthA()) / 2;
-      int var7 = (this.heightA - this.field21046.getHeightA()) / 2;
+      int var6 = (this.width - this.field21046.getWidth()) / 2;
+      int var7 = (this.height - this.field21046.getHeight()) / 2;
       RenderUtil.drawString(ResourceRegistry.JelloMediumFont40, (float)var6, (float)(var7 - 60), "Bird", ClientColors.LIGHT_GREYISH_BLUE.getColor());
       this.field21048 = Math.max(this.field21046.method13179(), this.field21048);
       String var8 = "Max: " + this.field21048 + "   |   Score: 0";
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont20,
-         (float)(var6 + this.field21046.getWidthA() - ResourceRegistry.JelloLightFont20.getWidth(var8)),
+         (float)(var6 + this.field21046.getWidth() - ResourceRegistry.JelloLightFont20.getWidth(var8)),
          (float)(var7 - 50),
          var8,
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.8F)

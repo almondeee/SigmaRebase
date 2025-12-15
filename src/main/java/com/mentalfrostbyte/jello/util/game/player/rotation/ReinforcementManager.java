@@ -69,7 +69,7 @@ public class ReinforcementManager {
         // Train immediately for faster adaptation
         neuralNetwork.trainNetworkImmediate(inputs, normalizedOutputs, reward);
 
-        Client.logger.info("JelloAI: Recorded hit on " + entity.getName().getString() +
+        Client.LOGGER.info("JelloAI: Recorded hit on " + entity.getName().getString() +
                 " with reward " + reward + " (Total: " + entityRewards.get(entity) + ")");
     }
 
@@ -90,7 +90,7 @@ public class ReinforcementManager {
         // neuralNetwork.trainNetworkImmediate(inputs, idealOutputs, penalty);
 
         // Log the miss for debugging
-        Client.logger.info("JelloAI: Recorded miss with penalty " + penalty);
+        Client.LOGGER.info("JelloAI: Recorded miss with penalty " + penalty);
     }
 
     /**

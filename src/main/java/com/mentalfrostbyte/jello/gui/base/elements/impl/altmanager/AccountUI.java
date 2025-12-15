@@ -51,29 +51,29 @@ public class AccountUI extends AnimatedIconPanel {
         this.method13225();
         this.color = RenderUtil2.shiftTowardsOther(ClientColors.LIGHT_GREYISH_BLUE.getColor(), ClientColors.DEEP_TEAL.getColor(), 2.0F);
         int var4 = ((ScrollableContentPanel) this.parent.getParent()).method13513();
-        int var5 = Math.max(0, this.yA - var4);
-        int var6 = Math.max(0, this.heightA + Math.min(100, this.yA - var4 - var5));
+        int var5 = Math.max(0, this.y - var4);
+        int var6 = Math.max(0, this.height + Math.min(100, this.y - var4 - var5));
         float var7 = (float) Math.min(50, var6) / 50.0F;
-        int var8 = this.getParent().getParent().getHeightA() + this.getParent().getParent().method13272();
+        int var8 = this.getParent().getParent().getHeight() + this.getParent().getParent().method13272();
         int var9 = 0;
         var5 += var4;
         if (var5 - var4 <= var8) {
             if (var7 != 0.0F) {
                 RenderUtil.method11467(
-                        this.xA,
+                        this.x,
                         var5,
-                        this.widthA,
+                        this.width,
                         Math.max(20, var6),
                         RenderUtil2.applyAlpha(!this.method13212() ? ClientColors.LIGHT_GREYISH_BLUE.getColor() : this.color, var7)
                 );
-                RenderUtil.startScissor(this.xA, var5, this.xA + this.widthA + 20, var5 + var6, true);
+                RenderUtil.startScissor(this.x, var5, this.x + this.width + 20, var5 + var6, true);
                 if (this.selectedAccount != null) {
                     this.drawAccountHead();
                     this.drawAccountUsername();
                     this.method13171(var7);
                     if (this.field20803.calcPercent() > 0.0F && var6 > 55) {
                         RenderUtil.drawImage(
-                                (float) (this.xA + this.getWidthA()),
+                                (float) (this.x + this.getWidth()),
                                 (float) var5 + (float) (26 * var6) / 100.0F,
                                 18.0F * this.field20803.calcPercent() * (float) var6 / 100.0F,
                                 (float) (47 * var6) / 100.0F,
@@ -93,12 +93,12 @@ public class AccountUI extends AnimatedIconPanel {
 
     public void drawAccountHead() {
         RenderUtil.drawImage(
-                (float) (this.xA + 13), (float) (this.yA + 13), 75.0F, 75.0F, this.selectedAccount.setHeadTexture(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), true
+                (float) (this.x + 13), (float) (this.y + 13), 75.0F, 75.0F, this.selectedAccount.setHeadTexture(), ClientColors.LIGHT_GREYISH_BLUE.getColor(), true
         );
-        RenderUtil.method11464((float) (this.xA + 13), (float) (this.yA + 13), 75.0F, 75.0F, 20.0F, 1.0F);
+        RenderUtil.method11464((float) (this.x + 13), (float) (this.y + 13), 75.0F, 75.0F, 20.0F, 1.0F);
         RenderUtil.drawImage(
-                (float) (this.xA + 1),
-                (float) this.yA,
+                (float) (this.x + 1),
+                (float) this.y,
                 100.0F,
                 100.0F,
                 Resources.cerclePNG,
@@ -109,36 +109,36 @@ public class AccountUI extends AnimatedIconPanel {
     public void drawAccountUsername() {
         if (this.selectedAccount.getPassword().isEmpty()) {
             RenderUtil.drawString(
-                    ResourceRegistry.JelloLightFont25, (float) (this.xA + 110), (float) (this.yA + 18), this.selectedAccount.getEmail(), ClientColors.DEEP_TEAL.getColor()
+                    ResourceRegistry.JelloLightFont25, (float) (this.x + 110), (float) (this.y + 18), this.selectedAccount.getEmail(), ClientColors.DEEP_TEAL.getColor()
             );
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont14,
-                    (float) (this.xA + 110),
-                    (float) (this.yA + 50),
+                    (float) (this.x + 110),
+                    (float) (this.y + 50),
                     "Username: " + this.selectedAccount.getEmail(),
                     ClientColors.MID_GREY.getColor()
             );
             RenderUtil.drawString(
-                    ResourceRegistry.JelloLightFont14, (float) (this.xA + 110), (float) (this.yA + 65), "Offline account", ClientColors.MID_GREY.getColor()
+                    ResourceRegistry.JelloLightFont14, (float) (this.x + 110), (float) (this.y + 65), "Offline account", ClientColors.MID_GREY.getColor()
             );
         } else {
             RenderUtil.drawString(
-                    ResourceRegistry.JelloLightFont25, (float) (this.xA + 110), (float) (this.yA + 18), this.selectedAccount.getKnownName(), ClientColors.DEEP_TEAL.getColor()
+                    ResourceRegistry.JelloLightFont25, (float) (this.x + 110), (float) (this.y + 18), this.selectedAccount.getKnownName(), ClientColors.DEEP_TEAL.getColor()
             );
             boolean isEmail = this.selectedAccount.getEmail().contains("@");
             if (isEmail) {
                 RenderUtil.drawString(
                         ResourceRegistry.JelloLightFont14,
-                        (float) (this.xA + 110),
-                        (float) (this.yA + 50),
+                        (float) (this.x + 110),
+                        (float) (this.y + 50),
                         "Email: " + this.selectedAccount.getEmail(),
                         ClientColors.MID_GREY.getColor()
                 );
             } else {
                 RenderUtil.drawString(
                         ResourceRegistry.JelloLightFont14,
-                        (float) (this.xA + 110),
-                        (float) (this.yA + 50),
+                        (float) (this.x + 110),
+                        (float) (this.y + 50),
                         "Token: " + "asdddddddddddddddddddddddddddddddddddddddddddd".replaceAll(".", Character.toString('·')),
                         ClientColors.MID_GREY.getColor()
                 );
@@ -146,8 +146,8 @@ public class AccountUI extends AnimatedIconPanel {
 
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont14,
-                    (float) (this.xA + 110),
-                    (float) (this.yA + 65),
+                    (float) (this.x + 110),
+                    (float) (this.y + 65),
                     "Password: " + this.selectedAccount.getPassword().replaceAll(".", Character.toString('·')),
                     ClientColors.MID_GREY.getColor()
             );
@@ -161,16 +161,16 @@ public class AccountUI extends AnimatedIconPanel {
         float var4 = this.errorState <= 20 ? 20.0F : -20.0F;
         float var5 = (float) this.errorState >= var4 && (float) this.errorState <= (float) this.lastErrorState - var4 ? 1.0F : (float) this.errorState % var4 / var4;
         RenderUtil.drawImage(
-                (float) (this.xA + this.widthA - 45),
-                (float) (this.yA + 42),
+                (float) (this.x + this.width - 45),
+                (float) (this.y + 42),
                 17.0F,
                 17.0F,
                 Resources.errorsPNG,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var5 * var1)
         );
         RenderUtil.drawImage(
-                (float) (this.xA + this.widthA - 45),
-                (float) (this.yA + 45),
+                (float) (this.x + this.width - 45),
+                (float) (this.y + 45),
                 17.0F,
                 13.0F,
                 Resources.activePNG,

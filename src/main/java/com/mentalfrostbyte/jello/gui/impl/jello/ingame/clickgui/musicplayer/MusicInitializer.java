@@ -47,8 +47,8 @@ public class MusicInitializer implements Runnable {
                                     this.thumbnail.videoId,
                                     MusicPlayer.getWidth(this.musicPlayer2),
                                     0,
-                                    this.musicPlayer.getWidthA() - MusicPlayer.getWidth(this.musicPlayer2),
-                                    this.musicPlayer.getHeightA() - MusicPlayer.method13209(this.musicPlayer2),
+                                    this.musicPlayer.getWidth() - MusicPlayer.getWidth(this.musicPlayer2),
+                                    this.musicPlayer.getHeight() - MusicPlayer.method13209(this.musicPlayer2),
                                     ColorHelper.field27961,
                                     this.thumbnail.name
                             )

@@ -104,8 +104,8 @@ public class ConfigGroup extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
@@ -115,25 +115,25 @@ public class ConfigGroup extends Element {
          var4 = SmoothInterpolator.interpolate(this.field20703.calcPercent(), 0.61, 0.01, 0.87, 0.16);
       }
 
-      this.setHeightA((int)((float)this.field20704 * var4));
+      this.setHeight((int)((float)this.field20704 * var4));
       if (this.field20703.calcPercent() != 0.0F) {
          RenderUtil.drawImage(
-            (float)this.xA,
-            (float)(this.yA + this.heightA),
-            (float)this.widthA,
+            (float)this.x,
+            (float)(this.y + this.height),
+            (float)this.width,
             50.0F,
             Resources.shadowBottomPNG,
             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), this.field20703.calcPercent() * partialTicks * 0.3F)
          );
-         RenderUtil.method11415(this);
+         RenderUtil.startScissor(this);
          RenderUtil.drawRoundedRect2(
-            (float)this.xA, (float)this.yA, (float)this.widthA, (float)this.heightA, RenderUtil2.applyAlpha(-723724, partialTicks)
+            (float)this.x, (float)this.y, (float)this.width, (float)this.height, RenderUtil2.applyAlpha(-723724, partialTicks)
          );
          if (onlineProfilesManager != null && OnlineProfilesManager.cachedOnlineProfiles != null && OnlineProfilesManager.cachedOnlineProfiles.isEmpty()) {
             RenderUtil.drawString(
                ResourceRegistry.JelloLightFont14,
-               (float)(this.xA + 40),
-               (float)(this.yA + 110),
+               (float)(this.x + 40),
+               (float)(this.y + 110),
                "No Default Profiles Available",
                ClientColors.MID_GREY.getColor()
             );

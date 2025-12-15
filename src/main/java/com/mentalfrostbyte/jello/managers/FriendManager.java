@@ -25,7 +25,7 @@ public class FriendManager extends Manager {
         try {
             this.loadFromCurrentConfig();
         } catch (JsonParseException e) {
-            Client.logger.warn(e);
+            Client.LOGGER.warn(e);
         }
     }
 

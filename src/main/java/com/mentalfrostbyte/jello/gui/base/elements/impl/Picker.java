@@ -37,12 +37,12 @@ public class Picker extends Element {
     }
 
     public void method13069(String var1) {
-        this.runThisOnDimensionUpdate(() -> {
+        this.addRunnable(() -> {
             if (this.field20642 != null) {
                 this.removeChildren(this.field20642);
             }
 
-            this.addToList(this.field20642 = new ScrollableContentPanel(this, "scrollview", 0, 40, this.widthA, this.heightA - 40));
+            this.addToList(this.field20642 = new ScrollableContentPanel(this, "scrollview", 0, 40, this.width, this.height - 40));
             ArrayList<Item> var5 = new ArrayList<>();
 
             for (Item var7 : Registry.ITEM) {
@@ -145,15 +145,15 @@ public class Picker extends Element {
 
                 for (int var7 = 0; var7 < var1.getChildren().size(); var7++) {
                     CustomGuiScreen var8 = var1.getChildren().get(var7);
-                    if (var4 + var8.getWidthA() + this.field31149 > var1.getWidthA()) {
+                    if (var4 + var8.getWidth() + this.field31149 > var1.getWidth()) {
                         var4 = 0;
                         var5 += var6;
                     }
 
-                    var8.setYA(var5);
-                    var8.setXA(var4);
-                    var4 += var8.getWidthA() + this.field31149;
-                    var6 = Math.max(var8.getHeightA(), var6);
+                    var8.setY(var5);
+                    var8.setX(var4);
+                    var4 += var8.getWidth() + this.field31149;
+                    var6 = Math.max(var8.getHeight(), var6);
                 }
             }
         }

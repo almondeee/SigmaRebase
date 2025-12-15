@@ -106,8 +106,8 @@ public class JelloMainMenu extends CustomGuiScreen {
                 )
         );
         this.addToList(this.altManagerButton = new MainMenuButton(this, "Alt Manager", this.method13447(var17++), this.method13448(), 128, 128, Resources.altPNG, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor(), ClientColors.DEEP_TEAL.getColor())));
-        this.addToList(this.copyright = new Text(this, "Copyright", 10, this.getHeightA() - 31, font.getWidth(prod), 128, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), prod, font));
-        this.addToList(this.version = new Text(this, "Version", this.getWidthA() - font.getWidth(version) - 9, this.getHeightA() - 31, 128, 128, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), version, font));
+        this.addToList(this.copyright = new Text(this, "Copyright", 10, this.getHeight() - 31, font.getWidth(prod), 128, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), prod, font));
+        this.addToList(this.version = new Text(this, "Version", this.getWidth() - font.getWidth(version) - 9, this.getHeight() - 31, 128, 128, new ColorHelper(ClientColors.LIGHT_GREYISH_BLUE.getColor()), version, font));
         this.copyright.shadow = true;
         this.version.shadow = true;
         this.addToList(this.switchButton = new TextButton(this, "switch", 220, 24, 50, 50, new ColorHelper(RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.7F)), "Switch", ResourceRegistry.JelloLightFont20));
@@ -148,8 +148,8 @@ public class JelloMainMenu extends CustomGuiScreen {
         }
 
         RenderUtil.drawImage(
-                (float) (this.getWidthA() / 2 - imageWidth / 2),
-                (float) (this.getHeightA() / 2 - imageHeight),
+                (float) (this.getWidth() / 2 - imageWidth / 2),
+                (float) (this.getHeight() / 2 - imageHeight),
                 (float) imageWidth,
                 (float) imageHeight,
                 largeLogo,
@@ -159,12 +159,12 @@ public class JelloMainMenu extends CustomGuiScreen {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         int var5 = 30;
         int var6 = 90;
-        this.changelogButton.setXA(var6 + 0);
-        this.quitButton.setXA(var5 + 0);
-        super.updatePanelDimensions(newHeight, newWidth);
+        this.changelogButton.setX(var6 + 0);
+        this.quitButton.setX(var5 + 0);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     public void playClickSound() {
@@ -182,10 +182,10 @@ public class JelloMainMenu extends CustomGuiScreen {
     }
 
     private int method13447(int var1) {
-        return this.getWidthA() / 2 - 305 + var1 * 128 + var1 * -6;
+        return this.getWidth() / 2 - 305 + var1 * 128 + var1 * -6;
     }
 
     private int method13448() {
-        return this.getHeightA() / 2 + 14;
+        return this.getHeight() / 2 + 14;
     }
 }

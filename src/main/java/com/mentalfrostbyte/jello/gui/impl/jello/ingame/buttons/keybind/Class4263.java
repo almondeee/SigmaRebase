@@ -15,8 +15,8 @@ public class Class4263 extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
       this.field20678 = this.field20678 + (!this.method13298() ? -0.14F : 0.14F);
       this.field20678 = Math.min(Math.max(0.0F, this.field20678), 1.0F);
    }
@@ -24,14 +24,14 @@ public class Class4263 extends Element {
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawCircle(
-         (float)(this.xA + this.widthA / 2),
-         (float)(this.yA + this.heightA / 2),
-         (float)this.widthA,
+         (float)(this.x + this.width / 2),
+         (float)(this.y + this.height / 2),
+         (float)this.width,
          RenderUtil2.applyAlpha(ClientColors.PALE_YELLOW.getColor(), (0.5F + this.field20678 * 0.3F + (!this.field20909 ? 0.0F : 0.2F)) * partialTicks)
       );
       RenderUtil.drawRoundedRect2(
-         (float)(this.xA + (this.widthA - 10) / 2),
-         (float)(this.yA + this.heightA / 2 - 1),
+         (float)(this.x + (this.width - 10) / 2),
+         (float)(this.y + this.height / 2 - 1),
          10.0F,
          2.0F,
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.75F * partialTicks)

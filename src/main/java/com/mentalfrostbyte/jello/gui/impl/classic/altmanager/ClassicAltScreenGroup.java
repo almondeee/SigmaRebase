@@ -29,7 +29,7 @@ public class ClassicAltScreenGroup extends CustomGuiScreen {
         this.addToList(this.field21141 = new AltManagerButton(this, "back", 0, 48, 120, 40, "Back", ClientColors.DEEP_TEAL.getColor()));
         int var7 = 200;
         int var8 = 146;
-        int var9 = this.getWidthA() - 625;
+        int var9 = this.getWidth() - 625;
         this.addToList(this.field21142 = new AltManagerButton(this, "login", var9, 0, var7, 40, "Login", ClientColors.DEEP_TEAL.getColor()));
         this.addToList(this.field21145 = new AltManagerButton(this, "direct", var9 + var7 + 16, 0, var7, 40, "Direct Login", ClientColors.DEEP_TEAL.getColor()));
         this.addToList(this.field21147 = new AltManagerButton(this, "add", var9 + var7 * 2 + 32, 0, var7, 40, "Add", ClientColors.DEEP_TEAL.getColor()));

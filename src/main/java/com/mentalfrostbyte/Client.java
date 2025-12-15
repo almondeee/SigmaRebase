@@ -6,7 +6,6 @@ import club.minnced.discord.rpc.DiscordRichPresence;
 import com.google.gson.JsonObject;
 import com.mentalfrostbyte.jello.managers.*;
 import com.mentalfrostbyte.jello.managers.ModuleManager;
-import com.mentalfrostbyte.jello.module.data.ModuleSettingInitializr;
 import com.mentalfrostbyte.jello.util.game.MinecraftUtil;
 import com.mentalfrostbyte.jello.util.game.player.rotation.JelloAI;
 import com.mentalfrostbyte.jello.util.game.player.tracker.MinerTracker;
@@ -19,7 +18,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.newdawn.slick.opengl.Texture;
 import org.lwjgl.glfw.GLFW;
-import team.sdhq.eventBus.EventBus;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,8 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client implements MinecraftUtil {
-    public static int currentVersionIndex = 28;
-    public static final Logger logger = LogManager.getLogger("Jello");
+    public static int CURRENT_VERSION_INDEX = 28;
+    public static final Logger LOGGER = LogManager.getLogger("Jello");
 
     public static final String RELEASE_TARGET = "5.1.0";
     public static final int BETA_ITERATION = 16;
@@ -66,16 +64,16 @@ public class Client implements MinecraftUtil {
     public BlurEngine blurEngine;
 
     public void start() {
-        logger.info("Initializing...");
+        LOGGER.info("Initializing...");
 
         try {
             if (!file.exists()) {
                 file.mkdirs();
             }
 
-            config = FileUtil.readFile(new File(file + "/config.json"));
+            config = FileUtil.readJsonFile(new File(file + "/config.json"));
         } catch (IOException exception) {
-            logger.error(exception);
+            LOGGER.error(exception);
         }
 
         JelloAI.init();
@@ -105,27 +103,27 @@ public class Client implements MinecraftUtil {
         minerTracker = new MinerTracker();
         minerTracker.init();
         GLFW.glfwSetWindowTitle(mc.getMainWindow().getHandle(), "Sigma " + RELEASE_TARGET);
-        logger.info("Initialized.");
+        LOGGER.info("Initialized.");
     }
 
     public void shutdown() {
-        logger.info("Shutting down...");
+        LOGGER.info("Shutting down...");
 
         try {
             if (guiManager != null) {
-                guiManager.getUIConfig(config);
+                guiManager.saveConfig(config);
             }
 
             if (moduleManager != null) {
-                moduleManager.method14660(config);
+                moduleManager.saveConfig(config);
             }
 
             FileUtil.save(config, new File(file + "/config.json"));
         } catch (IOException exc) {
-            logger.error("Unable to shutdown correctly. Config may be corrupt?", exc);
+            LOGGER.error("Unable to shutdown correctly. Config may be corrupt?", exc);
         }
 
-        logger.info("Done.");
+        LOGGER.info("Done.");
     }
 
     public void addTexture(Texture texture) {
@@ -139,7 +137,7 @@ public class Client implements MinecraftUtil {
     private void initRPC() {
         DiscordRPC updatePresence = DiscordRPC.INSTANCE;
         DiscordEventHandlers eventHandlers = new DiscordEventHandlers();
-        eventHandlers.ready = e -> logger.info("Discord RPC Ready!");
+        eventHandlers.ready = e -> LOGGER.info("Discord RPC Ready!");
         updatePresence.Discord_Initialize("693493612754763907", eventHandlers, true, "var5");
         discordRichPresence = new DiscordRichPresence();
         discordRichPresence.startTimestamp = System.currentTimeMillis() / 1000L;
@@ -175,7 +173,7 @@ public class Client implements MinecraftUtil {
         try {
             FileUtil.save(config, new File(file + "/config.json"));
         } catch (IOException e) {
-            logger.error(e.getMessage());
+            LOGGER.error(e.getMessage());
         }
     }
 }

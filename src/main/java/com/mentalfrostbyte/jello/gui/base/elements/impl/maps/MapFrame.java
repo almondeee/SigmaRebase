@@ -52,19 +52,19 @@ public class MapFrame extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         if (this.field20909) {
-            int var5 = newHeight - this.field20652;
-            int var6 = newWidth - this.field20653;
+            int var5 = mouseX - this.field20652;
+            int var6 = mouseY - this.field20653;
             float var7 = ((float) this.field20649 - 1.0F) / (float) this.field20649;
-            float var8 = (float) this.widthA / ((float) this.field20649 * 2.0F * var7);
+            float var8 = (float) this.width / ((float) this.field20649 * 2.0F * var7);
             this.field20651 += (float) var5 / var8;
             this.field20650 += (float) var6 / var8;
         }
 
-        this.field20652 = newHeight;
-        this.field20653 = newWidth;
+        this.field20652 = mouseX;
+        this.field20653 = mouseY;
     }
 
     public void method13077(int var1, int var2) {
@@ -77,9 +77,9 @@ public class MapFrame extends Element {
     @Override
     public boolean onClick(int mouseX, int mouseY, int mouseButton) {
         if (this.method13298() && mouseButton == 1) {
-            int var6 = Math.max(this.widthA, this.heightA);
-            float var7 = (float) (this.widthA - var6) / 2.0F;
-            float var8 = (float) (this.heightA - var6) / 2.0F;
+            int var6 = Math.max(this.width, this.height);
+            float var7 = (float) (this.width - var6) / 2.0F;
+            float var8 = (float) (this.height - var6) / 2.0F;
             float var9 = (float) mouseX - ((float) this.method13271() + var8 + (float) (var6 / 2));
             float var10 = (float) (Minecraft.getInstance().getMainWindow().getHeight() - mouseY) - ((float) this.method13272() + var7 + (float) (var6 / 2));
             float var11 = (float) var6 / ((float) (this.field20649 - 1) * 2.0F);
@@ -96,8 +96,8 @@ public class MapFrame extends Element {
     }
 
     @Override
-    public void voidEvent3(float scroll) {
-        super.voidEvent3(scroll);
+    public void onScroll(float scroll) {
+        super.onScroll(scroll);
         if (this.method13298()) {
             this.field20649 = Math.round(Math.max(3.0F, Math.min(33.0F, (float) this.field20649 + scroll / 10.0F)));
             this.method13083();
@@ -122,25 +122,25 @@ public class MapFrame extends Element {
             this.field20647.field20687 = true;
         }
 
-        int var6 = Math.max(this.widthA, this.heightA);
-        int var7 = (this.widthA - var6) / 2;
-        int var8 = (this.heightA - var6) / 2;
+        int var6 = Math.max(this.width, this.height);
+        int var7 = (this.width - var6) / 2;
+        int var8 = (this.height - var6) / 2;
         float var9 = (float) this.field20649 / ((float) this.field20649 - 1.0F);
         float var10 = (float) var6 / ((float) this.field20649 * 2.0F);
         double var11 = ((double) this.field20650 - Math.floor(this.field20650)) * (double) var10;
         double var13 = ((double) this.field20651 - Math.floor(this.field20651)) * (double) var10;
         TextureManager textureManager = var4.getTextureManager();
         textureManager.bindTexture(TextureManager.RESOURCE_LOCATION_EMPTY);
-        RenderUtil.startScissor(this.xA, this.yA, this.xA + this.widthA, this.yA + this.heightA, true);
+        RenderUtil.startScissor(this.x, this.y, this.x + this.width, this.y + this.height, true);
         GL11.glPushMatrix();
-        GL11.glTranslatef((float) (this.xA + this.widthA / 2), (float) (this.yA + this.heightA / 2), 0.0F);
+        GL11.glTranslatef((float) (this.x + this.width / 2), (float) (this.y + this.height / 2), 0.0F);
         GL11.glScalef(var9, var9, 0.0F);
         GL11.glRotatef(-90.0F, 0.0F, 0.0F, 1.0F);
-        GL11.glTranslatef((float) (-this.xA - this.widthA / 2), (float) (-this.yA - this.heightA / 2), 0.0F);
+        GL11.glTranslatef((float) (-this.x - this.width / 2), (float) (-this.y - this.height / 2), 0.0F);
         GL11.glTranslated(-var11, var13, 0.0);
         RenderUtil.method11453(
-                (float) (this.xA + var7),
-                (float) (this.yA + var8),
+                (float) (this.x + var7),
+                (float) (this.y + var8),
                 (float) var6,
                 (float) var6,
                 this.field20654.field30546,
@@ -161,8 +161,8 @@ public class MapFrame extends Element {
             float var20 = (float) var16.z - var18 + 1.0F;
             float var21 = (float) var6 / ((float) (this.field20649 - 1) * 2.0F);
             RenderUtil.drawImage(
-                    (float) (this.xA + Math.round(var19 * var21 / 16.0F) + this.widthA / 2 - 16),
-                    (float) (this.yA + Math.round(var20 * var21 / 16.0F) + this.heightA / 2 - 42),
+                    (float) (this.x + Math.round(var19 * var21 / 16.0F) + this.width / 2 - 16),
+                    (float) (this.y + Math.round(var20 * var21 / 16.0F) + this.height / 2 - 42),
                     32.0F,
                     46.0F,
                     Resources.waypointPNG,
@@ -176,8 +176,8 @@ public class MapFrame extends Element {
         String var24 = var22 + "  " + var23;
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont14,
-                (float) (this.xA - ResourceRegistry.JelloLightFont14.getWidth(var24) - 23),
-                (float) (this.yA + 35),
+                (float) (this.x - ResourceRegistry.JelloLightFont14.getWidth(var24) - 23),
+                (float) (this.y + 35),
                 var24,
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.4F)
         );

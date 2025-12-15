@@ -39,31 +39,31 @@ public class Checkbox extends Element {
     public void draw(float partialTicks) {
         float var4 = !this.method13212() ? 0.43F : 0.6F;
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) this.yA,
-                (float) this.widthA,
-                (float) this.heightA,
+                (float) this.x,
+                (float) this.y,
+                (float) this.width,
+                (float) this.height,
                 10.0F,
                 RenderUtil2.applyAlpha(-4144960, var4 * this.field21370.calcPercent() * partialTicks)
         );
         float var5 = (1.0F - this.field21370.calcPercent()) * partialTicks;
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) this.yA,
-                (float) this.widthA,
-                (float) this.heightA,
+                (float) this.x,
+                (float) this.y,
+                (float) this.width,
+                (float) this.height,
                 10.0F,
                 RenderUtil2.applyAlpha(RenderUtil2.shiftTowardsOther(-14047489, ClientColors.DEEP_TEAL.getColor(), !this.method13212() ? 1.0F : 0.9F), var5)
         );
         GL11.glPushMatrix();
-        GL11.glTranslatef((float) (this.getXA() + this.getWidthA() / 2), (float) (this.getYA() + this.getHeightA() / 2), 0.0F);
+        GL11.glTranslatef((float) (this.getX() + this.getWidth() / 2), (float) (this.getY() + this.getHeight() / 2), 0.0F);
         GL11.glScalef(1.5F - 0.5F * var5, 1.5F - 0.5F * var5, 0.0F);
-        GL11.glTranslatef((float) (-this.getXA() - this.getWidthA() / 2), (float) (-this.getYA() - this.getHeightA() / 2), 0.0F);
+        GL11.glTranslatef((float) (-this.getX() - this.getWidth() / 2), (float) (-this.getY() - this.getHeight() / 2), 0.0F);
         RenderUtil.drawImage(
-                (float) this.xA,
-                (float) this.yA,
-                (float) this.widthA,
-                (float) this.heightA,
+                (float) this.x,
+                (float) this.y,
+                (float) this.width,
+                (float) this.height,
                 Resources.checkPNG,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var5)
         );

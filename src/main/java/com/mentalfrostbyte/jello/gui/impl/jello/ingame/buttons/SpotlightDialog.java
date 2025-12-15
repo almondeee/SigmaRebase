@@ -29,32 +29,32 @@ public class SpotlightDialog extends Element {
       this.query.setFocused(true);
       int var4 = 10;
       RenderUtil.drawRoundedRect(
-         (float)(this.xA + var4 / 2),
-         (float)(this.yA + var4 / 2),
-         (float)(this.widthA - var4),
-         (float)(this.heightA - var4),
+         (float)(this.x + var4 / 2),
+         (float)(this.y + var4 / 2),
+         (float)(this.width - var4),
+         (float)(this.height - var4),
          9.0F,
          partialTicks * 0.9F
       );
       RenderUtil.drawRoundedRect(
-         (float)(this.xA + var4 / 2),
-         (float)(this.yA + var4 / 2),
-         (float)(this.widthA - var4),
-         (float)(this.heightA - var4),
+         (float)(this.x + var4 / 2),
+         (float)(this.y + var4 / 2),
+         (float)(this.width - var4),
+         (float)(this.height - var4),
          30.0F,
          partialTicks * 0.4F
       );
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)this.widthA,
-         (float)this.heightA,
+         (float)this.x,
+         (float)this.y,
+         (float)this.width,
+         (float)this.height,
          (float)var4,
          RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.97F)
       );
       RenderUtil.drawImage(
-         (float)(this.xA + 20),
-         (float)(this.yA + 20),
+         (float)(this.x + 20),
+         (float)(this.y + 20),
          20.0F,
          20.0F,
          Resources.searchPNG,
@@ -68,8 +68,8 @@ public class SpotlightDialog extends Element {
             + (!var5.get(0).isEnabled() ? " - Disabled" : " - Enabled");
          RenderUtil.drawString(
             this.query.getFont(),
-            (float)(this.xA + 54),
-            (float)(this.yA + 14),
+            (float)(this.x + 54),
+            (float)(this.y + 14),
             var7,
                  RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.25F)
          );

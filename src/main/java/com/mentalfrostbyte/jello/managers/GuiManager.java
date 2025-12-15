@@ -42,13 +42,9 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class GuiManager {
-    public static final Map<Class<? extends net.minecraft.client.gui.screen.Screen>, String> screenToScreenName = new HashMap<Class<? extends net.minecraft.client.gui.screen.Screen>, String>();
-    private static final Map<Class<? extends net.minecraft.client.gui.screen.Screen>, Class<? extends Screen>> replacementScreens = new HashMap<Class<? extends net.minecraft.client.gui.screen.Screen>, Class<? extends Screen>>();
-    public static long arrowCursor;
-    public static long pointingHandCursor;
-    public static long iBeamCursor;
-    public static float scaleFactor = 1.0F;
-    private static boolean hidpiCocoa = true;
+    public static final Map<Class<? extends net.minecraft.client.gui.screen.Screen>, String> screenToScreenName = new HashMap<>();
+    private static final Map<Class<? extends net.minecraft.client.gui.screen.Screen>, Class<? extends Screen>> replacementScreens = new HashMap<>();
+
 
     static {
         replacementScreens.put(MainMenuHolder.class, MainMenuScreen.class);
@@ -68,25 +64,25 @@ public class GuiManager {
         screenToScreenName.put(SpotlightHolder.class, "Spotlight");
     }
 
-    public double field41347;
-    public int[] field41354 = new int[2];
-    public boolean field41357;
+    public int[] mousePositions = new int[2];
+    public double mouseScroll;
+
     private final List<Integer> keysPressed = new ArrayList<>();
     private final List<Integer> modifiersPressed = new ArrayList<>();
     private final List<Integer> mouseButtonsPressed = new ArrayList<>();
     private final List<Integer> mouseButtonsReleased = new ArrayList<>();
     private final List<Integer> charsTyped = new ArrayList<>();
+
     private boolean guiBlur = true;
     private boolean hqIngameBlur = true;
+    private static boolean hidpiCocoa = true;
+
+    public static float scaleFactor = 1.0F;
+
     private Screen screen;
 
     public GuiManager() {
-        // https://www.glfw.org/docs/3.4/group__shapes.html
-        // convert the shape parameters to hex and prepend a few `0`s because the site adds those.
-        arrowCursor = GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR);
-        pointingHandCursor = GLFW.glfwCreateStandardCursor(GLFW.GLFW_POINTING_HAND_CURSOR);
-        iBeamCursor = GLFW.glfwCreateStandardCursor(GLFW.GLFW_IBEAM_CURSOR);
-        GLFW.glfwSetCursor(Minecraft.getInstance().getMainWindow().getHandle(), arrowCursor);
+        GLFW.glfwSetCursor(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.glfwCreateStandardCursor(GLFW.GLFW_ARROW_CURSOR));
         scaleFactor = (float) (Minecraft.getInstance().getMainWindow().getFramebufferHeight() / Minecraft.getInstance().getMainWindow().getHeight());
     }
 
@@ -107,10 +103,10 @@ public class GuiManager {
             return false;
         }
     }
+
     public Screen getScreen() {
         return this.screen;
     }
-
 
     public static Screen handleScreen(net.minecraft.client.gui.screen.Screen screen) {
         if (screen == null) {
@@ -125,11 +121,11 @@ public class GuiManager {
             try {
                 return replacementScreens.get(screen.getClass()).getConstructor().newInstance();
             } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-					 NoSuchMethodException e) {
-                Client.logger.error("Error creating replacement screen", e);
+                     NoSuchMethodException e) {
+                Client.LOGGER.error("Error creating replacement screen", e);
             }
 
-			return null;
+            return null;
         }
     }
 
@@ -160,7 +156,7 @@ public class GuiManager {
 
     /**
      * @see net.minecraft.client.KeyboardListener#onKeyEvent
-	 */
+     */
     public void handleKeyEvent(int key, int action) {
         if (action == 1 || action == 2) {
             this.keysPressed.add(key);
@@ -169,12 +165,12 @@ public class GuiManager {
         }
     }
 
-    public void addTypedChar(int codePoint, int modifiers) {
+    public void addTypedChar(int codePoint) {
         this.charsTyped.add(codePoint);
     }
 
-    public void method33455(double var1, double var3) {
-        this.field41347 += var3;
+    public void onScroll(double yOffset) {
+        this.mouseScroll += yOffset;
     }
 
     public void onMouseButtonCallback(int button, int action) {
@@ -189,27 +185,29 @@ public class GuiManager {
 
     public void endTick() {
         if (this.screen != null) {
-            this.field41354[0] = Math.max(0, Math.min(Minecraft.getInstance().getMainWindow().getWidth(), (int) Minecraft.getInstance().mouseHelper.getMouseX()));
-            this.field41354[1] = Math.max(0, Math.min(Minecraft.getInstance().getMainWindow().getHeight(), (int) Minecraft.getInstance().mouseHelper.getMouseY()));
+            this.mousePositions[0] = Math.max(0, Math.min(Minecraft.getInstance().getMainWindow().getWidth(), (int) Minecraft.getInstance().mouseHelper.getMouseX()));
+            this.mousePositions[1] = Math.max(0, Math.min(Minecraft.getInstance().getMainWindow().getHeight(), (int) Minecraft.getInstance().mouseHelper.getMouseY()));
 
             for (int key : this.keysPressed) {
-                this.onKeyPressed(key);
+                this.screen.keyPressed(key);
             }
 
-            for (int modifierPresed : this.modifiersPressed) {
-                this.onModifierPressed(modifierPresed);
+            for (int modifier : this.modifiersPressed) {
+                this.screen.modifierPressed(modifier);
             }
 
-            for (int var10 : this.mouseButtonsPressed) {
-                this.onMouseClick(this.field41354[0], this.field41354[1], var10);
-            }
+            if (Minecraft.getInstance().loadingGui == null) {
+                for (int mouseButton : this.mouseButtonsPressed) {
+                    this.screen.onClick(this.mousePositions[0], this.mousePositions[1], mouseButton);
+                }
 
-            for (int var11 : this.mouseButtonsReleased) {
-                this.onMouseClick2(this.field41354[0], this.field41354[1], var11);
+                for (int mouseButton : this.mouseButtonsReleased) {
+                    this.screen.onClick2(this.mousePositions[0], this.mousePositions[1], mouseButton);
+                }
             }
 
             for (int chr : this.charsTyped) {
-                this.onCharTyped((char) chr);
+                this.screen.charTyped((char) chr);
             }
 
             this.keysPressed.clear();
@@ -217,47 +215,29 @@ public class GuiManager {
             this.mouseButtonsPressed.clear();
             this.mouseButtonsReleased.clear();
             this.charsTyped.clear();
-            if (this.field41347 == 0.0) {
-                this.field41357 = false;
-            } else {
-                this.method33465((float) this.field41347);
-                this.field41347 = 0.0;
-                this.field41357 = true;
+
+            if (this.mouseScroll != 0.0) {
+                if (Minecraft.getInstance().loadingGui == null) {
+                    this.screen.onScroll((float) this.mouseScroll);
+                }
+                this.mouseScroll = 0.0;
             }
 
             if (this.screen != null) {
-                this.screen.updatePanelDimensions(this.field41354[0], this.field41354[1]);
+                this.screen.updatePanelDimensions(this.mousePositions[0], this.mousePositions[1]);
             }
-        }
-    }
-
-    public void onModifierPressed(int modifier) {
-        if (this.screen != null) {
-            this.screen.modifierPressed(modifier);
-        }
-    }
-
-    public void onCharTyped(char chr) {
-        if (this.screen != null) {
-            this.screen.charTyped(chr);
-        }
-    }
-
-    public void onKeyPressed(int key) {
-        if (this.screen != null) {
-            this.screen.keyPressed(key);
         }
     }
 
     public void renderWatermark() {
         if (Minecraft.getInstance().world != null) {
             GL11.glDisable(GL11.GL_LIGHTING);
-            int var3 = 0;
-            int var4 = 0;
-            int var5 = 170;
+            int x = 0;
+            int y = 0;
+            int width = 170;
 
             if (Minecraft.getInstance().gameSettings.showDebugInfo) {
-                var3 = Minecraft.getInstance().getMainWindow().getWidth() / 2 - var5 / 2;
+                x = Minecraft.getInstance().getMainWindow().getWidth() / 2 - width / 2;
             }
 
             if (Client.getInstance().clientMode != ClientMode.JELLO) {
@@ -281,7 +261,7 @@ public class GuiManager {
                 RenderSystem.enableBlend();
                 RenderSystem.defaultBlendFunc();
                 RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-                AbstractGui.blit(new MatrixStack(), var3, var4, 0, 0, (int) 170.0F, (int) 104.0F, (int) 170.0F, (int) 104.0F);
+                AbstractGui.blit(new MatrixStack(), x, y, 0, 0, (int) 170.0F, (int) 104.0F, (int) 170.0F, (int) 104.0F);
 
                 // Reset states
                 RenderSystem.disableBlend();
@@ -295,29 +275,11 @@ public class GuiManager {
         }
     }
 
-    public void method33465(float var1) {
-        if (this.screen != null && Minecraft.getInstance().loadingGui == null) {
-            this.screen.voidEvent3(var1);
-        }
-    }
-
-    public void onMouseClick(int mouseX, int mouseY, int mouseButton) {
-        if (this.screen != null && Minecraft.getInstance().loadingGui == null) {
-            this.screen.onClick(mouseX, mouseY, mouseButton);
-        }
-    }
-
-    public void onMouseClick2(int mouseX, int mouseY, int mouseButton) {
-        if (this.screen != null && Minecraft.getInstance().loadingGui == null) {
-            this.screen.onClick2(mouseX, mouseY, mouseButton);
-        }
-    }
-
-    public void getUIConfig(JsonObject uiConfig) {
+    public void saveConfig(JsonObject uiConfig) {
         if (this.screen != null) {
-            JsonObject var4 = this.screen.toConfigWithExtra(new JsonObject());
-            if (var4.size() != 0) {
-                uiConfig.add(this.screen.getName(), var4);
+            JsonObject json = this.screen.toConfigWithExtra(new JsonObject());
+            if (json.size() != 0) {
+                uiConfig.add(this.screen.getName(), json);
             }
         }
 
@@ -326,24 +288,24 @@ public class GuiManager {
         uiConfig.addProperty("hidpicocoa", hidpiCocoa);
     }
 
-    public void setGuiBlur(boolean to) {
-        this.guiBlur = to;
+    public void setGuiBlur(boolean guiBlur) {
+        this.guiBlur = guiBlur;
     }
 
     public boolean getGuiBlur() {
         return this.guiBlur;
     }
 
-    public void setHqIngameBlur(boolean to) {
-        this.hqIngameBlur = to;
+    public void setHqIngameBlur(boolean hqIngameBlur) {
+        this.hqIngameBlur = hqIngameBlur;
     }
 
     public boolean getHqIngameBlur() {
         return this.hqIngameBlur;
     }
 
-    public void setHidpiCocoa(boolean var1) {
-        hidpiCocoa = var1;
+    public void setHidpiCocoa(boolean hidpiCocoa) {
+        GuiManager.hidpiCocoa = hidpiCocoa;
     }
 
     public boolean getHidpiCocoa() {
@@ -398,12 +360,12 @@ public class GuiManager {
 
     public void onResize() throws JsonParseException {
         if (this.screen != null) {
-            this.getUIConfig(Client.getInstance().config);
+            this.saveConfig(Client.getInstance().config);
 
             try {
                 this.screen = this.screen.getClass().newInstance();
             } catch (IllegalAccessException | InstantiationException exc) {
-                Client.logger.warn(exc);
+                Client.LOGGER.warn(exc);
             }
 
             this.loadUIConfig(Client.getInstance().config);
@@ -427,13 +389,13 @@ public class GuiManager {
 
     public void handleScreen(Screen screen) {
         if (this.screen != null) {
-            this.getUIConfig(Client.getInstance().config);
+            this.saveConfig(Client.getInstance().config);
         }
 
         this.screen = screen;
         this.loadUIConfig(Client.getInstance().config);
         if (this.screen != null) {
-            this.screen.updatePanelDimensions(this.field41354[0], this.field41354[1]);
+            this.screen.updatePanelDimensions(this.mousePositions[0], this.mousePositions[1]);
         }
     }
 

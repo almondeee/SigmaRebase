@@ -30,8 +30,8 @@ public class Button extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         this.field20584 = this.field20584 + (!this.method13298() ? -0.1F : 0.1F);
         this.field20584 = Math.min(Math.max(0.0F, this.field20584), 1.0F);
     }
@@ -45,29 +45,29 @@ public class Button extends Element {
         );
         if (this.field20586 <= 0) {
             RenderUtil.drawRoundedRect(
-                    (float) this.getXA(),
-                    (float) this.getYA(),
-                    (float) (this.getXA() + this.getWidthA()),
-                    (float) (this.getYA() + this.getHeightA()),
+                    (float) this.getX(),
+                    (float) this.getY(),
+                    (float) (this.getX() + this.getWidth()),
+                    (float) (this.getY() + this.getHeight()),
                     color
             );
         } else {
             RenderUtil.drawRoundedButton(
-                    (float) this.getXA(), (float) this.getYA(), (float) this.getWidthA(), (float) this.getHeightA(), (float) this.field20586, color
+                    (float) this.getX(), (float) this.getY(), (float) this.getWidth(), (float) this.getHeight(), (float) this.field20586, color
             );
         }
 
-        int var10 = this.getXA()
+        int var10 = this.getX()
                 + (
                 this.textColor.method19411() != FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
                         ? 0
-                        : (this.textColor.method19411() != FontSizeAdjust.WIDTH_NEGATE ? this.getWidthA() / 2 : this.getWidthA())
+                        : (this.textColor.method19411() != FontSizeAdjust.WIDTH_NEGATE ? this.getWidth() / 2 : this.getWidth())
         );
-        int var11 = this.getYA()
+        int var11 = this.getY()
                 + (
                 this.textColor.method19413() != FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
                         ? 0
-                        : (this.textColor.method19413() != FontSizeAdjust.HEIGHT_NEGATE ? this.getHeightA() / 2 : this.getHeightA())
+                        : (this.textColor.method19413() != FontSizeAdjust.HEIGHT_NEGATE ? this.getHeight() / 2 : this.getHeight())
         );
         if (this.getText() != null) {
             RenderUtil.drawString(

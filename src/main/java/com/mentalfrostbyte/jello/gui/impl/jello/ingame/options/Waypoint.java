@@ -33,14 +33,14 @@ public class Waypoint extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
       this.field21289.changeDirection(!this.method13216() ? Animation.Direction.BACKWARDS : Animation.Direction.FORWARDS);
-      boolean var5 = this.method13216() || newHeight > this.method13271() + this.getWidthA() - 62;
+      boolean var5 = this.method13216() || mouseX > this.method13271() + this.getWidth() - 62;
       this.method13215(var5);
       if (this.field21290.getDirection() == Animation.Direction.FORWARDS) {
          this.method13215(false);
-         this.setXA(Math.round((float)this.getWidthA() * QuadraticEasing.easeInQuad(this.field21290.calcPercent(), 0.0F, 1.0F, 1.0F)));
+         this.setX(Math.round((float)this.getWidth() * QuadraticEasing.easeInQuad(this.field21290.calcPercent(), 0.0F, 1.0F, 1.0F)));
          if (this.field21290.calcPercent() == 1.0F) {
             this.callUIHandlers();
          }
@@ -54,46 +54,46 @@ public class Waypoint extends Element {
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawRoundedRect2(
-         (float)this.xA,
-         (float)this.yA,
-         (float)this.widthA,
-         (float)this.heightA,
+         (float)this.x,
+         (float)this.y,
+         (float)this.width,
+         (float)this.height,
               RenderUtil2.applyAlpha(RenderUtil2.shiftTowardsBlack(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.03F), this.field21289.calcPercent())
       );
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont20,
-         (float)(this.xA + 68),
-         (float)(this.yA + 14),
+         (float)(this.x + 68),
+         (float)(this.y + 14),
          this.field21291,
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.8F)
       );
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont14,
-         (float)(this.xA + 68),
-         (float)(this.yA + 38),
+         (float)(this.x + 68),
+         (float)(this.y + 38),
          "x:" + this.field21292.getX() + " z:" + this.field21292.getZ(),
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.5F)
       );
-      int var5 = this.widthA - 43;
+      int var5 = this.width - 43;
       float var6 = !this.method13216() ? 0.2F : 0.4F;
       RenderUtil.drawRoundedRect2(
-         (float)(this.xA + var5), (float)(this.yA + 27), 20.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var6)
+         (float)(this.x + var5), (float)(this.y + 27), 20.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var6)
       );
       RenderUtil.drawRoundedRect2(
-         (float)(this.xA + var5), (float)(this.yA + 27 + 5), 20.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var6)
+         (float)(this.x + var5), (float)(this.y + 27 + 5), 20.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var6)
       );
       RenderUtil.drawRoundedRect2(
-         (float)(this.xA + var5), (float)(this.yA + 27 + 10), 20.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var6)
+         (float)(this.x + var5), (float)(this.y + 27 + 10), 20.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var6)
       );
       RenderUtil.drawCircle(
-         (float)(this.xA + 35),
-         (float)(this.yA + this.heightA / 2),
+         (float)(this.x + 35),
+         (float)(this.y + this.height / 2),
          20.0F,
               RenderUtil2.shiftTowardsOther(this.field21293, ClientColors.DEEP_TEAL.getColor(), 0.9F)
       );
-      RenderUtil.drawCircle((float)(this.xA + 35), (float)(this.yA + this.heightA / 2), 17.0F, this.field21293);
+      RenderUtil.drawCircle((float)(this.x + 35), (float)(this.y + this.height / 2), 17.0F, this.field21293);
       RenderUtil.drawRoundedRect(
-         (float)this.xA, (float)this.yA, (float)this.widthA, (float)this.heightA, 14.0F, partialTicks * 0.2F * this.field21289.calcPercent()
+         (float)this.x, (float)this.y, (float)this.width, (float)this.height, 14.0F, partialTicks * 0.2F * this.field21289.calcPercent()
       );
       super.draw(partialTicks);
    }

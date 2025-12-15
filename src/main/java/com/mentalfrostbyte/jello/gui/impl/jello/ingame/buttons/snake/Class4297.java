@@ -19,8 +19,8 @@ public class Class4297 extends AnimatedIconPanel {
    public Class4297(CustomGuiScreen var1, String var2, int var3, int var4, int var5, int var6, int var7) {
       super(var1, var2, var3, var4, 100, 100, false);
       this.field20818 = new Class8455(var5, var6);
-      this.widthA = var5 * var7;
-      this.heightA = var6 * var7;
+      this.width = var5 * var7;
+      this.height = var6 * var7;
       this.field20820 = var7;
       this.field20819.start();
    }
@@ -33,8 +33,8 @@ public class Class4297 extends AnimatedIconPanel {
       }
 
       GL11.glPushMatrix();
-      GL11.glTranslatef((float)this.xA, (float)this.yA, 0.0F);
-      RenderUtil.drawRoundedRect2(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), ClientColors.DEEP_TEAL.getColor());
+      GL11.glTranslatef((float)this.x, (float)this.y, 0.0F);
+      RenderUtil.drawRoundedRect2(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), ClientColors.DEEP_TEAL.getColor());
       RenderUtil.drawRoundedButton(
          (float)(this.field20818.method29736().width * this.field20820),
          (float)(this.field20818.method29736().height * this.field20820),

@@ -26,12 +26,12 @@ public class ChangingButton extends Element {
 
    @Override
    public void draw(float partialTicks) {
-      RenderUtil.startScissor((float)this.xA, (float)this.yA, (float)this.widthA, (float)this.heightA);
+      RenderUtil.startScissor((float)this.x, (float)this.y, (float)this.width, (float)this.height);
       RenderUtil.drawImage(
-         (float)(this.xA - this.repeatMode.type * this.widthA),
-         (float)this.yA,
-         (float)(this.widthA * 3),
-         (float)this.heightA,
+         (float)(this.x - this.repeatMode.type * this.width),
+         (float)this.y,
+         (float)(this.width * 3),
+         (float)this.height,
          Resources.repeatPNG,
          RenderUtil2.applyAlpha(  ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.35F)
       );

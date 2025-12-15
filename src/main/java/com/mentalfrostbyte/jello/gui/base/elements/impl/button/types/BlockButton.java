@@ -19,16 +19,16 @@ public class BlockButton extends Element {
       byte var4 = 5;
       if (this.method13700() || this.method13298()) {
          RenderUtil.method11464(
-            (float)this.xA,
-            (float)this.yA,
-            (float)this.widthA,
-            (float)this.heightA,
+            (float)this.x,
+            (float)this.y,
+            (float)this.width,
+            (float)this.height,
             14.0F,
             !this.method13700() ? 0.3F * partialTicks : 0.8F * partialTicks
          );
       }
 
-      RenderUtil.renderItem(this.field21366, this.xA + var4, this.yA + var4, this.widthA - var4 * 2, this.heightA - var4 * 2);
+      RenderUtil.renderItem(this.field21366, this.x + var4, this.y + var4, this.width - var4 * 2, this.height - var4 * 2);
       super.draw(partialTicks);
    }
 

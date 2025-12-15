@@ -75,20 +75,20 @@ public class Keyboard extends Element {
          }
       }
 
-      return new int[]{this.getWidthA() / 2, 20};
+      return new int[]{this.getWidth() / 2, 20};
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
    public void draw(float partialTicks) {
-      int var6 = this.xA - 20;
-      int var7 = this.yA - 20;
-      int var8 = this.widthA + 20 * 2;
-      int var9 = this.heightA + 5 + 20 * 2;
+      int var6 = this.x - 20;
+      int var7 = this.y - 20;
+      int var8 = this.width + 20 * 2;
+      int var9 = this.height + 5 + 20 * 2;
       RenderUtil.drawRoundedRect((float)(var6 + 14 / 2), (float)(var7 + 14 / 2), (float)(var8 - 14), (float)(var9 - 14), 20.0F, partialTicks * 0.5F);
       RenderUtil.drawRoundedButton((float)var6, (float)var7, (float)var8, (float)var9, 14.0F, ClientColors.LIGHT_GREYISH_BLUE.getColor());
       super.draw(partialTicks);

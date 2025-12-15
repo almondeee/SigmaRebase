@@ -21,17 +21,17 @@ public class Input extends TextField {
    public void draw(float partialTicks) {
       this.setFont(ResourceRegistry.DefaultClientFont);
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)(this.xA + this.widthA),
-         (float)(this.yA + this.heightA),
+         (float)this.x,
+         (float)this.y,
+         (float)(this.x + this.width),
+         (float)(this.y + this.height),
          ClientColors.DEEP_TEAL.getColor()
       );
       RenderUtil.method11429(
-         (float)(this.xA - 2),
-         (float)this.yA,
-         (float)(this.xA + this.widthA + 2),
-         (float)(this.yA + this.heightA),
+         (float)(this.x - 2),
+         (float)this.y,
+         (float)(this.x + this.width + 2),
+         (float)(this.y + this.height),
          2,
          RenderUtil2.shiftTowardsOther(ClientColors.LIGHT_GREYISH_BLUE.getColor(), ClientColors.DEEP_TEAL.getColor(), 625.0F)
       );

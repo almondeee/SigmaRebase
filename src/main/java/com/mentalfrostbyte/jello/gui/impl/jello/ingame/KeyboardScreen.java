@@ -37,7 +37,7 @@ public class KeyboardScreen extends Screen {
    public KeyboardScreen() {
       super("KeybindManager");
       this.field20955 = new Date();
-      this.addToList(this.field20957 = new Keyboard(this, "keyboard", (this.widthA - 1060) / 2, (this.heightA - 357) / 2));
+      this.addToList(this.field20957 = new Keyboard(this, "keyboard", (this.width - 1060) / 2, (this.height - 357) / 2));
       this.field20957.method13279(0.4F, 0.4F);
       this.field20957
          .onPress(
@@ -57,7 +57,7 @@ public class KeyboardScreen extends Screen {
                   int[] var8 = this.field20957.method13105(this.field20957.field20696);
                   String var9 = RenderUtil.getKeyName(this.field20957.field20696);
                   this.field20956 = new PopOver(
-                     this, "popover", this.field20957.getXA() + var8[0], this.field20957.getYA() + var8[1], this.field20957.field20696, var9
+                     this, "popover", this.field20957.getX() + var8[0], this.field20957.getY() + var8[1], this.field20957.field20696, var9
                   );
                   this.field20956.onPress(var1x -> this.method13329(this.field20957));
                   this.field20956.method13713(var1x -> {
@@ -86,27 +86,27 @@ public class KeyboardScreen extends Screen {
    }
 
    private void method13329(Keyboard var1) {
-      this.runThisOnDimensionUpdate(new Class635(this, var1));
+      this.addRunnable(new Class635(this, var1));
    }
 
    private void method13330() {
-      this.runThisOnDimensionUpdate(new Class544(this, this));
+      this.addRunnable(new Class544(this, this));
    }
 
    private void method13331() {
-      this.runThisOnDimensionUpdate(new Class1533(this, this));
+      this.addRunnable(new Class1533(this, this));
    }
 
    private void method13332() {
-      this.runThisOnDimensionUpdate(new Class543(this, this));
+      this.addRunnable(new Class543(this, this));
    }
 
    private void method13333() {
-      this.runThisOnDimensionUpdate(new Class1376(this, this));
+      this.addRunnable(new Class1376(this, this));
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
+   public void updatePanelDimensions(int mouseX, int mouseY) {
       if (this.method13212()) {
          this.field20957.method13242();
          this.clearChildren();
@@ -121,7 +121,7 @@ public class KeyboardScreen extends Screen {
          this.field20956 = null;
       }
 
-      super.updatePanelDimensions(newHeight, newWidth);
+      super.updatePanelDimensions(mouseX, mouseY);
       this.setListening(false);
    }
 
@@ -146,17 +146,17 @@ public class KeyboardScreen extends Screen {
       this.method13279(0.8F + var4 * 0.2F, 0.8F + var4 * 0.2F);
       float var5 = 0.25F * partialTicks;
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)(this.xA + this.widthA),
-         (float)(this.yA + this.heightA),
+         (float)this.x,
+         (float)this.y,
+         (float)(this.x + this.width),
+         (float)(this.y + this.height),
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), var5)
       );
       super.method13224();
       RenderUtil.drawString(
          ResourceRegistry.JelloMediumFont40,
-         (float)((this.widthA - 1060) / 2),
-         (float)((this.heightA - 357) / 2 - 90),
+         (float)((this.width - 1060) / 2),
+         (float)((this.height - 357) / 2 - 90),
          "Keybind Manager",
          ClientColors.LIGHT_GREYISH_BLUE.getColor()
       );
@@ -165,12 +165,12 @@ public class KeyboardScreen extends Screen {
 
    // $VF: synthetic method
    public static int method13337(KeyboardScreen var0) {
-      return var0.widthA;
+      return var0.width;
    }
 
    // $VF: synthetic method
    public static int method13338(KeyboardScreen var0) {
-      return var0.heightA;
+      return var0.height;
    }
 
    // $VF: synthetic method

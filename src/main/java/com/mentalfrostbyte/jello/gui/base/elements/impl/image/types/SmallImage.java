@@ -52,10 +52,10 @@ public class SmallImage extends Button {
 
         float var4 = !this.isHovered() ? 0.3F : (!this.method13216() ? (!this.method13212() ? Math.max(partialTicks * this.field20584, 0.0F) : 1.5F) : 0.0F);
         RenderUtil.drawImage(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) this.getWidthA(),
-                (float) this.getHeightA(),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) this.getWidth(),
+                (float) this.getHeight(),
                 this.getTexture(),
                 RenderUtil2.applyAlpha(
                         RenderUtil2.shiftTowardsOther(this.textColor.getPrimaryColor(), this.textColor.getSecondaryColor(), 1.0F - var4),
@@ -65,8 +65,8 @@ public class SmallImage extends Button {
         if (this.getText() != null) {
             RenderUtil.drawString(
                     this.getFont(),
-                    (float) (this.getXA() + this.getWidthA() / 2),
-                    (float) (this.getYA() + this.getHeightA() / 2),
+                    (float) (this.getX() + this.getWidth() / 2),
+                    (float) (this.getY() + this.getHeight() / 2),
                     this.getText(),
                     RenderUtil2.applyAlpha(this.textColor.getTextColor(), partialTicks),
                     this.textColor.method19411(),

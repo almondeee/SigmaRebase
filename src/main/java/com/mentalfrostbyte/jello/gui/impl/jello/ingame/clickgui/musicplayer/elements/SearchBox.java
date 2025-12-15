@@ -45,11 +45,11 @@ public class SearchBox extends AnimatedIconPanel {
                             this.field20842.add(new YoutubeVideoData(var7.videoID, var7.title, var7.fullUrl));
                         }
 
-                        this.runThisOnDimensionUpdate(
+                        this.addRunnable(
                                 () -> {
                                     this.removeChildren(this.field20840);
                                     this.addToList(
-                                            this.field20840 = new ScrollableContentPanel(this, "albumView", 0, 0, this.widthA, this.heightA, ColorHelper.field27961, "View")
+                                            this.field20840 = new ScrollableContentPanel(this, "albumView", 0, 0, this.width, this.height, ColorHelper.field27961, "View")
                                     );
                                     if (this.field20842 != null) {
                                         for (int var3x = 0; var3x < this.field20842.size(); var3x++) {

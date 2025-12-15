@@ -18,8 +18,8 @@ public abstract class Screen
     @Override
     public void loadConfig(JsonObject config) {
         super.loadConfig(config);
-        this.setWidthA(Minecraft.getInstance().getMainWindow().getWidth());
-        this.setHeightA(Minecraft.getInstance().getMainWindow().getHeight());
+        this.setWidth(Minecraft.getInstance().getMainWindow().getWidth());
+        this.setHeight(Minecraft.getInstance().getMainWindow().getHeight());
     }
 
     @Override

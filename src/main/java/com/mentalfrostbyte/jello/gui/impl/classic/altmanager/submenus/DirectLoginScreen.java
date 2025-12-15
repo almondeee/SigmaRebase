@@ -30,7 +30,7 @@ public class DirectLoginScreen extends Screen {
       this.setListening(false);
       int var3 = 400;
       int var4 = 114;
-      int var5 = (this.getWidthA() - var3) / 2;
+      int var5 = (this.getWidth() - var3) / 2;
       this.addToList(
          this.emailOrUsername = new Input(this, "username", var5, var4, var3, 45, Input.field20741, "", "Username / E-Mail", ResourceRegistry.DefaultClientFont)
       );
@@ -75,15 +75,15 @@ public class DirectLoginScreen extends Screen {
 
    @Override
    public void draw(float partialTicks) {
-      RenderUtil.drawImage(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), Resources.mainmenubackground);
-      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.PALE_RED.getColor(), 0.1F));
-      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.95F));
+      RenderUtil.drawImage(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), Resources.mainmenubackground);
+      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), RenderUtil2.applyAlpha(ClientColors.PALE_RED.getColor(), 0.1F));
+      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.95F));
       RenderUtil.drawString(
-         ResourceRegistry.DefaultClientFont, (float)(this.getWidthA() / 2), 38.0F, "Add Login", ClientColors.LIGHT_GREYISH_BLUE.getColor(), FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2, FontSizeAdjust.field14488
+         ResourceRegistry.DefaultClientFont, (float)(this.getWidth() / 2), 38.0F, "Add Login", ClientColors.LIGHT_GREYISH_BLUE.getColor(), FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2, FontSizeAdjust.field14488
       );
       RenderUtil.drawString(
          ResourceRegistry.DefaultClientFont,
-         (float)(this.getWidthA() / 2),
+         (float)(this.getWidth() / 2),
          58.0F,
          this.status,
          ClientColors.LIGHT_GREYISH_BLUE.getColor(),

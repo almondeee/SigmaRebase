@@ -74,20 +74,20 @@ public class ClassicMainScreenGroup extends CustomGuiScreen {
       int var7 = -6;
       int var8 = 122 * var6 + var6 * var7;
       if (var1 < var6) {
-         return this.getWidthA() / 2 - var8 / 2 + var1 * 122 + var1 * var7 - 12;
+         return this.getWidth() / 2 - var8 / 2 + var1 * 122 + var1 * var7 - 12;
       } else {
          var1 -= var6;
          var6 = 3;
          var7 = 6;
          var8 = 122 * var6 + var6 * var7;
-         return this.getWidthA() / 2 - var8 / 2 + var1 * 122 + var1 * var7 - 12;
+         return this.getWidth() / 2 - var8 / 2 + var1 * 122 + var1 * var7 - 12;
       }
    }
 
    @Override
    public void draw(float partialTicks) {
       this.method13225();
-      RenderUtil.drawImage((float)(this.xA + (this.getWidthA() - 300) / 2), (float)(this.yA + 30), 300.0F, 97.0F, Resources.big);
+      RenderUtil.drawImage((float)(this.x + (this.getWidth() - 300) / 2), (float)(this.y + 30), 300.0F, 97.0F, Resources.big);
       super.draw(partialTicks);
    }
 }

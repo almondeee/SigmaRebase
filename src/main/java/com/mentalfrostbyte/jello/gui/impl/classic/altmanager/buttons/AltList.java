@@ -16,17 +16,17 @@ public class AltList extends ScrollableContentPanel {
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawRoundedRect(
-         (float)this.xA,
-         (float)this.yA,
-         (float)(this.xA + this.widthA),
-         (float)(this.yA + this.heightA),
+         (float)this.x,
+         (float)this.y,
+         (float)(this.x + this.width),
+         (float)(this.y + this.height),
          RenderUtil2.applyAlpha(ClientColors.MID_GREY.getColor(), 0.35F)
       );
       RenderUtil.method11429(
-         (float)this.xA,
-         (float)this.yA,
-         (float)(this.xA + this.widthA),
-         (float)(this.yA + this.heightA),
+         (float)this.x,
+         (float)this.y,
+         (float)(this.x + this.width),
+         (float)(this.y + this.height),
          2,
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.14F)
       );

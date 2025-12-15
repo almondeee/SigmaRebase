@@ -28,7 +28,7 @@ public class EditAltScreen extends Screen {
       this.setListening(false);
       int var4 = 400;
       int var5 = 114;
-      int var6 = (this.getWidthA() - var4) / 2;
+      int var6 = (this.getWidth() - var4) / 2;
       this.addToList(this.field21027 = new Input(this, "username", var6, var5, var4, 45, Input.field20741, "", "New name", ResourceRegistry.DefaultClientFont));
       var5 += 80;
       this.addToList(this.field21028 = new Input(this, "password", var6, var5, var4, 45, Input.field20741, "", "New password", ResourceRegistry.DefaultClientFont));
@@ -55,15 +55,15 @@ public class EditAltScreen extends Screen {
 
    @Override
    public void draw(float partialTicks) {
-      RenderUtil.drawImage(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), Resources.mainmenubackground);
-      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.PALE_RED.getColor(), 0.1F));
-      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidthA(), (float)this.getHeightA(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.95F));
+      RenderUtil.drawImage(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), Resources.mainmenubackground);
+      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), RenderUtil2.applyAlpha(ClientColors.PALE_RED.getColor(), 0.1F));
+      RenderUtil.drawRoundedRect(0.0F, 0.0F, (float)this.getWidth(), (float)this.getHeight(), RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.95F));
       RenderUtil.drawString(
-         ResourceRegistry.DefaultClientFont, (float)(this.getWidthA() / 2), 20.0F, "Edit Alt", ClientColors.LIGHT_GREYISH_BLUE.getColor(), FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2, FontSizeAdjust.field14488
+         ResourceRegistry.DefaultClientFont, (float)(this.getWidth() / 2), 20.0F, "Edit Alt", ClientColors.LIGHT_GREYISH_BLUE.getColor(), FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2, FontSizeAdjust.field14488
       );
       RenderUtil.drawString(
          ResourceRegistry.DefaultClientFont,
-         (float)(this.getWidthA() / 2),
+         (float)(this.getWidth() / 2),
          40.0F,
          this.field21032,
          ClientColors.LIGHT_GREYISH_BLUE.getColor(),

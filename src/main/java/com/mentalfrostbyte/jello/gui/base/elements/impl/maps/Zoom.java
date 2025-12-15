@@ -33,10 +33,10 @@ public class Zoom extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         if (this.field20909 && this.field20686 <= 0) {
-            if (newWidth >= this.method13272() + this.getHeightA() / 2) {
+            if (mouseY >= this.method13272() + this.getHeight() / 2) {
                 ((MapFrame) this.parent).method13076(false);
                 this.field20685.add(new Class7086(this, false));
             } else {
@@ -74,7 +74,7 @@ public class Zoom extends Element {
 
         try {
             if (this.field20687) {
-                BufferedImage var6 = ImageUtil.method35039(this.method13271(), this.method13272(), this.widthA, this.heightA, 3, 10, true);
+                BufferedImage var6 = ImageUtil.method35039(this.method13271(), this.method13272(), this.width, this.height, 3, 10, true);
                 this.field20684 = RenderUtil2.calculateAverageColor(new Color(var6.getRGB(6, 7)), new Color(var6.getRGB(6, 22))).getRGB();
                 this.field20684 = RenderUtil2.shiftTowardsBlack(this.field20684, 0.25F);
                 if (this.field20688 != null) {
@@ -87,45 +87,45 @@ public class Zoom extends Element {
 
             if (this.field20688 != null) {
                 RenderUtil.drawRoundedRect(
-                        (float) (this.xA + 8),
-                        (float) (this.yA + 8),
-                        (float) (this.widthA - 8 * 2),
-                        (float) (this.heightA - 8 * 2),
+                        (float) (this.x + 8),
+                        (float) (this.y + 8),
+                        (float) (this.width - 8 * 2),
+                        (float) (this.height - 8 * 2),
                         20.0F,
                         partialTicks * 0.5F
                 );
                 RenderUtil.drawRoundedRect(
-                        (float) (this.xA + 8),
-                        (float) (this.yA + 8),
-                        (float) (this.widthA - 8 * 2),
-                        (float) (this.heightA - 8 * 2),
+                        (float) (this.x + 8),
+                        (float) (this.y + 8),
+                        (float) (this.width - 8 * 2),
+                        (float) (this.height - 8 * 2),
                         14.0F,
                         partialTicks
                 );
                 GL11.glPushMatrix();
                 RenderUtil.initStencilBuffer();
                 RenderUtil.drawRoundedButton(
-                        (float) this.xA, (float) this.yA, (float) this.widthA, (float) this.heightA, 8.0F, ClientColors.LIGHT_GREYISH_BLUE.getColor()
+                        (float) this.x, (float) this.y, (float) this.width, (float) this.height, 8.0F, ClientColors.LIGHT_GREYISH_BLUE.getColor()
                 );
                 RenderUtil.configureStencilTest();
                 RenderUtil.drawTexture(
-                        (float) (this.xA - 1),
-                        (float) (this.yA - 1),
-                        (float) (this.widthA + 2),
-                        (float) (this.heightA + 2),
+                        (float) (this.x - 1),
+                        (float) (this.y - 1),
+                        (float) (this.width + 2),
+                        (float) (this.height + 2),
                         this.field20688,
                         ClientColors.LIGHT_GREYISH_BLUE.getColor()
                 );
 
                 while (var4.hasNext()) {
                     Class7086 var11 = (Class7086) var4.next();
-                    int var7 = this.heightA / 2;
-                    int var8 = this.yA + (var11.field30491 ? 0 : var7);
-                    int var9 = this.widthA / 2;
-                    RenderUtil.startScissor(this.xA, var8, this.xA + this.widthA, var8 + var7, true);
+                    int var7 = this.height / 2;
+                    int var8 = this.y + (var11.field30491 ? 0 : var7);
+                    int var9 = this.width / 2;
+                    RenderUtil.startScissor(this.x, var8, this.x + this.width, var8 + var7, true);
                     RenderUtil.drawFilledArc(
-                            (float) (this.xA + var9),
-                            (float) (var8 + this.heightA / 4),
+                            (float) (this.x + var9),
+                            (float) (var8 + this.height / 4),
                             (float) (var9 * 2 - 4) * var11.field30490 + 4.0F,
                             RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), (1.0F - var11.field30490 * (0.5F + var11.field30490 * 0.5F)) * 0.4F)
                     );
@@ -138,23 +138,23 @@ public class Zoom extends Element {
 
                 RenderUtil.restorePreviousStencilBuffer();
                 RenderUtil.drawRoundedRect(
-                        (float) this.xA,
-                        (float) this.yA,
-                        (float) this.widthA,
-                        (float) this.heightA,
+                        (float) this.x,
+                        (float) this.y,
+                        (float) this.width,
+                        (float) this.height,
                         6.0F,
                         RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.3F)
                 );
                 GL11.glPopMatrix();
                 RenderUtil.drawString(
                         ResourceRegistry.JelloMediumFont20,
-                        (float) (this.xA + 14),
-                        (float) (this.yA + 8),
+                        (float) (this.x + 14),
+                        (float) (this.y + 8),
                         "+",
                         RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.8F)
                 );
                 RenderUtil.drawRoundedRect2(
-                        (float) (this.xA + 16), (float) (this.yA + 65), 8.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.8F)
+                        (float) (this.x + 16), (float) (this.y + 65), 8.0F, 2.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.8F)
                 );
             }
         } catch (IOException var10) {

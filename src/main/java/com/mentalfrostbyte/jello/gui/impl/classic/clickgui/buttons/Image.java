@@ -23,8 +23,8 @@ public class Image extends Element {
    public void draw(float partialTicks) {
       GL11.glAlphaFunc(518, 0.1F);
       RenderUtil.drawImage(
-         (float)(this.xA + (this.widthA - 64) / 2),
-         (float)(this.yA + 10),
+         (float)(this.x + (this.width - 64) / 2),
+         (float)(this.y + 10),
          64.0F,
          64.0F,
          !this.method13298() ? this.field20633 : this.field20634,
@@ -33,8 +33,8 @@ public class Image extends Element {
 
       RenderUtil.drawString(
               Resources.regular25,
-         (float)(this.xA + (this.getWidthA() - Resources.regular25.getWidth(this.text)) / 2),
-         (float)(this.yA + this.getHeightA() - 50),
+         (float)(this.x + (this.getWidth() - Resources.regular25.getWidth(this.text)) / 2),
+         (float)(this.y + this.getHeight() - 50),
          this.text,
          !this.method13298() ? -14869219 : -319475
       );

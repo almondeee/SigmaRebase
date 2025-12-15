@@ -33,8 +33,8 @@ public class SwitchScreen extends Screen {
         int smallWidth = 264;
         int bigHeight = 93;
         int smallHeight = 61;
-        int x = (this.getWidthA() - bigWidth) / 2;
-        int y = (this.getHeightA() - bigHeight) / 2 + 14;
+        int x = (this.getWidth() - bigWidth) / 2;
+        int y = (this.getHeight() - bigHeight) / 2 + 14;
 
         FadedImage none;
         FadedImage jello;
@@ -59,7 +59,7 @@ public class SwitchScreen extends Screen {
             Minecraft.getInstance().displayGuiScreen(new MainMenuHolder());
         });
 
-        CustomGuiScreen socialButtonPanel = new CustomGuiScreen(this, "socialbtns", (this.getWidthA() - 174) / 2, this.getHeightA() - 70, 174, 34);
+        CustomGuiScreen socialButtonPanel = new CustomGuiScreen(this, "socialbtns", (this.getWidth() - 174) / 2, this.getHeight() - 70, 174, 34);
         Image youtubeBtn;
 
         socialButtonPanel.addToList(youtubeBtn = new Image(socialButtonPanel, "youtube", 0, 0, 65, 34, Resources.youtubePNG));
@@ -95,12 +95,12 @@ public class SwitchScreen extends Screen {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        float var5 = (float) newHeight - field21070;
-        float var6 = (float) newWidth - field21071;
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        float var5 = (float) mouseX - field21070;
+        float var6 = (float) mouseY - field21071;
         field21070 += var5 * 0.09F;
         field21071 += var6 * 0.09F;
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override

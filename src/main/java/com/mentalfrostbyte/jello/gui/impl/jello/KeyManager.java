@@ -18,7 +18,7 @@ public class KeyManager {
 
     public KeyManager() {
         EventBus.register(this);
-        if (FileUtil.freshConfig) {
+        if (FileUtil.fresh) {
             this.boundables.add(new Bound(344, ClickGuiHolder.class));
         }
     }

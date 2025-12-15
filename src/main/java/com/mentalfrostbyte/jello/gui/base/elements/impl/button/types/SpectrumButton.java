@@ -21,13 +21,13 @@ public class SpectrumButton extends Element {
         this.field20683.changeDirection(!this.method13298() ? Animation.Direction.BACKWARDS : Animation.Direction.FORWARDS);
         partialTicks *= 0.09F + 0.25F * this.field20683.calcPercent() + (this.field20682 ? 0.0F : 0.2F);
         RenderUtil.drawRoundedRect2(
-                (float) (this.xA + 10), (float) (this.yA + 16), 5.0F, 14.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
+                (float) (this.x + 10), (float) (this.y + 16), 5.0F, 14.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
         );
         RenderUtil.drawRoundedRect2(
-                (float) (this.xA + 17), (float) (this.yA + 10), 5.0F, 20.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
+                (float) (this.x + 17), (float) (this.y + 10), 5.0F, 20.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
         );
         RenderUtil.drawRoundedRect2(
-                (float) (this.xA + 24), (float) (this.yA + 20), 5.0F, 10.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
+                (float) (this.x + 24), (float) (this.y + 20), 5.0F, 10.0F, RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
         );
         super.draw(partialTicks);
     }

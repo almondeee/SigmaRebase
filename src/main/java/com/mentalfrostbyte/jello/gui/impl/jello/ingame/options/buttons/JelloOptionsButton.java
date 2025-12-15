@@ -20,13 +20,13 @@ public class JelloOptionsButton extends IngameMenuScreen {
         super(true);
         if (field4622.before(new Date(System.currentTimeMillis() - 3000L))) {
             field4622 = new Date();
-            Client.logger.info("Saving profiles...");
+            Client.LOGGER.info("Saving profiles...");
 
             try {
                 Client.getInstance().moduleManager.getConfigurationManager().saveAndReplaceConfigs();
                 Client.getInstance().saveClientData();
             } catch (IOException var4) {
-                Client.logger.warn("Unable to save mod profiles...", var4);
+                Client.LOGGER.warn("Unable to save mod profiles...", var4);
             }
         }
     }

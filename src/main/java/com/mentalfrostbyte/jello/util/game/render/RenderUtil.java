@@ -709,8 +709,8 @@ public class RenderUtil implements MinecraftUtil {
         GL11.glPopMatrix();
     }
 
-    public static void method11415(CustomGuiScreen var0) {
-        startScissor(var0.getXA(), var0.getYA(), var0.getWidthA() + var0.getXA(), var0.getHeightA() + var0.getYA(), true);
+    public static void startScissor(CustomGuiScreen var0) {
+        startScissor(var0.getX(), var0.getY(), var0.getWidth() + var0.getX(), var0.getHeight() + var0.getY(), true);
     }
 
     public static void drawRoundedButton(float var0, float var1, float var2, float var3, float var4, int color) {
@@ -842,7 +842,7 @@ public class RenderUtil implements MinecraftUtil {
     }
 
     public static Rectangle method11414(CustomGuiScreen var0) {
-        return new Rectangle(var0.getXA(), var0.getYA(), var0.getWidthA(), var0.getHeightA());
+        return new Rectangle(var0.getX(), var0.getY(), var0.getWidth(), var0.getHeight());
     }
 
     public static void method11457(float var0, float var1, float var2, float var3, int var4, float var5, float var6, float var7, float var8) {

@@ -45,24 +45,24 @@ public class Slider extends Element {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      int var5 = this.getHeightO() - this.method13271();
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      int var5 = this.getMouseX() - this.method13271();
       if (this.field21364) {
-         this.method13698((float)var5 / (float)this.getWidthA());
+         this.method13698((float)var5 / (float)this.getWidth());
       }
 
-      super.updatePanelDimensions(newHeight, newWidth);
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
    public void draw(float partialTicks) {
-      RenderUtil.drawRoundedRect2((float)(this.xA + this.widthA), (float)(this.yA + 1), 1.0F, (float)(this.heightA - 2), -8882056);
-      RenderUtil.drawRoundedRect2((float)(this.xA + 1), (float)this.yA, (float)(this.widthA - 1), (float)this.heightA, -8882056);
-      RenderUtil.drawRoundedRect2((float)this.xA, (float)(this.yA + 1), 1.0F, (float)(this.heightA - 2), -6250336);
+      RenderUtil.drawRoundedRect2((float)(this.x + this.width), (float)(this.y + 1), 1.0F, (float)(this.height - 2), -8882056);
+      RenderUtil.drawRoundedRect2((float)(this.x + 1), (float)this.y, (float)(this.width - 1), (float)this.height, -8882056);
+      RenderUtil.drawRoundedRect2((float)this.x, (float)(this.y + 1), 1.0F, (float)(this.height - 2), -6250336);
       RenderUtil.drawRoundedRect2(
-         (float)(this.xA + 1), (float)this.yA, (float)this.widthA * this.field21363 - 1.0F, (float)this.heightA, -6250336
+         (float)(this.x + 1), (float)this.y, (float)this.width * this.field21363 - 1.0F, (float)this.height, -6250336
       );
-      this.method13696(Math.round((float)this.xA + (float)this.widthA * this.field21363) - 2, this.yA - 3);
+      this.method13696(Math.round((float)this.x + (float)this.width * this.field21363) - 2, this.y - 3);
       super.draw(partialTicks);
    }
 

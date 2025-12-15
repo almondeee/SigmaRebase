@@ -33,17 +33,17 @@ public class VolumeSlider extends Element {
     @Override
     public void draw(float partialTicks) {
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) this.yA,
-                (float) (this.xA + this.widthA),
-                (float) this.yA + (float) this.heightA * this.volume,
+                (float) this.x,
+                (float) this.y,
+                (float) (this.x + this.width),
+                (float) this.y + (float) this.height * this.volume,
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.2F)
         );
         RenderUtil.drawRoundedRect(
-                (float) this.xA,
-                (float) (this.yA + this.heightA),
-                (float) (this.xA + this.widthA),
-                (float) this.yA + (float) this.heightA * this.volume,
+                (float) this.x,
+                (float) (this.y + this.height),
+                (float) (this.x + this.width),
+                (float) this.y + (float) this.height * this.volume,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.2F)
         );
         super.draw(partialTicks);
@@ -51,7 +51,7 @@ public class VolumeSlider extends Element {
 
     @Override
     public boolean onClick(int mouseX, int mouseY, int mouseButton) {
-        if (!super.onClick(this.xA, this.yA, mouseButton)) {
+        if (!super.onClick(this.x, this.y, mouseButton)) {
             this.field21373 = true;
             return false;
         } else {
@@ -60,14 +60,14 @@ public class VolumeSlider extends Element {
     }
 
     public float method13706(int var1) {
-        return (float) (var1 - this.method13272()) / (float) this.heightA;
+        return (float) (var1 - this.method13272()) / (float) this.height;
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
         if (this.field21373) {
-            this.setVolume(this.method13706(newWidth));
+            this.setVolume(this.method13706(mouseY));
             this.method13710();
         }
     }
@@ -79,13 +79,13 @@ public class VolumeSlider extends Element {
     }
 
     @Override
-    public void voidEvent3(float scroll) {
+    public void onScroll(float scroll) {
         if (this.method13298()) {
             this.setVolume(this.getVolume() - scroll / 2000.0F);
             this.method13710();
         }
 
-        super.voidEvent3(scroll);
+        super.onScroll(scroll);
     }
 
     public float getVolume() {

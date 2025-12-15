@@ -62,12 +62,12 @@ public class Head extends AnimatedIconPanel {
             RenderHelper.enableStandardItemLighting();
             RenderSystem.disableDepthTest();
             RenderSystem.pushMatrix();
-            RenderSystem.translatef((float) (this.xA + this.widthA / 2), (float) (this.yA - this.heightA / 4), -200.0F);
+            RenderSystem.translatef((float) (this.x + this.width / 2), (float) (this.y - this.height / 4), -200.0F);
             GL11.glColor3f(1.0F, 1.0F, 1.0F);
             RenderSystem.rotatef(180.0F, 1.0F, 0.0F, 0.0F);
             RenderSystem.rotatef(180.0F, 0.0F, 0.0F, 1.0F);
-            float var4 = (float) (this.mc.getMainWindow().getHeight() - this.getWidthO() - this.mc.getMainWindow().getHeight() / 2);
-            float var5 = (float) (this.mc.getMainWindow().getWidth() - this.getHeightO() - this.mc.getMainWindow().getWidth() / 2);
+            float var4 = (float) (this.mc.getMainWindow().getHeight() - this.getMouseY() - this.mc.getMainWindow().getHeight() / 2);
+            float var5 = (float) (this.mc.getMainWindow().getWidth() - this.getMouseX() - this.mc.getMainWindow().getWidth() / 2);
             float var6 = (float) Math.atan(var4 / (float) (this.mc.getMainWindow().getHeight() / 2)) * 20.0F;
             float var7 = (float) Math.atan(var5 / (float) (this.mc.getMainWindow().getWidth() / 2)) * 20.0F;
             RenderSystem.rotatef(-var6, 1.0F, 0.0F, 0.0F);

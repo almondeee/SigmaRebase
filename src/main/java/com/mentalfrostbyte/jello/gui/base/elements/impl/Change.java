@@ -17,7 +17,7 @@ public class Change extends CustomGuiScreen {
 
     public Change(CustomGuiScreen var1, String var2, JsonObject var3) throws JsonParseException {
         super(var1, var2);
-        this.setWidthA(this.getParent().getWidthA());
+        this.setWidth(this.getParent().getWidth());
         int var6 = 0;
         if (var3.has("deprecated")) {
             GL11.glTexEnvi(8960, 8704, 260);
@@ -47,7 +47,7 @@ public class Change extends CustomGuiScreen {
         }
 
         var6 += 75;
-        this.setHeightA(var6);
+        this.setHeight(var6);
     }
 
     @Override

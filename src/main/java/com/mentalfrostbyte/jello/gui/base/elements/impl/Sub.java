@@ -38,8 +38,8 @@ public class Sub extends Element {
                value,
                0,
                0,
-               this.getWidthA(),
-               this.getHeightA(),
+               this.getWidth(),
+               this.getHeight(),
                new ColorHelper(
                   ClientColors.LIGHT_GREYISH_BLUE.getColor(),
                   -1381654,
@@ -63,36 +63,36 @@ public class Sub extends Element {
    }
 
    private int method13635() {
-      return this.getHeightA() * (this.values.size() - 1);
+      return this.getHeight() * (this.values.size() - 1);
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawRoundedRect(
-         (float)this.getXA(),
-         (float)this.getYA(),
-         (float)(this.getXA() + this.getWidthA()),
-         (float)(this.getYA() + this.getHeightA() + this.method13635()),
+         (float)this.getX(),
+         (float)this.getY(),
+         (float)(this.getX() + this.getWidth()),
+         (float)(this.getY() + this.getHeight() + this.method13635()),
          RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks)
       );
       RenderUtil.drawRoundedRect(
-         (float)this.getXA(),
-         (float)this.getYA(),
-         (float)this.getWidthA(),
-         (float)(this.getHeightA() + this.method13635() - 1),
+         (float)this.getX(),
+         (float)this.getY(),
+         (float)this.getWidth(),
+         (float)(this.getHeight() + this.method13635() - 1),
          6.0F,
          partialTicks * 0.1F
       );
       RenderUtil.drawRoundedRect(
-         (float)this.getXA(),
-         (float)this.getYA(),
-         (float)this.getWidthA(),
-         (float)(this.getHeightA() + this.method13635() - 1),
+         (float)this.getX(),
+         (float)this.getY(),
+         (float)this.getWidth(),
+         (float)(this.getHeight() + this.method13635() - 1),
          20.0F,
          partialTicks * 0.2F
       );
@@ -137,9 +137,9 @@ public class Sub extends Element {
    }
 
    @Override
-   public boolean method13114(int var1, int var2) {
-      var1 -= this.method13271();
-      var2 -= this.method13272();
-      return var1 >= -10 && var1 <= this.getWidthA() && var2 >= 0 && var2 <= this.getHeightA() + this.method13635();
+   public boolean method13114(int mouseX, int mouseY) {
+      mouseX -= this.method13271();
+      mouseY -= this.method13272();
+      return mouseX >= -10 && mouseX <= this.getWidth() && mouseY >= 0 && mouseY <= this.getHeight() + this.method13635();
    }
 }

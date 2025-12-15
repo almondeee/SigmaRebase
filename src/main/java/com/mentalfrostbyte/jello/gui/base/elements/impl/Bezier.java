@@ -33,23 +33,23 @@ public class Bezier extends Element {
 
    public float[] method13040() {
       int var3 = this.field20610;
-      float var4 = (float)(this.widthA - var3 * 2);
-      float var5 = (float)(this.field20608.getXA() - var3) / var4;
-      float var6 = 1.0F - (float)(this.field20608.getYA() - var3) / var4;
-      float var7 = (float)(this.field20609.getXA() - var3) / var4;
-      float var8 = 1.0F - (float)(this.field20609.getYA() - var3) / var4;
+      float var4 = (float)(this.width - var3 * 2);
+      float var5 = (float)(this.field20608.getX() - var3) / var4;
+      float var6 = 1.0F - (float)(this.field20608.getY() - var3) / var4;
+      float var7 = (float)(this.field20609.getX() - var3) / var4;
+      float var8 = 1.0F - (float)(this.field20609.getY() - var3) / var4;
       return new float[]{var5, var6, var7, var8};
    }
 
    public void method13041(float var1, float var2, float var3, float var4) {
-      float var7 = (float)(this.widthA - this.field20610 * 2);
+      float var7 = (float)(this.width - this.field20610 * 2);
       this.field20608.method13144((float)this.field20610 + var7 * var1, (float)this.field20610 + var7 * (1.0F - var2));
       this.field20609.method13144((float)this.field20610 + var7 * var3, (float)this.field20610 + var7 * (1.0F - var4));
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 
    @Override
@@ -61,16 +61,16 @@ public class Bezier extends Element {
 
       float[] var4 = this.method13040();
       int var5 = this.field20610;
-      float var6 = (float)(this.widthA - var5 * 2);
+      float var6 = (float)(this.width - var5 * 2);
       float var7 = var4[0];
       float var8 = var4[1];
       float var9 = var4[2];
       float var10 = var4[3];
       RenderUtil.drawRoundedRect(
-         (float)(this.xA + var5),
-         (float)(this.yA + var5),
-         (float)(this.widthA - var5 * 2),
-         (float)(this.heightA - var5 * 2),
+         (float)(this.x + var5),
+         (float)(this.y + var5),
+         (float)(this.width - var5 * 2),
+         (float)(this.height - var5 * 2),
          3.0F,
          RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.05F * partialTicks)
       );
@@ -82,14 +82,14 @@ public class Bezier extends Element {
       SmoothInterpolator var12 = new SmoothInterpolator(1.0F / var6 * 2.0F);
       double var13 = var12.calculateInterpolatedValue(var11, Math.min(0.8F, this.field20611.calcPercent()) * 1.25F);
       RenderUtil.drawCircle(
-         (float)((double)this.xA + (double)var6 * var13 + (double)var5),
-         (float)(this.yA - var5 / 2 + this.heightA),
+         (float)((double)this.x + (double)var6 * var13 + (double)var5),
+         (float)(this.y - var5 / 2 + this.height),
          14.0F,
               RenderUtil2.applyAlpha(ClientColors.DARK_BLUE_GREY.getColor(), partialTicks)
       );
       List<Vector2d> var15 = var12.generateInterpolatedPoints(var11);
       GL11.glPushMatrix();
-      GL11.glTranslatef((float)(this.xA + var5), (float)(this.yA + var5), 0.0F);
+      GL11.glTranslatef((float)(this.x + var5), (float)(this.y + var5), 0.0F);
       GL11.glLineWidth(1.0F);
       GL11.glColor4d(0.0, 0.0, 0.0, 0.6F * partialTicks);
       GL11.glAlphaFunc(519, 0.0F);
@@ -110,11 +110,11 @@ public class Bezier extends Element {
       GL11.glColor4d(0.0, 0.2F, 0.4F, 0.2F);
       GL11.glBegin(3);
       GL11.glVertex2f(0.0F, var6);
-      GL11.glVertex2f((float)(this.field20608.getXA() - var5 + 5), (float)(this.field20608.getYA() - var5 + 5));
+      GL11.glVertex2f((float)(this.field20608.getX() - var5 + 5), (float)(this.field20608.getY() - var5 + 5));
       GL11.glEnd();
       GL11.glBegin(3);
       GL11.glVertex2f(var6, 0.0F);
-      GL11.glVertex2f((float)(this.field20609.getXA() - var5 + 5), (float)(this.field20609.getYA() - var5 + 5));
+      GL11.glVertex2f((float)(this.field20609.getX() - var5 + 5), (float)(this.field20609.getY() - var5 + 5));
       GL11.glEnd();
       RenderSystem.disableBlend();
       RenderSystem.enableTexture();

@@ -17,34 +17,34 @@ public class BezierButton extends AnimatedIconPanel {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
-      int var5 = this.field20737.getWidthA() - this.field20737.field20610;
-      int var6 = this.field20737.getHeightA() - this.getHeightA();
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
+      int var5 = this.field20737.getWidth() - this.field20737.field20610;
+      int var6 = this.field20737.getHeight() - this.getHeight();
       int var7 = this.field20737.field20610;
-      if (this.getXA() > var5) {
-         this.setXA(var5);
+      if (this.getX() > var5) {
+         this.setX(var5);
       }
 
-      if (this.getYA() > var6) {
-         this.setYA(var6);
+      if (this.getY() > var6) {
+         this.setY(var6);
       }
 
-      if (this.getXA() < var7) {
-         this.setXA(var7);
+      if (this.getX() < var7) {
+         this.setX(var7);
       }
    }
 
    public void method13144(float var1, float var2) {
-      this.xA = (int)var1;
-      this.yA = (int)var2;
+      this.x = (int)var1;
+      this.y = (int)var2;
    }
 
    @Override
    public void draw(float partialTicks) {
       RenderUtil.drawCircle(
-         (float)(this.xA + 5),
-         (float)(this.yA + 5),
+         (float)(this.x + 5),
+         (float)(this.y + 5),
          10.0F,
          RenderUtil2.applyAlpha(!this.method13216() ? ClientColors.DARK_GREEN.getColor() : ClientColors.DARK_BLUE_GREY.getColor(), partialTicks)
       );

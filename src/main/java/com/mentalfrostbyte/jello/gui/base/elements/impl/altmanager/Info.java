@@ -45,7 +45,7 @@ public class Info extends AnimatedIconPanel {
             for (com.mentalfrostbyte.jello.managers.util.account.microsoft.Ban var9 : var11) {
                 if (var9.getServer() != null && var9.getServer().getBase64EncodedIconData() != null) {
                     Ban var10 = new Ban(
-                            this, var11.get(var13).getServerIP(), 40, 100 + var13 * (var14 + var7), this.widthA - 90, var14, var9
+                            this, var11.get(var13).getServerIP(), 40, 100 + var13 * (var14 + var7), this.width - 90, var14, var9
                     );
                     this.addToList(var10);
                     this.field20814.add(var10);
@@ -53,7 +53,7 @@ public class Info extends AnimatedIconPanel {
                 }
             }
 
-            this.setHeightA(var13 * (var14 + var7) + 116);
+            this.setHeight(var13 * (var14 + var7) + 116);
         }
     }
 
@@ -63,8 +63,8 @@ public class Info extends AnimatedIconPanel {
         this.field20815 = (float) ((double) this.field20815 + (this.isSelfVisible() ? 0.33 : -0.33));
         this.field20815 = Math.min(1.0F, Math.max(0.0F, this.field20815));
         if (this.field20813 == null) {
-            int var4 = this.widthA - 30;
-            int var5 = this.xA + 5;
+            int var4 = this.width - 30;
+            int var5 = this.x + 5;
             RenderUtil.drawImage(
                     (float) var5,
                     (float) ((Minecraft.getInstance().getMainWindow().getHeight() - var4 * 342 / 460) / 2 - 60),
@@ -78,8 +78,8 @@ public class Info extends AnimatedIconPanel {
             int var7 = RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.7F);
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont36,
-                    (float) (this.xA + (this.widthA - ResourceRegistry.JelloLightFont36.getWidth(this.field20813.getKnownName())) / 2),
-                    (float) this.yA,
+                    (float) (this.x + (this.width - ResourceRegistry.JelloLightFont36.getWidth(this.field20813.getKnownName())) / 2),
+                    (float) this.y,
                     this.field20813.getKnownName(),
                     var7
             );

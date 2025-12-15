@@ -41,14 +41,14 @@ public class JelloOptionsGroup extends CustomGuiScreen {
 
    @Override
    public void draw(float partialTicks) {
-      this.method13463(this.xA + (this.getWidthA() - 202) / 2, this.yA + 10, partialTicks);
+      this.method13463(this.x + (this.getWidth() - 202) / 2, this.y + 10, partialTicks);
       StringBuilder var10000 = new StringBuilder().append("You're currently using Sigma ");
       Client.getInstance();
       String var4 = var10000.append(Client.FULL_VERSION).toString();
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont20,
-         (float)(this.xA + (this.getWidthA() - ResourceRegistry.JelloLightFont20.getWidth(var4)) / 2),
-         (float)(this.yA + 70),
+         (float)(this.x + (this.getWidth() - ResourceRegistry.JelloLightFont20.getWidth(var4)) / 2),
+         (float)(this.y + 70),
          var4,
          RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.4F * partialTicks)
       );
@@ -57,32 +57,32 @@ public class JelloOptionsGroup extends CustomGuiScreen {
          + " Key";
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont20,
-         (float)(this.getXA() + (this.getWidthA() - ResourceRegistry.JelloLightFont20.getWidth(var5)) / 2),
-         (float)(this.getYA() + this.getHeightA() - 180),
+         (float)(this.getX() + (this.getWidth() - ResourceRegistry.JelloLightFont20.getWidth(var5)) / 2),
+         (float)(this.getY() + this.getHeight() - 180),
          var5,
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.6F * partialTicks)
       );
       String var6 = "Configure all your keybinds in the keybind manager!";
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont14,
-         (float)(this.getXA() + (this.getWidthA() - ResourceRegistry.JelloLightFont14.getWidth(var6)) / 2),
-         (float)(this.getYA() + this.getHeightA() - 150),
+         (float)(this.getX() + (this.getWidth() - ResourceRegistry.JelloLightFont14.getWidth(var6)) / 2),
+         (float)(this.getY() + this.getHeight() - 150),
          var6,
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.4F * partialTicks)
       );
       String var7 = "GUI Blur: ";
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont20,
-         (float)(this.getXA() + (this.getWidthA() - ResourceRegistry.JelloLightFont20.getWidth(var7)) / 2 - 114),
-         (float)(this.getYA() + this.getHeightA() - 221),
+         (float)(this.getX() + (this.getWidth() - ResourceRegistry.JelloLightFont20.getWidth(var7)) / 2 - 114),
+         (float)(this.getY() + this.getHeight() - 221),
          var7,
          RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.5F * partialTicks)
       );
       String var8 = "GPU Accelerated: ";
       RenderUtil.drawString(
          ResourceRegistry.JelloLightFont20,
-         (float)(this.getXA() + (this.getWidthA() - ResourceRegistry.JelloLightFont20.getWidth(var8)) / 2 + 52),
-         (float)(this.getYA() + this.getHeightA() - 221),
+         (float)(this.getX() + (this.getWidth() - ResourceRegistry.JelloLightFont20.getWidth(var8)) / 2 + 52),
+         (float)(this.getY() + this.getHeight() - 221),
          var8,
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.5F * partialTicks)
       );

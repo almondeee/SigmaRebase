@@ -137,7 +137,7 @@ public class Resources {
             String extension = filePath.substring(filePath.lastIndexOf(".") + 1).toUpperCase();
             return loadTexture(filePath, extension);
         } catch (Exception e) {
-            Client.logger.warn("Unable to load texture {}. Please make sure it is a valid path and has a valid extension.", filePath);
+            Client.LOGGER.warn("Unable to load texture {}. Please make sure it is a valid path and has a valid extension.", filePath);
             throw e;
         }
     }

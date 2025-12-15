@@ -96,7 +96,7 @@ public class ViaLoadingBase {
 
         if (this.onProtocolReload != null) this.onProtocolReload.accept(targetProtocolVersion);
 
-        Client.logger.info("ViaLoadingBase has reloaded to {} ({})", targetProtocolVersion.getName(), targetProtocolVersion.getVersion());
+        Client.LOGGER.info("ViaLoadingBase has reloaded to {} ({})", targetProtocolVersion.getName(), targetProtocolVersion.getVersion());
     }
 
     public void initPlatform() {

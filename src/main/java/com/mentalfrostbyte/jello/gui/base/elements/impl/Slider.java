@@ -48,29 +48,29 @@ public class Slider extends Element {
     }
 
     private void method13136() {
-        this.addToList(this.field20734 = new SliderButton(this, this.getHeightA()));
+        this.addToList(this.field20734 = new SliderButton(this, this.getHeight()));
         this.field20732 = -1.0F;
         this.field20735 = new Animation(114, 114, Animation.Direction.BACKWARDS);
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
         this.field20735
                 .changeDirection(
                         !this.method13298() && !this.field20734.method13298() && !this.method13212() && !this.field20734.method13216()
                                 ? Animation.Direction.BACKWARDS
                                 : Animation.Direction.FORWARDS
                 );
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
     public void draw(float partialTicks) {
-        int var6 = this.getHeightA() / 4;
-        int var7 = this.getWidthA() - this.field20734.getWidthA() / 2 - 3;
-        int var8 = this.getXA() + this.field20734.getWidthA() / 4 + 3;
-        int var9 = this.getYA() + this.getHeightA() / 2 - var6 / 2;
-        int var10 = this.field20734.getXA() + this.field20734.getWidthA() / 2 - 6;
+        int var6 = this.getHeight() / 4;
+        int var7 = this.getWidth() - this.field20734.getWidth() / 2 - 3;
+        int var8 = this.getX() + this.field20734.getWidth() / 4 + 3;
+        int var9 = this.getY() + this.getHeight() / 2 - var6 / 2;
+        int var10 = this.field20734.getX() + this.field20734.getWidth() / 2 - 6;
         RenderUtil.drawRoundedRect(
                 (float) var8, (float) var9, (float) var10, (float) var6, (float) (var6 / 2), RenderUtil2.applyAlpha(this.textColor.getPrimaryColor(), partialTicks * partialTicks * partialTicks)
         );
@@ -83,7 +83,7 @@ public class Slider extends Element {
                 RenderUtil2.applyAlpha(RenderUtil2.adjustColorTowardsWhite(this.textColor.getPrimaryColor(), 0.8F), partialTicks * partialTicks * partialTicks)
         );
         if (this.getText() != null) {
-            int var11 = Math.max(0, 9 - this.field20734.getXA());
+            int var11 = Math.max(0, 9 - this.field20734.getX());
             RenderUtil.drawString(
                     ResourceRegistry.JelloLightFont14,
                     (float) (var8 - ResourceRegistry.JelloLightFont14.getWidth(this.getText()) - 10 - var11),
@@ -122,7 +122,7 @@ public class Slider extends Element {
         var1 = Math.min(Math.max(var1, 0.0F), 1.0F);
         float var5 = this.field20733;
         this.field20733 = var1;
-        this.field20734.setXA((int) ((float) (this.getWidthA() - this.field20734.getWidthA()) * var1 + 0.5F));
+        this.field20734.setX((int) ((float) (this.getWidth() - this.field20734.getWidth()) * var1 + 0.5F));
         if (var2 && var5 != var1) {
             this.callUIHandlers();
         }

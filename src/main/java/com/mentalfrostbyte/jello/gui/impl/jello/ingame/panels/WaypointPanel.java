@@ -37,10 +37,10 @@ public class WaypointPanel extends Element {
     public WaypointPanel(CustomGuiScreen var1, String var2, int var3, int var4, Vector3i var5) {
         super(var1, var2, var3 - 107, var4 + 10, 214, 170, ColorHelper.field27961, "", false);
         this.field20727 = var5;
-        if (this.yA + this.heightA <= Minecraft.getInstance().getMainWindow().getHeight()) {
-            this.yA += 10;
+        if (this.y + this.height <= Minecraft.getInstance().getMainWindow().getHeight()) {
+            this.y += 10;
         } else {
-            this.yA = this.yA - (this.heightA + 27);
+            this.y = this.y - (this.height + 27);
             this.field20725 = true;
         }
 
@@ -52,8 +52,8 @@ public class WaypointPanel extends Element {
                 var8 = new TextButton(
                         this,
                         "addButton",
-                        this.widthA - 66,
-                        this.heightA - 60,
+                        this.width - 66,
+                        this.height - 60,
                         ResourceRegistry.JelloLightFont25.getWidth("Add"),
                         50,
                         ColorHelper.field27961,
@@ -62,7 +62,7 @@ public class WaypointPanel extends Element {
                 )
         );
         var8.onClick((var1x, var2x) -> this.method13132(this.field20729.getText(), this.method13130(), this.field20730.field21296));
-        this.addToList(this.field20729 = new TextField(this, "Name", 20, 7, this.widthA - 40, 60, TextField.field20741, "My waypoint", "My waypoint"));
+        this.addToList(this.field20729 = new TextField(this, "Name", 20, 7, this.width - 40, 60, TextField.field20741, "My waypoint", "My waypoint"));
         this.field20729.method13148();
         this.field20729.setRoundedThingy(false);
         this.addToList(this.field20730 = new BadgeSelect(this, "badgeSelect", 0, 86));
@@ -71,8 +71,8 @@ public class WaypointPanel extends Element {
                         this,
                         "Coords",
                         20,
-                        this.heightA - 44,
-                        this.widthA - 100,
+                        this.height - 44,
+                        this.width - 100,
                         20,
                         TextField.field20741,
                         var5.getX() + " " + var5.getZ(),
@@ -101,33 +101,33 @@ public class WaypointPanel extends Element {
         partialTicks = Animation.calculateProgressWithReverse(this.field20724, this.field20726, 250.0F, 120.0F);
         float var4 = EasingFunctions.easeOutBack(partialTicks, 0.0F, 1.0F, 1.0F);
         this.method13279(0.8F + var4 * 0.2F, 0.8F + var4 * 0.2F);
-        this.method13284((int) ((float) this.widthA * 0.2F * (1.0F - var4)) * (!this.field20725 ? 1 : -1));
+        this.method13284((int) ((float) this.width * 0.2F * (1.0F - var4)) * (!this.field20725 ? 1 : -1));
         super.method13224();
         int var5 = 10;
         int var6 = RenderUtil2.applyAlpha(-723724, QuadraticEasing.easeOutQuad(partialTicks, 0.0F, 1.0F, 1.0F));
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + var5 / 2),
-                (float) (this.yA + var5 / 2),
-                (float) (this.widthA - var5),
-                (float) (this.heightA - var5),
+                (float) (this.x + var5 / 2),
+                (float) (this.y + var5 / 2),
+                (float) (this.width - var5),
+                (float) (this.height - var5),
                 35.0F,
                 partialTicks
         );
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + var5 / 2),
-                (float) (this.yA + var5 / 2),
-                (float) (this.xA - var5 / 2 + this.widthA),
-                (float) (this.yA - var5 / 2 + this.heightA),
+                (float) (this.x + var5 / 2),
+                (float) (this.y + var5 / 2),
+                (float) (this.x - var5 / 2 + this.width),
+                (float) (this.y - var5 / 2 + this.height),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks * 0.25F)
         );
-        RenderUtil.drawRoundedRect((float) this.xA, (float) this.yA, (float) this.widthA, (float) this.heightA, (float) var5, var6);
+        RenderUtil.drawRoundedRect((float) this.x, (float) this.y, (float) this.width, (float) this.height, (float) var5, var6);
         GL11.glPushMatrix();
-        GL11.glTranslatef((float) this.xA, (float) this.yA, 0.0F);
+        GL11.glTranslatef((float) this.x, (float) this.y, 0.0F);
         GL11.glRotatef(!this.field20725 ? -90.0F : 90.0F, 0.0F, 0.0F, 1.0F);
-        GL11.glTranslatef((float) (-this.xA), (float) (-this.yA), 0.0F);
+        GL11.glTranslatef((float) (-this.x), (float) (-this.y), 0.0F);
         RenderUtil.drawImage(
-                (float) (this.xA + (!this.field20725 ? 0 : this.heightA)),
-                (float) this.yA + (float) ((this.widthA - 47) / 2) * (!this.field20725 ? 1.0F : -1.58F),
+                (float) (this.x + (!this.field20725 ? 0 : this.height)),
+                (float) this.y + (float) ((this.width - 47) / 2) * (!this.field20725 ? 1.0F : -1.58F),
                 18.0F,
                 47.0F,
                 Resources.selectPNG,
@@ -135,10 +135,10 @@ public class WaypointPanel extends Element {
         );
         GL11.glPopMatrix();
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + 25),
-                (float) (this.yA + 68),
-                (float) (this.xA + this.widthA - 25),
-                (float) (this.yA + 69),
+                (float) (this.x + 25),
+                (float) (this.y + 68),
+                (float) (this.x + this.width - 25),
+                (float) (this.y + 69),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.05F * partialTicks)
         );
         super.draw(partialTicks);

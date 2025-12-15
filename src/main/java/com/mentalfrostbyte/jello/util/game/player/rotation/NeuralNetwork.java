@@ -139,7 +139,7 @@ public class NeuralNetwork {
         }
 
         // Log average error
-        Client.logger.info("JelloAI: Batch training completed, average error: " +
+        Client.LOGGER.info("JelloAI: Batch training completed, average error: " +
                 (totalError / (batchSamples.size() * EPOCHS_PER_BATCH)));
 
         // Clear batch after training
@@ -177,7 +177,7 @@ public class NeuralNetwork {
         }
 
         // Log expected vs predicted for debugging
-        Client.logger.info("JelloAI Training - Expected: [" +
+        Client.LOGGER.info("JelloAI Training - Expected: [" +
                 expectedOutputs[0] + ", " + expectedOutputs[1] + "], Predicted: [" +
                 outputs[0] + ", " + outputs[1] + "], Weight: " + weight);
 
@@ -279,9 +279,9 @@ public class NeuralNetwork {
             }
 
             out.close();
-            Client.logger.info("JelloAI: Saved neural network weights");
+            Client.LOGGER.info("JelloAI: Saved neural network weights");
         } catch (Exception e) {
-            Client.logger.error("Error saving JelloAI weights", e);
+            Client.LOGGER.error("Error saving JelloAI weights", e);
         }
     }
 
@@ -320,10 +320,10 @@ public class NeuralNetwork {
             }
 
             in.close();
-            Client.logger.info("JelloAI: Loaded neural network weights");
+            Client.LOGGER.info("JelloAI: Loaded neural network weights");
             return true;
         } catch (Exception e) {
-            Client.logger.error("Error loading JelloAI weights", e);
+            Client.LOGGER.error("Error loading JelloAI weights", e);
             return false;
         }
     }

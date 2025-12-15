@@ -36,7 +36,7 @@ public class Dropdown extends Element {
     }
 
     public void method13643(List<String> var1, int var2) {
-        Sub var5 = new Sub(this, "sub" + var2, this.widthA + 10, this.getHeightA() * (var2 + 1), 200, this.getHeightA(), var1, 0);
+        Sub var5 = new Sub(this, "sub" + var2, this.width + 10, this.getHeight() * (var2 + 1), 200, this.getHeight(), var1, 0);
         this.field21331.put(var2, var5);
         var5.setSelfVisible(false);
         var5.onPress(var2x -> {
@@ -61,12 +61,12 @@ public class Dropdown extends Element {
         this.getChildren().clear();
         this.font = ResourceRegistry.JelloLightFont18;
         Button dropdownButton;
-        this.addToList(dropdownButton = new Button(this, "dropdownButton", 0, 0, this.getHeightA(), this.getHeightA(), this.textColor));
+        this.addToList(dropdownButton = new Button(this, "dropdownButton", 0, 0, this.getHeight(), this.getHeight(), this.textColor));
         dropdownButton.setSize((var1, var2) -> {
-            var1.setXA(0);
-            var1.setYA(0);
-            var1.setWidthA(this.getWidthA());
-            var1.setHeightA(this.getHeightA());
+            var1.setX(0);
+            var1.setY(0);
+            var1.setWidth(this.getWidth());
+            var1.setHeight(this.getHeight());
         });
         dropdownButton.onClick((var1, var2) -> this.method13658(!this.method13657()));
 
@@ -77,9 +77,9 @@ public class Dropdown extends Element {
                             this,
                             mode,
                             0,
-                            this.getHeightA(),
-                            this.getWidthA(),
-                            this.getHeightA(),
+                            this.getHeight(),
+                            this.getWidth(),
+                            this.getHeight(),
                             new ColorHelper(
                                     ClientColors.LIGHT_GREYISH_BLUE.getColor(),
                                     -1381654,
@@ -114,7 +114,7 @@ public class Dropdown extends Element {
             if (((Sub) var5.getValue()).isSelfVisible()) {
                 var3 = Math.max(
                         var3,
-                        (((Sub) var5.getValue()).values.size() - 1) * ((Sub) var5.getValue()).getHeightA() + ((Sub) var5.getValue()).getYA()
+                        (((Sub) var5.getValue()).values.size() - 1) * ((Sub) var5.getValue()).getHeight() + ((Sub) var5.getValue()).getY()
                 );
             }
         }
@@ -128,30 +128,30 @@ public class Dropdown extends Element {
             var3 = QuadraticEasing.easeInQuad(this.animation.calcPercent(), 0.0F, 1.0F, 1.0F);
         }
 
-        return (int) ((float) (this.getHeightA() * this.values.size() + 1) * var3);
+        return (int) ((float) (this.getHeight() * this.values.size() + 1) * var3);
     }
 
     public int method13649() {
-        return (int) ((float) (this.getHeightA() * this.values.size() + 1));
+        return (int) ((float) (this.getHeight() * this.values.size() + 1));
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
-        if (!this.method13114(newHeight, newWidth) && this.animation.getDirection() == Animation.Direction.FORWARDS) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
+        if (!this.method13114(mouseX, mouseY) && this.animation.getDirection() == Animation.Direction.FORWARDS) {
             this.method13658(false);
         }
 
-        int var5 = (newWidth - this.method13272()) / this.getHeightA() - 1;
+        int var5 = (mouseY - this.method13272()) / this.getHeight() - 1;
         if (var5 >= 0
                 && var5 < this.values.size()
                 && this.animation.getDirection() == Animation.Direction.FORWARDS
                 && this.animation.calcPercent() == 1.0F
-                && newHeight - this.method13271() < this.getWidthA()) {
+                && mouseX - this.method13271() < this.getWidth()) {
             for (Entry var9 : this.field21331.entrySet()) {
                 ((Sub) var9.getValue()).setSelfVisible((Integer) var9.getKey() == var5);
             }
-        } else if (!this.method13114(newHeight, newWidth) || this.animation.getDirection() == Animation.Direction.BACKWARDS) {
+        } else if (!this.method13114(mouseX, mouseY) || this.animation.getDirection() == Animation.Direction.BACKWARDS) {
             for (Entry var7 : this.field21331.entrySet()) {
                 ((Sub) var7.getValue()).setSelfVisible(false);
             }
@@ -161,30 +161,30 @@ public class Dropdown extends Element {
     @Override
     public void draw(float partialTicks) {
         RenderUtil.drawRoundedRect(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) (this.getXA() + this.getWidthA()),
-                (float) (this.getYA() + this.getHeightA()),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) (this.getX() + this.getWidth()),
+                (float) (this.getY() + this.getHeight()),
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks * this.animation.calcPercent())
         );
         RenderUtil.drawRoundedRect(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) this.getWidthA(),
-                (float) (this.getHeightA() + this.method13648() - 1),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) this.getWidth(),
+                (float) (this.getHeight() + this.method13648() - 1),
                 6.0F,
                 partialTicks * 0.1F * this.animation.calcPercent()
         );
         RenderUtil.drawRoundedRect(
-                (float) this.getXA(),
-                (float) this.getYA(),
-                (float) this.getWidthA(),
-                (float) (this.getHeightA() + this.method13648() - 1),
+                (float) this.getX(),
+                (float) this.getY(),
+                (float) this.getWidth(),
+                (float) (this.getHeight() + this.method13648() - 1),
                 20.0F,
                 partialTicks * 0.2F * this.animation.calcPercent()
         );
         if (this.getText() != null) {
-            RenderUtil.method11415(this);
+            RenderUtil.startScissor(this);
             String var4 = "";
 
             for (Entry var6 : this.field21331.entrySet()) {
@@ -195,8 +195,8 @@ public class Dropdown extends Element {
 
             RenderUtil.drawString(
                     this.getFont(),
-                    (float) (this.getXA() + 10),
-                    (float) (this.getYA() + (this.getHeightA() - this.getFont().getHeight()) / 2 + 1),
+                    (float) (this.getX() + 10),
+                    (float) (this.getY() + (this.getHeight() - this.getFont().getHeight()) / 2 + 1),
                     this.getText() + var4,
                     RenderUtil2.applyAlpha(this.textColor.getPrimaryColor(), partialTicks * 0.7F)
             );
@@ -206,7 +206,7 @@ public class Dropdown extends Element {
         boolean var8 = this.animation.calcPercent() < 1.0F;
         if (var8) {
             RenderUtil.drawBlurredBackground(
-                    this.method13271(), this.method13272(), this.method13271() + this.getWidthA() + 140, this.method13272() + this.getHeightA() + this.method13647()
+                    this.method13271(), this.method13272(), this.method13271() + this.getWidth() + 140, this.method13272() + this.getHeight() + this.method13647()
             );
         }
 
@@ -220,18 +220,18 @@ public class Dropdown extends Element {
             RenderUtil.restoreScissor();
         }
 
-        int var9 = this.getWidthA() - (int) ((float) this.getHeightA() / 2.0F + 0.5F);
-        int var10 = (int) ((float) this.getHeightA() / 2.0F + 0.5F) + 1;
-        int var7 = (int) ((float) this.getHeightA() / 6.0F + 0.5F);
-        GL11.glTranslatef((float) (this.getXA() + var9), (float) (this.getYA() + var10), 0.0F);
+        int var9 = this.getWidth() - (int) ((float) this.getHeight() / 2.0F + 0.5F);
+        int var10 = (int) ((float) this.getHeight() / 2.0F + 0.5F) + 1;
+        int var7 = (int) ((float) this.getHeight() / 6.0F + 0.5F);
+        GL11.glTranslatef((float) (this.getX() + var9), (float) (this.getY() + var10), 0.0F);
         GL11.glRotatef(90.0F * this.animation.calcPercent(), 0.0F, 0.0F, 1.0F);
-        GL11.glTranslatef((float) (-this.getXA() - var9), (float) (-this.getYA() - var10), 0.0F);
+        GL11.glTranslatef((float) (-this.getX() - var9), (float) (-this.getY() - var10), 0.0F);
         RenderUtil.drawString(
                 this.font,
-                (float) (this.getXA() + var9 - 6),
-                (float) (this.getYA() + var10 - 14),
+                (float) (this.getX() + var9 - 6),
+                (float) (this.getY() + var10 - 14),
                 ">",
-                RenderUtil2.applyAlpha(this.textColor.getPrimaryColor(), partialTicks * 0.7F * (!this.method13114(this.getHeightO(), this.getWidthO()) ? 0.5F : 1.0F))
+                RenderUtil2.applyAlpha(this.textColor.getPrimaryColor(), partialTicks * 0.7F * (!this.method13114(this.getMouseX(), this.getMouseY()) ? 0.5F : 1.0F))
         );
     }
 
@@ -267,15 +267,15 @@ public class Dropdown extends Element {
     }
 
     @Override
-    public boolean method13114(int var1, int var2) {
+    public boolean method13114(int mouseX, int mouseY) {
         for (Entry var6 : this.field21331.entrySet()) {
-            if (((Sub) var6.getValue()).isSelfVisible() && ((Sub) var6.getValue()).method13114(var1, var2)) {
+            if (((Sub) var6.getValue()).isSelfVisible() && ((Sub) var6.getValue()).method13114(mouseX, mouseY)) {
                 return true;
             }
         }
 
-        var1 -= this.method13271();
-        var2 -= this.method13272();
-        return var1 >= 0 && var1 <= this.getWidthA() && var2 >= 0 && var2 <= this.getHeightA() + this.method13648();
+        mouseX -= this.method13271();
+        mouseY -= this.method13272();
+        return mouseX >= 0 && mouseX <= this.getWidth() && mouseY >= 0 && mouseY <= this.getHeight() + this.method13648();
     }
 }

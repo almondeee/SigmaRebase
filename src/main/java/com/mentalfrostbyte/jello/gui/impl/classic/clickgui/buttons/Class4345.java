@@ -124,7 +124,7 @@ public class Class4345 extends ScrollableContentPanel {
                 break;
             case TEXTBOX:
                 Textbox var12 = new Textbox(
-                        screen, setting.getName() + "btn", screen.getWidthA() - value, y + 6, 123, 27, ((TextBoxSetting) setting).getOptions(), (Integer) setting.getCurrentValue()
+                        screen, setting.getName() + "btn", screen.getWidth() - value, y + 6, 123, 27, ((TextBoxSetting) setting).getOptions(), (Integer) setting.getCurrentValue()
                 );
                 setting.addObserver(var1x -> {
                     if (var12.method13720() != (Integer) var1x.getCurrentValue()) {
@@ -132,7 +132,7 @@ public class Class4345 extends ScrollableContentPanel {
                     }
                 });
                 var12.onPress(var1x -> setting.setCurrentValue(((Textbox) var1x).method13720()));
-                var12.setSize((var2x, var3x) -> var2x.setXA(screen.getWidthA() - 123 - value));
+                var12.setSize((var2x, var3x) -> var2x.setX(screen.getWidth() - 123 - value));
                 screen.addToList(var12);
                 y += 27 + value;
             case SUBOPTION:
@@ -145,7 +145,7 @@ public class Class4345 extends ScrollableContentPanel {
 
     private void method13511() {
         com.mentalfrostbyte.jello.gui.base.elements.impl.Text var3 = new com.mentalfrostbyte.jello.gui.base.elements.impl.Text(
-                this, "settingsname", 12, 2, this.widthA, 20, com.mentalfrostbyte.jello.gui.base.elements.impl.Text.defaultColorHelper, this.module.getFormattedName() + " Settings", this.settingsNameFont
+                this, "settingsname", 12, 2, this.width, 20, com.mentalfrostbyte.jello.gui.base.elements.impl.Text.defaultColorHelper, this.module.getFormattedName() + " Settings", this.settingsNameFont
         );
         this.addToList(var3);
         int var6 = 35;
@@ -160,8 +160,8 @@ public class Class4345 extends ScrollableContentPanel {
 
 			for (Module var11 : moduleWithModuleSettings.moduleArray) {
                 int var12 = 10;
-                CustomGuiScreen var13 = new CustomGuiScreen(this, var11.getName() + "SubView", 0, var6, this.widthA, this.heightA - var6);
-                var13.setSize((var0, var1) -> var0.setWidthA(var1.getWidthA()));
+                CustomGuiScreen var13 = new CustomGuiScreen(this, var11.getName() + "SubView", 0, var6, this.width, this.height - var6);
+                var13.setSize((var0, var1) -> var0.setWidth(var1.getWidth()));
 
                 for (Setting<?> var15 : var11.getSettingMap().values()) {
                     var12 = this.renderModuleSettings(var13, var15, 30, var12, 20);
@@ -187,19 +187,19 @@ public class Class4345 extends ScrollableContentPanel {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        super.updatePanelDimensions(newHeight, newWidth);
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     @Override
     public void draw(float partialTicks) {
-        int var4 = Math.round((float) this.getHeightA() * MathHelper.calculateTransition(this.anim.calcPercent(), 0.0F, 1.0F, 1.0F));
+        int var4 = Math.round((float) this.getHeight() * MathHelper.calculateTransition(this.anim.calcPercent(), 0.0F, 1.0F, 1.0F));
         if (this.anim.getDirection() == Animation.Direction.BACKWARDS) {
-            var4 = Math.round((float) this.getHeightA() * MathHelper.calculateBackwardTransition(this.anim.calcPercent(), 0.0F, 1.0F, 1.0F));
+            var4 = Math.round((float) this.getHeight() * MathHelper.calculateBackwardTransition(this.anim.calcPercent(), 0.0F, 1.0F, 1.0F));
         }
 
-        RenderUtil.startScissor((float) this.xA, (float) (70 + this.getHeightA() - var4), (float) this.getWidthA(), (float) var4);
-        RenderUtil.drawRoundedRect2((float) this.xA, (float) (70 + this.getHeightA() - var4), (float) this.getWidthA(), (float) var4, -2631721);
+        RenderUtil.startScissor((float) this.x, (float) (70 + this.getHeight() - var4), (float) this.getWidth(), (float) var4);
+        RenderUtil.drawRoundedRect2((float) this.x, (float) (70 + this.getHeight() - var4), (float) this.getWidth(), (float) var4, -2631721);
         super.draw(partialTicks);
         RenderUtil.restoreScissor();
     }

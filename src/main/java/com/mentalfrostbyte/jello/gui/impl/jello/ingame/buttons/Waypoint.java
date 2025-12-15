@@ -31,26 +31,26 @@ public class Waypoint extends Button {
 
       int var4 = (int)(EasingFunctions.easeInOutCustomBack(this.field20599.calcPercent(), 0.0F, 1.0F, 1.0F, 7.0F) * 3.0F);
       RenderUtil.drawCircle(
-         (float)(this.xA + this.widthA / 2),
-         (float)(this.yA + this.heightA / 2),
+         (float)(this.x + this.width / 2),
+         (float)(this.y + this.height / 2),
          25.0F,
          RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.025F * partialTicks * this.field20599.calcPercent())
       );
       RenderUtil.drawCircle(
-         (float)(this.xA + this.widthA / 2),
-         (float)(this.yA + this.heightA / 2),
+         (float)(this.x + this.width / 2),
+         (float)(this.y + this.height / 2),
          23.0F,
               RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.05F * partialTicks * this.field20599.calcPercent())
       );
       RenderUtil.drawCircle(
-         (float)(this.xA + this.widthA / 2),
-         (float)(this.yA + this.heightA / 2),
+         (float)(this.x + this.width / 2),
+         (float)(this.y + this.height / 2),
          (float)(18 + var4),
               RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), partialTicks * this.field20599.calcPercent())
       );
       RenderUtil.drawCircle(
-         (float)(this.xA + this.widthA / 2),
-         (float)(this.yA + this.heightA / 2),
+         (float)(this.x + this.width / 2),
+         (float)(this.y + this.height / 2),
          (float)(18 - var4),
               RenderUtil2.applyAlpha(this.color.color, partialTicks)
       );

@@ -22,13 +22,13 @@ public class Setting extends Element {
          this.field21333 = new Animation(1200, 1200, Animation.Direction.FORWARDS);
       }
 
-      int var4 = this.getXA() + 10;
-      int var5 = this.getYA() + 10;
+      int var4 = this.getX() + 10;
+      int var5 = this.getY() + 10;
       GL11.glPushMatrix();
       GL11.glTranslatef((float)var4, (float)var5, 0.0F);
       GL11.glRotatef(this.field21333.calcPercent() * 360.0F, 0.0F, 0.0F, 1.0F);
       GL11.glTranslatef((float)(-var4), (float)(-var5), 0.0F);
-      RenderUtil.drawImage((float)this.xA, (float)this.yA, 20.0F, 20.0F, !this.method13298() ? Resources.gear : Resources.gear2);
+      RenderUtil.drawImage((float)this.x, (float)this.y, 20.0F, 20.0F, !this.method13298() ? Resources.gear : Resources.gear2);
       GL11.glPopMatrix();
       super.draw(partialTicks);
    }

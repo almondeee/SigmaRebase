@@ -17,7 +17,7 @@ public record AccountListUpdater(AltManagerScreen screen, AltManagerScreen prevS
             this.prevScreen.removeChildren(AltManagerScreen.method13382(this.screen));
         }
 
-        CustomGuiScreen var4 = this.prevScreen.method13221("alts");
+        CustomGuiScreen var4 = this.prevScreen.getChildByName("alts");
         if (var4 != null) {
             this.prevScreen.removeChildren(var4);
         }

@@ -39,11 +39,11 @@ public class ConfigScreen extends Element {
         TextButton addButton;
         this.addToList(
                 addButton = new TextButton(
-                        this, "addButton", this.widthA - 55, 0, ResourceRegistry.JelloLightFont25.getWidth("Add"), 69, ColorHelper.field27961, "+", ResourceRegistry.JelloLightFont25
+                        this, "addButton", this.width - 55, 0, ResourceRegistry.JelloLightFont25.getWidth("Add"), 69, ColorHelper.field27961, "+", ResourceRegistry.JelloLightFont25
                 )
         );
         addButton.onClick((var1x, var2x) -> this.field21300.method13119(true));
-        this.addToList(this.field21300 = new ConfigGroup(this, "profile", 0, 69, this.widthA, 200));
+        this.addToList(this.field21300 = new ConfigGroup(this, "profile", 0, 69, this.width, 200));
         this.field21300.setReAddChildren(true);
         this.method13615();
     }
@@ -59,7 +59,7 @@ public class ConfigScreen extends Element {
         }
 
         var3.saveConfig(var4.cloneWithName(var4.profileName + " Copy " + var5));
-        this.runThisOnDimensionUpdate(() -> this.method13615());
+        this.addRunnable(() -> this.method13615());
         this.field21300.method13119(false);
     }
 
@@ -74,7 +74,7 @@ public class ConfigScreen extends Element {
         }
 
         var4.saveConfig(var1.cloneWithName(var1.profileName + " " + var6));
-        this.runThisOnDimensionUpdate(() -> this.method13615());
+        this.addRunnable(() -> this.method13615());
         this.field21300.method13119(false);
     }
 
@@ -88,7 +88,7 @@ public class ConfigScreen extends Element {
         }
 
         var3.saveConfig(new Profile("New Profile " + var4, new JsonObject()));
-        this.runThisOnDimensionUpdate(this::method13615);
+        this.addRunnable(this::method13615);
         this.field21300.method13119(false);
     }
 
@@ -104,12 +104,12 @@ public class ConfigScreen extends Element {
     }
 
     @Override
-    public void updatePanelDimensions(int newHeight, int newWidth) {
-        if (newWidth > this.field21300.method13272() + this.field21300.getHeightA()) {
+    public void updatePanelDimensions(int mouseX, int mouseY) {
+        if (mouseY > this.field21300.method13272() + this.field21300.getHeight()) {
             this.field21300.method13119(false);
         }
 
-        super.updatePanelDimensions(newHeight, newWidth);
+        super.updatePanelDimensions(mouseX, mouseY);
     }
 
     public void method13615() {
@@ -119,14 +119,14 @@ public class ConfigScreen extends Element {
             this.removeChildren(this.profileScrollView);
         }
 
-        this.addToList(this.profileScrollView = new ScrollableContentPanel(this, "profileScrollView", 10, 80, this.widthA - 20, this.heightA - 80 - 10));
+        this.addToList(this.profileScrollView = new ScrollableContentPanel(this, "profileScrollView", 10, 80, this.width - 20, this.height - 80 - 10));
         this.profileScrollView.method13512(var3);
         this.field21301.clear();
         int var4 = 0;
         int var5 = 70;
 
         for (Profile var7 : Client.getInstance().moduleManager.getConfigurationManager().getAllConfigs()) {
-            ProfileGroup var8 = new ProfileGroup(this, "profile" + var4, 0, var5 * var4, this.profileScrollView.getWidthA(), var5, var7, var4);
+            ProfileGroup var8 = new ProfileGroup(this, "profile" + var4, 0, var5 * var4, this.profileScrollView.getWidth(), var5, var7, var4);
             this.profileScrollView.addToList(var8);
             this.field21301.add(var8);
             var4++;
@@ -140,8 +140,8 @@ public class ConfigScreen extends Element {
         int var3 = 0;
 
         for (ProfileGroup var5 : this.field21301) {
-            var5.setYA(var3);
-            var3 += var5.getHeightA();
+            var5.setY(var3);
+            var3 += var5.getHeight();
         }
     }
 
@@ -155,28 +155,28 @@ public class ConfigScreen extends Element {
         }
 
         this.method13279(0.8F + var4 * 0.2F, 0.8F + var4 * 0.2F);
-        this.drawBackground((int) ((float) this.widthA * 0.25F * (1.0F - var4)));
-        this.method13284((int) ((float) this.widthA * 0.14F * (1.0F - var4)));
+        this.drawBackground((int) ((float) this.width * 0.25F * (1.0F - var4)));
+        this.method13284((int) ((float) this.width * 0.14F * (1.0F - var4)));
         super.method13224();
         super.method13225();
         int var5 = 10;
         int var6 = RenderUtil2.applyAlpha(-723724, QuadraticEasing.easeOutQuad(partialTicks, 0.0F, 1.0F, 1.0F));
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + var5 / 2),
-                (float) (this.yA + var5 / 2),
-                (float) (this.widthA - var5),
-                (float) (this.heightA - var5),
+                (float) (this.x + var5 / 2),
+                (float) (this.y + var5 / 2),
+                (float) (this.width - var5),
+                (float) (this.height - var5),
                 35.0F,
                 partialTicks
         );
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + var5 / 2),
-                (float) (this.yA + var5 / 2),
-                (float) (this.xA - var5 / 2 + this.widthA),
-                (float) (this.yA - var5 / 2 + this.heightA),
+                (float) (this.x + var5 / 2),
+                (float) (this.y + var5 / 2),
+                (float) (this.x - var5 / 2 + this.width),
+                (float) (this.y - var5 / 2 + this.height),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks * 0.25F)
         );
-        RenderUtil.drawRoundedRect((float) this.xA, (float) this.yA, (float) this.widthA, (float) this.heightA, (float) var5, var6);
+        RenderUtil.drawRoundedRect((float) this.x, (float) this.y, (float) this.width, (float) this.height, (float) var5, var6);
         float var7 = 0.9F + (1.0F - SmoothInterpolator.interpolate(this.field21300.field20703.calcPercent(), 0.0, 0.96, 0.69, 0.99)) * 0.1F;
         if (this.field21300.field20703.getDirection() == Animation.Direction.BACKWARDS) {
             var7 = 0.9F + (1.0F - SmoothInterpolator.interpolate(this.field21300.field20703.calcPercent(), 0.61, 0.01, 0.87, 0.16)) * 0.1F;
@@ -185,16 +185,16 @@ public class ConfigScreen extends Element {
         this.profileScrollView.method13279(var7, var7);
         RenderUtil.drawString(
                 ResourceRegistry.JelloLightFont25,
-                (float) (this.xA + 25),
-                (float) (this.yA + 20),
+                (float) (this.x + 25),
+                (float) (this.y + 20),
                 "Profiles",
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.8F * partialTicks)
         );
         RenderUtil.drawRoundedRect(
-                (float) (this.xA + 25),
-                (float) (this.yA + 69),
-                (float) (this.xA + this.widthA - 25),
-                (float) (this.yA + 70),
+                (float) (this.x + 25),
+                (float) (this.y + 69),
+                (float) (this.x + this.width - 25),
+                (float) (this.y + 70),
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.05F * partialTicks)
         );
         super.draw(partialTicks);

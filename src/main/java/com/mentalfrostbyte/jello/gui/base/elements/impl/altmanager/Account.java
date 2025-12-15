@@ -55,10 +55,10 @@ public class Account extends AnimatedIconPanel {
         this.field21258 = RenderUtil2.shiftTowardsOther(ClientColors.LIGHT_GREYISH_BLUE.getColor(), ClientColors.DEEP_TEAL.getColor(), 2.0F);
         if (this.field21254 || this.method13212() || this.method13298()) {
             RenderUtil.drawRoundedRect(
-                    (float) this.xA,
-                    (float) this.yA,
-                    (float) (this.xA + this.widthA),
-                    (float) (this.yA + this.heightA),
+                    (float) this.x,
+                    (float) this.y,
+                    (float) (this.x + this.width),
+                    (float) (this.y + this.height),
                     RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.05F)
             );
         }
@@ -66,55 +66,55 @@ public class Account extends AnimatedIconPanel {
         if (!this.method13212()) {
             if (this.method13298() && this.field21254) {
                 RenderUtil.method11429(
-                        (float) this.xA,
-                        (float) this.yA,
-                        (float) (this.xA + this.widthA),
-                        (float) (this.yA + this.heightA),
+                        (float) this.x,
+                        (float) this.y,
+                        (float) (this.x + this.width),
+                        (float) (this.y + this.height),
                         2,
                         RenderUtil2.applyAlpha(ClientColors.MID_GREY.getColor(), 0.5F)
                 );
             } else if (!this.method13298()) {
                 if (this.field21254) {
                     RenderUtil.method11429(
-                            (float) this.xA,
-                            (float) this.yA,
-                            (float) (this.xA + this.widthA),
-                            (float) (this.yA + this.heightA),
+                            (float) this.x,
+                            (float) this.y,
+                            (float) (this.x + this.width),
+                            (float) (this.y + this.height),
                             2,
                             RenderUtil2.applyAlpha(ClientColors.MID_GREY.getColor(), 0.3F)
                     );
                 }
             } else {
                 RenderUtil.method11429(
-                        (float) this.xA,
-                        (float) this.yA,
-                        (float) (this.xA + this.widthA),
-                        (float) (this.yA + this.heightA),
+                        (float) this.x,
+                        (float) this.y,
+                        (float) (this.x + this.width),
+                        (float) (this.y + this.height),
                         2,
                         RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.3F)
                 );
             }
         } else {
             RenderUtil.method11429(
-                    (float) this.xA,
-                    (float) this.yA,
-                    (float) (this.xA + this.widthA),
-                    (float) (this.yA + this.heightA),
+                    (float) this.x,
+                    (float) this.y,
+                    (float) (this.x + this.width),
+                    (float) (this.y + this.height),
                     2,
                     RenderUtil2.applyAlpha(ClientColors.MID_GREY.getColor(), 0.65F)
             );
         }
 
-        RenderUtil.startScissor(this.xA, this.yA, this.xA + this.widthA, this.yA + this.heightA, true);
+        RenderUtil.startScissor(this.x, this.y, this.x + this.width, this.y + this.height, true);
         if (this.field21249 != null) {
             this.method13584();
             RenderUtil.restoreScissor();
-            if (this.field21252 > 0.0F && this.heightA > 55) {
+            if (this.field21252 > 0.0F && this.height > 55) {
                 RenderUtil.drawImage(
-                        (float) (this.xA + this.getWidthA()),
-                        (float) this.yA + (float) (26 * this.heightA) / 100.0F,
-                        18.0F * this.field21252 * (float) this.heightA / 100.0F,
-                        (float) (47 * this.heightA) / 100.0F,
+                        (float) (this.x + this.getWidth()),
+                        (float) this.y + (float) (26 * this.height) / 100.0F,
+                        18.0F * this.field21252 * (float) this.height / 100.0F,
+                        (float) (47 * this.height) / 100.0F,
                         Resources.selectPNG,
                         !this.method13212() ? ClientColors.LIGHT_GREYISH_BLUE.getColor() : this.field21258
                 );
@@ -132,8 +132,8 @@ public class Account extends AnimatedIconPanel {
 
         RenderUtil.drawString(
                 ResourceRegistry.DefaultClientFont,
-                (float) (this.xA + this.widthA / 2),
-                (float) (this.yA + 20),
+                (float) (this.x + this.width / 2),
+                (float) (this.y + 20),
                 var3,
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.4F),
                 FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
@@ -141,8 +141,8 @@ public class Account extends AnimatedIconPanel {
         );
         RenderUtil.drawString(
                 ResourceRegistry.DefaultClientFont,
-                (float) (this.xA + this.widthA / 2),
-                (float) (this.yA + 18),
+                (float) (this.x + this.width / 2),
+                (float) (this.y + 18),
                 var3,
                 ClientColors.LIGHT_GREYISH_BLUE.getColor(),
                 FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
@@ -151,8 +151,8 @@ public class Account extends AnimatedIconPanel {
         if (!this.field21249.isEmailAValidEmailFormat()) {
             RenderUtil.drawString(
                     ResourceRegistry.DefaultClientFont,
-                    (float) (this.xA + this.widthA / 2),
-                    (float) (this.yA + 32),
+                    (float) (this.x + this.width / 2),
+                    (float) (this.y + 32),
                     this.field21249.getPassword().replaceAll(".", "*"),
                     -8355712,
                     FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
@@ -162,8 +162,8 @@ public class Account extends AnimatedIconPanel {
         } else {
             RenderUtil.drawString(
                     ResourceRegistry.DefaultClientFont,
-                    (float) (this.xA + this.widthA / 2),
-                    (float) (this.yA + 29),
+                    (float) (this.x + this.width / 2),
+                    (float) (this.y + 29),
                     "Cracked",
                     ClientColors.PALE_YELLOW.getColor(),
                     FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,

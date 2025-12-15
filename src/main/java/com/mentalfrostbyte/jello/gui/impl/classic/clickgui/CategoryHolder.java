@@ -30,7 +30,7 @@ public class CategoryHolder extends ClickGuiPanel {
       this.addToList(this.field21156 = new Image(this, "visuals", 201, 208, 170, 130, "Visuals", Resources.visuals, Resources.visuals2));
       this.addToList(this.field21154 = new Image(this, "others", 201, 358, 170, 130, "Others", Resources.others, Resources.others2));
       Exit var7;
-      this.addToList(var7 = new Exit(this, "exit", this.getWidthA() - 41, 9));
+      this.addToList(var7 = new Exit(this, "exit", this.getWidth() - 41, 9));
       var7.onClick((var0, var1x) -> Minecraft.getInstance().displayGuiScreen(null));
       ClassicClickGui var8 = (ClassicClickGui)this.getParent();
       this.field21152.onClick((var1x, var2x) -> var8.method13418("Combat", ModuleCategory.COMBAT));
@@ -43,7 +43,7 @@ public class CategoryHolder extends ClickGuiPanel {
    }
 
    @Override
-   public void updatePanelDimensions(int newHeight, int newWidth) {
-      super.updatePanelDimensions(newHeight, newWidth);
+   public void updatePanelDimensions(int mouseX, int mouseY) {
+      super.updatePanelDimensions(mouseX, mouseY);
    }
 }
