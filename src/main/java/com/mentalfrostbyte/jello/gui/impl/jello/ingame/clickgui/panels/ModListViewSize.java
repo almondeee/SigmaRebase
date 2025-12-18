@@ -5,13 +5,13 @@ import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import net.minecraft.client.Minecraft;
 
 public class ModListViewSize implements IWidthSetter {
-   @Override
-   public void setWidth(CustomGuiScreen forScreen, CustomGuiScreen fromWidthOfThisScreen) {
-      forScreen.setX(0);
-      if (fromWidthOfThisScreen == null) {
-         forScreen.setWidth(Minecraft.getInstance().getMainWindow().getWidth());
-      } else {
-         forScreen.setWidth(fromWidthOfThisScreen.getWidth());
-      }
-   }
+    @Override
+    public void setWidth(CustomGuiScreen forScreen, CustomGuiScreen fromWidthOfThisScreen) {
+        forScreen.setX(0);
+        if (fromWidthOfThisScreen == null) {
+            forScreen.setWidth(Minecraft.getInstance().getMainWindow().getWidth());
+        } else {
+            forScreen.setWidth(fromWidthOfThisScreen.getWidth());
+        }
+    }
 }
