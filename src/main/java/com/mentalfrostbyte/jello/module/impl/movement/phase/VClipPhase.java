@@ -12,12 +12,12 @@ import java.util.Objects;
 
 public class VClipPhase extends Module {
 
-    private final NumberSetting<Double> blocksToClip;
+    private final NumberSetting blocksToClip;
     private long lastClipTime = 0;
 
     public VClipPhase() {
         super(ModuleCategory.MOVEMENT, "VClip", "Vclip phase (click shift)");
-        registerSetting(this.blocksToClip = new NumberSetting<>(
+        registerSetting(this.blocksToClip = new NumberSetting(
                 "Blocks to clip",
                 "yes",
                 -4,

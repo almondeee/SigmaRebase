@@ -15,10 +15,10 @@ public class BoostSpeed extends Module {
     private final BooleanSetting assumeSprinting;
     private final BooleanSetting ignoreSneaking;
     private final BooleanSetting ignoreInWater;
-    private final NumberSetting<Integer> boostAfterTicks;
+    private final NumberSetting boostAfterTicks;
     private int ticksSinceBoost;
-    private final NumberSetting<Double> boostSpeed;
-    private final NumberSetting<Double> normalSpeed;
+    private final NumberSetting boostSpeed;
+    private final NumberSetting normalSpeed;
 
     public BoostSpeed() {
         super(ModuleCategory.MOVEMENT, "Boost", "Boost Speed");
@@ -32,9 +32,9 @@ public class BoostSpeed extends Module {
                     this.ignoreInWater = new BooleanSetting("Ignore In Water", "Ignore being in water", true)
                 )
         );
-        this.registerSetting(this.boostAfterTicks = new NumberSetting<>("Boost After Ticks", "Boost after ticks since last boost", 15f, 1f, 40f, 1f));
-        this.registerSetting(this.boostSpeed = new NumberSetting<>("Boost Speed", "Boost speed", 1.5f, 1f, 10f, 0.01f));
-        this.registerSetting(this.normalSpeed = new NumberSetting<>("Normal Speed", "Normal speed", 1.2f, 1f, 10f, 0.01f));
+        this.registerSetting(this.boostAfterTicks = new NumberSetting("Boost After Ticks", "Boost after ticks since last boost", 15f, 1f, 40f, 1f));
+        this.registerSetting(this.boostSpeed = new NumberSetting("Boost Speed", "Boost speed", 1.5f, 1f, 10f, 0.01f));
+        this.registerSetting(this.normalSpeed = new NumberSetting("Normal Speed", "Normal speed", 1.2f, 1f, 10f, 0.01f));
     }
 
     @Override

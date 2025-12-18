@@ -33,7 +33,7 @@ public class AutoPotion extends Module {
 
     public AutoPotion() {
         super(ModuleCategory.ITEM, "AutoPotion", "Automatically throws potion to regen or speed up");
-        this.registerSetting(new NumberSetting<Float>("Health", "Maximum health before healing.", 6.0F, 0.5F, 10.0F, 0.5F));
+        this.registerSetting(new NumberSetting("Health", "Maximum health before healing.", 6.0F, 0.5F, 10.0F, 0.5F));
         this.registerSetting(new BooleanSetting("Predict", "Predicts where to pot when moving.", true));
         this.registerSetting(new BooleanSetting("Instant", "Instant potting (more packets).", false));
         this.registerSetting(new BooleanSetting("Speed", "Uses Speed pots.", true));

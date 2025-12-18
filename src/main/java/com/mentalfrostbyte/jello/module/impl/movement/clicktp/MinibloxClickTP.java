@@ -31,7 +31,7 @@ public class MinibloxClickTP extends Module {
     private final List<Vector3d> positions = new ArrayList<>();
     private final TimerUtil timer = new TimerUtil();
     private final BooleanSetting doFunnyMoves;
-    private final NumberSetting<Integer> funnyMovements;
+    private final NumberSetting funnyMovements;
     private double targetX;
     private double targetZ;
     private boolean teleporting;
@@ -46,7 +46,7 @@ public class MinibloxClickTP extends Module {
                 "In hopes that Miniblox will lagback us where we teleported to",
                 true
         ));
-        this.registerSetting(this.funnyMovements = new NumberSetting<>(
+        this.registerSetting(this.funnyMovements = new NumberSetting(
                 "Funny movements",
                 "Number of funny movements to make",
                 6,

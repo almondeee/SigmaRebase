@@ -131,7 +131,7 @@ public class TabGUI extends Module {
         Setting<?> setting = this.getModuleSettings(module).get(settingIndex.currentOffset);
         if (!(setting instanceof ModeSetting mode)) {
             if (!(setting instanceof BooleanSetting bool)) {
-                if (setting instanceof NumberSetting<?> numberSetting) {
+                if (setting instanceof NumberSetting numberSetting) {
                     Object obj = numberSetting.getCurrentValue();
                     if (obj != null) {
                         Float value = numberSetting.getCurrentValue();

@@ -32,10 +32,10 @@ public class HypixelFly extends Module {
     public HypixelFly() {
         super(ModuleCategory.MOVEMENT, "Hypixel", "Fly for Hypixel");
         this.registerSetting(new ModeSetting("Mode", "Mode", 0, "Basic", "Fast", "NoDmg", "Funcraft"));
-        this.registerSetting(new NumberSetting<Float>("Speed", "Fast and Funcraft speed", 1.0F, 0.0F, 1.0F, 0.1F));
+        this.registerSetting(new NumberSetting("Speed", "Fast and Funcraft speed", 1.0F, 0.0F, 1.0F, 0.1F));
         this.registerSetting(new BooleanSetting("No Collision", "Prevents block collison.", true));
-        this.registerSetting(new NumberSetting<Float>("Timer Boost", "Boost strength", 2.5F, 1.0F, 3.0F, 0.1F));
-        this.registerSetting(new NumberSetting<Float>("Timer Duration", "Boost duration", 0.3F, 0.1F, 1.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Timer Boost", "Boost strength", 2.5F, 1.0F, 3.0F, 0.1F));
+        this.registerSetting(new NumberSetting("Timer Duration", "Boost duration", 0.3F, 0.1F, 1.0F, 0.01F));
     }
 
     @Override

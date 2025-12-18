@@ -37,7 +37,7 @@ import team.sdhq.eventBus.annotations.priority.HigherPriority;
 import team.sdhq.eventBus.annotations.priority.LowerPriority;
 
 public class BlockFlyHypixelMode extends Module {
-    private final NumberSetting<Float> constantSpeed;
+    private final NumberSetting constantSpeed;
     private float pitch;
     private float yaw;
     private BlockCache blockCache;
@@ -55,7 +55,7 @@ public class BlockFlyHypixelMode extends Module {
         this.registerSetting(new ModeSetting("Speed Mode", "Speed mode", 0, "None", "Jump", "Constant", "AAC", "Cubecraft", "Slow", "Sneak"));
         this.registerSetting(new BooleanSetting("KeepRotations", "Keeps your rotations.", true));
         this.registerSetting(new BooleanSetting("Downwards", "Allows you to go down when sneaking.", true));
-        this.registerSetting(this.constantSpeed = new NumberSetting<>("Constant Speed", "Constant speed", 0.0F, 0.0F, 6.0F, 0.1F));
+        this.registerSetting(this.constantSpeed = new NumberSetting("Constant Speed", "Constant speed", 0.0F, 0.0F, 6.0F, 0.1F));
     }
 
     public static Vector3d method16116(BlockPos var0, Direction var1) {

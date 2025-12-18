@@ -201,7 +201,7 @@ public class MiniMap extends Module {
                                     arrow,
                                     ClientColors.LIGHT_GREYISH_BLUE.getColor());
                             GL11.glPopMatrix();
-                            RenderUtil.method11464((float) field23711, (float) yOffset,
+                            RenderUtil.drawShadow((float) field23711, (float) yOffset,
                                     (float) field23710, (float) field23709, 23.0F, 0.75F);
                             RenderUtil.drawRoundedRect((float) field23711, (float) yOffset,
                                     (float) field23710, (float) field23709, 8.0F, 0.7F);

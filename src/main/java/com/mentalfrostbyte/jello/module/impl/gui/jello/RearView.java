@@ -38,7 +38,7 @@ public class RearView extends Module {
         this.animation = new Animation(230, 200, Animation.Direction.BACKWARDS);
         this.registerSetting(new BooleanSetting("Show in GUI", "Makes the Rear View visible in guis", false));
         this.registerSetting(new BooleanSetting("Smart Visibility", "Only pops up when a player is behind you", false));
-        this.registerSetting(new NumberSetting<Integer>("Size", "The rear view width", 400.0F, 120.0F, 1000.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Size", "The rear view width", 400.0F, 120.0F, 1000.0F, 1.0F));
         this.setAvailableOnClassic(false);
     }
 

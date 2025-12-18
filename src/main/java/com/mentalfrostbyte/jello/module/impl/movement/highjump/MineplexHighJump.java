@@ -25,7 +25,7 @@ public class MineplexHighJump extends Module {
 
    public MineplexHighJump() {
       super(ModuleCategory.MOVEMENT, "Mineplex", "Highjump for Mineplex");
-      this.registerSetting(new NumberSetting<Float>("Motion", "Highjump motion", 1.1F, 0.42F, 5.0F, 0.05F));
+      this.registerSetting(new NumberSetting("Motion", "Highjump motion", 1.1F, 0.42F, 5.0F, 0.05F));
       this.registerSetting(new BooleanSetting("Disable", "Disable on landing.", true));
       this.registerSetting(new BooleanSetting("Fake fly", "Am i flying ?", false));
    }

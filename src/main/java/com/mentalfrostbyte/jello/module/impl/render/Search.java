@@ -7,7 +7,7 @@ import com.mentalfrostbyte.jello.event.impl.player.EventUpdate;
 import com.mentalfrostbyte.jello.module.Module;
 import com.mentalfrostbyte.jello.module.data.ModuleCategory;
 import com.mentalfrostbyte.jello.module.impl.render.search.ChunkRegion;
-import com.mentalfrostbyte.jello.module.settings.impl.BooleanListSetting;
+import com.mentalfrostbyte.jello.module.settings.impl.BlockListSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.BooleanSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.ColorSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.NumberSetting;
@@ -36,9 +36,9 @@ import java.util.concurrent.Executors;
 
 public class Search extends Module {
     private final BooleanSetting showHolesSetting;
-    private final NumberSetting<Integer> tickDelay;
-    private final NumberSetting<Float> chunkRangeSetting;
-    private final BooleanListSetting blocksToRenderSetting;
+    private final NumberSetting tickDelay;
+    private final NumberSetting chunkRangeSetting;
+    private final BlockListSetting blocksToRenderSetting;
     private final ColorSetting renderColorSetting;
     private final List<ChunkRegion> chunkRegions = new ArrayList<>();
     private final Set<ChunkPos> processedChunks = new HashSet<>();
@@ -48,15 +48,15 @@ public class Search extends Module {
     public Search() {
         super(ModuleCategory.RENDER, "Search", "Searches blocks through the world");
 
-        this.registerSetting(this.chunkRangeSetting = new NumberSetting<>("Chunk Range", "Range at which search scans blocks", 5.0F, 1.0F, 12.0F, 1.0F));
+        this.registerSetting(this.chunkRangeSetting = new NumberSetting("Chunk Range", "Range at which search scans blocks", 5.0F, 1.0F, 12.0F, 1.0F));
 
-        this.registerSetting(this.tickDelay = new NumberSetting<>("Tick Delay", "Delay between each refresh (greatly increases performance)", 50, 0, 500, 50));
+        this.registerSetting(this.tickDelay = new NumberSetting("Tick Delay", "Delay between each refresh (greatly increases performance)", 50, 0, 500, 50));
 
         this.registerSetting(this.showHolesSetting = new BooleanSetting("Holes", "Shows 1x1 explosion protection holes", false));
 
         this.registerSetting(this.renderColorSetting = new ColorSetting("Color", "The rendered block color", ClientColors.MID_GREY.getColor(), true));
 
-        this.registerSetting(this.blocksToRenderSetting = new BooleanListSetting("Blocks", "Blocks to render", true));
+        this.registerSetting(this.blocksToRenderSetting = new BlockListSetting("Blocks", "Blocks to render", true));
 
         blocksToRenderSetting.addObserver(event -> this.chunkRegions.clear());
         chunkRangeSetting.addObserver(event -> this.chunkRegions.clear());

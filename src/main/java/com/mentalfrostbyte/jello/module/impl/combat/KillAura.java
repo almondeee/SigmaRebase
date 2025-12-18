@@ -49,7 +49,7 @@ public class KillAura extends Module {
     private Rotation rotation = new Rotation(0.0F, 0.0F);
     public static int attackCooldown;
     private final ModeSetting rotationMode;
-    private final NumberSetting<Float> rotationSpeed;
+    private final NumberSetting rotationSpeed;
     private final BooleanSetting useRotationSpeed;
     private final BooleanSetting hitEvent;
     public HashMap<Entity, Animation> entityAnimation = new HashMap<>();
@@ -84,7 +84,7 @@ public class KillAura extends Module {
         super(ModuleCategory.COMBAT, "KillAura", "Automatically attacks entities");
         this.registerSetting(new ModeSetting("Mode", "Mode", 0, "Single", "Switch", "Multi", "Multi2"));
         this.registerSetting(new ModeSetting("Autoblock Mode", "Autoblock Mode", 0, "None", "NCP", "Basic1", "Basic2", "Basic3", "Vanilla"));
-        this.registerSetting(new NumberSetting<>("Unblock Rate", "Unlock Ticks for Vanilla AutoBlock mode.", 0, 0, 2, 1) {
+        this.registerSetting(new NumberSetting("Unblock Rate", "Unlock Ticks for Vanilla AutoBlock mode.", 0, 0, 2, 1) {
             @Override
             public boolean isHidden() {
                 return !getStringSettingValueByName("Autoblock Mode").equals("Vanilla");
@@ -100,13 +100,13 @@ public class KillAura extends Module {
                 "Test2", "JelloAI", "None")
         );
         this.registerSetting(this.useRotationSpeed = new BooleanSetting("Use Rotation Speed", "Max rotation change per tick.", true));
-        this.registerSetting(this.rotationSpeed = new NumberSetting<>("Rotation Speed", "Max rotation change per tick.", 6.0F, 6.0F, 360, 6F));
-        this.registerSetting(new NumberSetting<>("Range", "Range value", 4.0F, 2.8F, 8.0F, 0.01F));
+        this.registerSetting(this.rotationSpeed = new NumberSetting("Rotation Speed", "Max rotation change per tick.", 6.0F, 6.0F, 360, 6F));
+        this.registerSetting(new NumberSetting("Range", "Range value", 4.0F, 2.8F, 8.0F, 0.01F));
         this.registerSetting(
-                new NumberSetting<>("Min CPS", "Min CPS value", 8.0F, 1.0F, 20.0F, 1.0F).addObserver(var1 -> autoBlock.initializeCpsTimings())
+                new NumberSetting("Min CPS", "Min CPS value", 8.0F, 1.0F, 20.0F, 1.0F).addObserver(var1 -> autoBlock.initializeCpsTimings())
         );
         this.registerSetting(
-                new NumberSetting<>("Max CPS", "Max CPS value", 8.0F, 1.0F, 20.0F, 1.0F).addObserver(var1 -> autoBlock.initializeCpsTimings())
+                new NumberSetting("Max CPS", "Max CPS value", 8.0F, 1.0F, 20.0F, 1.0F).addObserver(var1 -> autoBlock.initializeCpsTimings())
         );
         this.registerSetting(new BooleanSetting("Interact autoblock", "Send interact packet when blocking", true));
         this.registerSetting(this.hitEvent = new BooleanSetting("HitEvent", "Change the hit event (vanilla autoblock?legit)", true));

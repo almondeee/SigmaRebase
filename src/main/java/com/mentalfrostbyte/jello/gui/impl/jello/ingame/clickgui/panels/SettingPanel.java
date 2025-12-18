@@ -23,7 +23,6 @@ import java.util.Map.Entry;
 
 public class SettingPanel extends ScrollableContentPanel implements Class4342 {
     private final Module module;
-    private boolean field21220;
     public int field21222 = 200;
     private final HashMap<Text, Setting> field21223 = new HashMap<Text, Setting>();
     public HashMap<Module, CustomGuiScreen> field21224 = new HashMap<Module, CustomGuiScreen>();
@@ -157,7 +156,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 panel.addToList(var17);
                 var4 += var17.getHeight() + var5;
                 break;
-            case BOOLEAN2:
+            case BLOCKS:
                 Text var31 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 200, Text.defaultColorHelper, setting.getName());
                 Picker var39 = new Picker(
                         panel,
@@ -166,8 +165,8 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                         var4 + 5,
                         175,
                         200,
-                        ((BooleanListSetting) setting).enabled,
-                        ((BooleanListSetting) setting).getCurrentValue().toArray(new String[0])
+                        ((BlockListSetting) setting).enabled,
+                        ((BlockListSetting) setting).getCurrentValue().toArray(new String[0])
                 );
                 this.field21223.put(var31, setting);
                 var39.onPress(var2x -> setting.setCurrentValue(var39.method13072()));
@@ -291,7 +290,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
 
     @Override
     public boolean method13525() {
-        return this.field21220;
+        return false;
     }
 
 }

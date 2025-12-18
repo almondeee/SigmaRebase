@@ -27,7 +27,7 @@ public class PingSpoofDisabler extends Module {
     public PingSpoofDisabler() {
         super(ModuleCategory.EXPLOIT, "PingSpoof", "Makes you lagggy.");
         this.registerSetting(
-                new NumberSetting<Float>("Lag", "Your ping (ms)", 1000.0F, 50.0F, 2000.0F, 10.0F));
+                new NumberSetting("Lag", "Your ping (ms)", 1000.0F, 50.0F, 2000.0F, 10.0F));
         this.registerSetting(new BooleanSetting("Inv Bypass", "Avoid inventory glitchs on some servers", false));
     }
 

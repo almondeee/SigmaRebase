@@ -39,14 +39,14 @@ public class InfiniteAura extends Module {
     private boolean alwaysFalse;
     private float attacksPerTickF;
     private final List<List<Vector3d>> renderPositions;
-    private final NumberSetting<Float> attackRange;
+    private final NumberSetting attackRange;
     private Thread thread;
 
     public InfiniteAura() {
         super(ModuleCategory.COMBAT, "InfiniteAura", "Basically infinite aura");
-        this.registerSetting(new NumberSetting<>("Range", "Range value", 4.0F, 8.0F, 120.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Range", "Range value", 4.0F, 8.0F, 120.0F, 1.0F));
         this.registerSetting(
-                attackRange = new NumberSetting<>(
+                attackRange = new NumberSetting(
                         "Attack Range",
                         "Range where the player can attack entities in",
                         4.0F,
@@ -55,8 +55,8 @@ public class InfiniteAura extends Module {
                         1.0F
                 )
         );
-        this.registerSetting(new NumberSetting<>("CPS", "CPS value", 8.0F, 1.0F, 20.0F, 1.0F));
-        this.registerSetting(new NumberSetting<>("Targets", "Number of targets", 4.0F, 1.0F, 10.0F, 1.0F));
+        this.registerSetting(new NumberSetting("CPS", "CPS value", 8.0F, 1.0F, 20.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Targets", "Number of targets", 4.0F, 1.0F, 10.0F, 1.0F));
         this.registerSetting(
                 pathfind = new BooleanSetting(
                         "Pathfind",

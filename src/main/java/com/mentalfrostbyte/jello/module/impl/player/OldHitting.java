@@ -42,9 +42,9 @@ public class OldHitting extends Module {
     public OldHitting() {
         super(ModuleCategory.PLAYER, "OldHitting", "Reverts to 1.7/1.8 hitting");
         this.registerSetting(new ModeSetting("Animation", "Animation mode", 0, "Vanilla", "Tap", "Tap2", "Slide", "Slide2", "Scale", "Leaked", "Ninja", "Down", "Tomy"));
-        this.registerSetting(new NumberSetting<>("XPos", "Default X position of the main hand", 0, -1, 1, 0.01F));
-        this.registerSetting(new NumberSetting<>("YPos", "Default Y position of the main hand", 0, -1, 1, 0.01F));
-        this.registerSetting(new NumberSetting<>("ZPos", "Default Z position of the main hand", 0, -1, 1, 0.01F));
+        this.registerSetting(new NumberSetting("XPos", "Default X position of the main hand", 0, -1, 1, 0.01F));
+        this.registerSetting(new NumberSetting("YPos", "Default Y position of the main hand", 0, -1, 1, 0.01F));
+        this.registerSetting(new NumberSetting("ZPos", "Default Z position of the main hand", 0, -1, 1, 0.01F));
         this.setAvailableOnClassic(true);
     }
 

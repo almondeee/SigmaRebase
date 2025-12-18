@@ -38,14 +38,14 @@ public class NewAura extends Module {
     private final ClickDelayCalculator delayCalculator = new ClickDelayCalculator(9, 11);
     private final ModeSetting clickMode = new ModeSetting("Click mode", "What should be the clicking mode?", 0, "CPS", "1.9");
 
-    private final NumberSetting<Long> minCPS = new NumberSetting<>("Min CPS", "Minimal CPS?", 10L, 1L, 20L, 1.0f) {
+    private final NumberSetting minCPS = new NumberSetting("Min CPS", "Minimal CPS?", 10L, 1L, 20L, 1.0f) {
         @Override
         public boolean isHidden() {
             return clickMode.getCurrentValue().equals("1.9");
         }
     };
 
-    private final NumberSetting<Long> maxCPS = new NumberSetting<>("Max CPS", "Maximal CPS?", 11L, 2L, 21L, 1.0f) {
+    private final NumberSetting maxCPS = new NumberSetting("Max CPS", "Maximal CPS?", 11L, 2L, 21L, 1.0f) {
         @Override
         public boolean isHidden() {
             return clickMode.getCurrentValue().equals("1.9");
@@ -59,29 +59,29 @@ public class NewAura extends Module {
         }
     };
 
-    private final NumberSetting<Double> delayPattern1 = new NumberSetting<>("Delay pattern 1", "", 90, 0, 700, 1) {
+    private final NumberSetting delayPattern1 = new NumberSetting("Delay pattern 1", "", 90, 0, 700, 1) {
         @Override
         public boolean isHidden() {
             return clickMode.getCurrentValue().equals("1.9") && delayPatterns.getCurrentValue();
         }
     };
 
-    private final NumberSetting<Double> delayPattern2 = new NumberSetting<>("Delay pattern 2", "", 110, 0, 700, 1) {
+    private final NumberSetting delayPattern2 = new NumberSetting("Delay pattern 2", "", 110, 0, 700, 1) {
         @Override
         public boolean isHidden() {
             return clickMode.getCurrentValue().equals("1.9") && delayPatterns.getCurrentValue();
         }
     };
 
-    private final NumberSetting<Double> delayPattern3 = new NumberSetting<>("Delay pattern 3", "", 130, 0, 700, 1) {
+    private final NumberSetting delayPattern3 = new NumberSetting("Delay pattern 3", "", 130, 0, 700, 1) {
         @Override
         public boolean isHidden() {
             return clickMode.getCurrentValue().equals("1.9") && delayPatterns.getCurrentValue();
         }
     };
 
-    private final NumberSetting<Float> searchRange = new NumberSetting<>("Search range", "What should be the search range for entities?", 4, 1, 7, 0.1f);
-    private final NumberSetting<Float> attackRange = new NumberSetting<>("Attack range", "What should be the attack range for entities?", 3.4f, 1, 6, 0.1f);
+    private final NumberSetting searchRange = new NumberSetting("Search range", "What should be the search range for entities?", 4, 1, 7, 0.1f);
+    private final NumberSetting attackRange = new NumberSetting("Attack range", "What should be the attack range for entities?", 3.4f, 1, 6, 0.1f);
 
     private final BooleanSetting players = new BooleanSetting("Players", "Should aura attack players?", true);
     private final BooleanSetting monsters = new BooleanSetting("Monsters", "Should aura target monsters?", false);
@@ -96,7 +96,7 @@ public class NewAura extends Module {
         super(ModuleCategory.COMBAT, "NewAura", "Attacks entities.");
 
         minCPS.addObserver(a -> {
-            NumberSetting<Long> setting = (NumberSetting<Long>) a;
+            NumberSetting setting = (NumberSetting) a;
             if (minCPS.getCurrentValue() >= maxCPS.getCurrentValue()) {
                 minCPS.setCurrentValue(maxCPS.getCurrentValue());
             }
@@ -104,7 +104,7 @@ public class NewAura extends Module {
         });
 
         maxCPS.addObserver(a -> {
-            NumberSetting<Long> setting = (NumberSetting<Long>) a;
+            NumberSetting setting = (NumberSetting) a;
             if (maxCPS.getCurrentValue() <= minCPS.getCurrentValue()) {
                 maxCPS.setCurrentValue(minCPS.getCurrentValue());
             }
@@ -113,15 +113,15 @@ public class NewAura extends Module {
 
         delayPatterns.addObserver(a -> delayCalculator.patternEnabled = (boolean) a.currentValue);
         delayPattern1.addObserver(a -> {
-            NumberSetting<Double> setting = (NumberSetting<Double>) a;
+            NumberSetting setting = (NumberSetting) a;
             delayCalculator.delayPattern1 = setting.getCurrentValue();
         });
         delayPattern2.addObserver(a -> {
-            NumberSetting<Double> setting = (NumberSetting<Double>) a;
+            NumberSetting setting = (NumberSetting) a;
             delayCalculator.delayPattern2 = setting.getCurrentValue();
         });
         delayPattern3.addObserver(a -> {
-            NumberSetting<Double> setting = (NumberSetting<Double>) a;
+            NumberSetting setting = (NumberSetting) a;
             delayCalculator.delayPattern3 = setting.getCurrentValue();
         });
 

@@ -16,8 +16,8 @@ public class GommeAntiKB extends Module {
 
     public GommeAntiKB() {
         super(ModuleCategory.COMBAT, "Gomme", "AntiKB for GommeHD");
-        this.registerSetting(new NumberSetting<Float>("Delay", "Boost delay", 0.5F, 0.0F, 1.0F, 0.01F));
-        this.registerSetting(new NumberSetting<Float>("Boost", "Boost strength", 0.1F, 0.05F, 0.25F, 0.01F));
+        this.registerSetting(new NumberSetting("Delay", "Boost delay", 0.5F, 0.0F, 1.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Boost", "Boost strength", 0.1F, 0.05F, 0.25F, 0.01F));
     }
 
     @EventTarget

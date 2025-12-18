@@ -22,7 +22,7 @@ import team.sdhq.eventBus.annotations.EventTarget;
 
 public class MinibloxDisabler extends Module {
     private final BooleanSetting floatingTooLongKickBypass;
-    private final NumberSetting<Integer> bypassDelay;
+    private final NumberSetting bypassDelay;
     private int ticksSinceClientOffGround;
     private boolean waitForPos;
     private Vector3d serverPos;
@@ -38,7 +38,7 @@ public class MinibloxDisabler extends Module {
                 )
         );
         this.registerSetting(
-                this.bypassDelay = new NumberSetting<>(
+                this.bypassDelay = new NumberSetting(
                         "Floating Kick Bypass Delay",
                         "Ticks off ground before we spoof our ground value",
                         20,

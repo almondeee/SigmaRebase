@@ -13,7 +13,7 @@ public class Cape extends Module {
     public Cape() {
         super(ModuleCategory.RENDER, "Cape", "Enable and customize a custom cape.");
         registerSetting(new ModeSetting("Cape", "Select a cape design.", 0, "Minecraft", "Monkey", "Spade"));
-        registerSetting(new NumberSetting<>("Movement Factor", "Adjusts cape motion sensitivity.", 1, 1, 3.0F, 0.1f));
+        registerSetting(new NumberSetting("Movement Factor", "Adjusts cape motion sensitivity.", 1, 1, 3.0F, 0.1f));
     }
 
     @EventTarget

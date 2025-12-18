@@ -36,9 +36,9 @@ public class AutoSoup extends Module {
 
     public AutoSoup() {
         super(ModuleCategory.ITEM, "AutoSoup", "Automatically eats soup when low life");
-        this.registerSetting(new NumberSetting<Float>("Health", "Minimum health before eating soup", 13.0F, 1.0F, 19.0F, 1.0F));
-        this.registerSetting(new NumberSetting<Float>("Refill delay", "Refill delay", 4.0F, 0.0F, 8.0F, 1.0F));
-        this.registerSetting(new NumberSetting<Float>("Refill accuracy", "Refill accuracy", 100.0F, 30.0F, 100.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Health", "Minimum health before eating soup", 13.0F, 1.0F, 19.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Refill delay", "Refill delay", 4.0F, 0.0F, 8.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Refill accuracy", "Refill accuracy", 100.0F, 30.0F, 100.0F, 1.0F));
         this.registerSetting(new ModeSetting("Refill mode", "Refill mode", 0, "Basic", "FakeInv", "OpenInv"));
         this.registerSetting(new ModeSetting("Soup mode", "Soup Mode", 0, "Instant", "Legit"));
         this.registerSetting(new ModeSetting("Bowls", "Bowls managing", 0, "Drop", "Stack"));

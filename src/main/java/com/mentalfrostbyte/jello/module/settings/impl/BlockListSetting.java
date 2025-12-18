@@ -3,7 +3,6 @@ package com.mentalfrostbyte.jello.module.settings.impl;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
 import com.mentalfrostbyte.jello.module.settings.Setting;
 import com.mentalfrostbyte.jello.module.settings.SettingType;
 import com.mentalfrostbyte.jello.util.system.other.GsonUtil;
@@ -12,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BooleanListSetting extends Setting<List<String>> {
+public class BlockListSetting extends Setting<List<String>> {
     public boolean enabled;
 
-    public BooleanListSetting(String name, String description, boolean enabled, String... values) {
-        super(name, description, SettingType.BOOLEAN2, Arrays.asList(values));
+    public BlockListSetting(String name, String description, boolean enabled, String... values) {
+        super(name, description, SettingType.BLOCKS, Arrays.asList(values));
         this.enabled = enabled;
     }
 

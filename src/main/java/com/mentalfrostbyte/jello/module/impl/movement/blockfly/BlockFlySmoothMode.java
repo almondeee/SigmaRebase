@@ -32,7 +32,7 @@ import team.sdhq.eventBus.annotations.priority.HigherPriority;
 import team.sdhq.eventBus.annotations.priority.LowerPriority;
 
 public class BlockFlySmoothMode extends Module {
-    private final NumberSetting<Float> constantSpeed;
+    private final NumberSetting constantSpeed;
     private float pitch;
     private float yaw;
     private BlockCache blockCache;
@@ -48,7 +48,7 @@ public class BlockFlySmoothMode extends Module {
     public BlockFlySmoothMode() {
         super(ModuleCategory.MOVEMENT, "Smooth", "Places block underneath");
         this.registerSetting(new ModeSetting("Speed Mode", "Speed mode", 0, "None", "Jump", "Constant", "AAC", "Cubecraft", "Slow", "Sneak"));
-        this.registerSetting(this.constantSpeed = new NumberSetting<>("Constant Speed", "Constant speed", 0.0F, 0.0F, 6.0F, 0.1F));
+        this.registerSetting(this.constantSpeed = new NumberSetting("Constant Speed", "Constant speed", 0.0F, 0.0F, 6.0F, 0.1F));
     }
 
     @Override

@@ -24,21 +24,21 @@ import java.util.*;
 
 public class VClipFly extends Module {
     private final BooleanSetting hideMotion;
-    private final NumberSetting<Float> speed;
+    private final NumberSetting speed;
     private boolean sneakCancelled;
     private int ticksInAir;
     public int ticksSinceLastVClip;
     private double previousY;
-    private final NumberSetting<Float> minFallDistance;
+    private final NumberSetting minFallDistance;
     private final ModeSetting clipDistanceMode;
     private final ModeSetting whenToClip;
-    private final NumberSetting<Float> delay;
-    private final NumberSetting<Float> constantClipDistance;
+    private final NumberSetting delay;
+    private final NumberSetting constantClipDistance;
 
     public VClipFly() {
         super(ModuleCategory.MOVEMENT, "VClip", "Fly that uses VClip");
         this.registerSetting(
-                this.speed = new NumberSetting<>(
+                this.speed = new NumberSetting(
                         "Speed",
                         "Fly speed",
                         4.0F,
@@ -57,7 +57,7 @@ public class VClipFly extends Module {
                 )
         );
         this.registerSetting(
-                delay = new NumberSetting<>(
+                delay = new NumberSetting(
                         "Delay",
                         "Delay",
                         3.0F,
@@ -67,7 +67,7 @@ public class VClipFly extends Module {
                 )
         );
         this.registerSetting(
-                minFallDistance = new NumberSetting<>(
+                minFallDistance = new NumberSetting(
                         "Fall distance",
                         "Minimum fall distance before we VClip back up",
                         1.0F,
@@ -86,7 +86,7 @@ public class VClipFly extends Module {
                 )
         );
         this.registerSetting(
-                constantClipDistance = new NumberSetting<>(
+                constantClipDistance = new NumberSetting(
                         "Clip distance (if constant)",
                         "Blocks to clip up after falling the minimum distance",
                         1.0F,

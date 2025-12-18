@@ -19,9 +19,9 @@ public class DelayAntiKB extends Module {
 
     public DelayAntiKB() {
         super(ModuleCategory.COMBAT, "Delay", "For anticheats with \"good\" velocity checks");
-        this.registerSetting(new NumberSetting<>("Delay", "Ticks delay", 7.0F, 1.0F, 20.0F, 1.0F));
-        this.registerSetting(new NumberSetting<>("H-Multiplier", "Horizontal velocity multiplier", 0.0F, 0.0F, 1.0F, 0.01F));
-        this.registerSetting(new NumberSetting<>("V-Multiplier", "Vertical velocity multiplier", 0.0F, 0.0F, 1.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Delay", "Ticks delay", 7.0F, 1.0F, 20.0F, 1.0F));
+        this.registerSetting(new NumberSetting("H-Multiplier", "Horizontal velocity multiplier", 0.0F, 0.0F, 1.0F, 0.01F));
+        this.registerSetting(new NumberSetting("V-Multiplier", "Vertical velocity multiplier", 0.0F, 0.0F, 1.0F, 0.01F));
     }
 
     /** handles receiving packets **/

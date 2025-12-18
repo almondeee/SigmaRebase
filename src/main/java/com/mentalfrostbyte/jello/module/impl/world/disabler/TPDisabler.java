@@ -14,7 +14,7 @@ public class TPDisabler extends Module {
 
     public TPDisabler() {
         super(ModuleCategory.EXPLOIT, "TP", "Disabler working on some anticheats.");
-        this.registerSetting(new NumberSetting<Float>("Delay", "Tp delay.", 20.0F, 5.0F, 40.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Delay", "Tp delay.", 20.0F, 5.0F, 40.0F, 1.0F));
         this.registerSetting(new ModeSetting("Mode", "Mode", 0, "Basic1", "Basic2", "MinInfinity", "MaxInfinity", "MinValue", "MaxValue"));
         this.registerSetting(new BooleanSetting("OnGround", "Send on ground packets.", false));
         this.registerSetting(new BooleanSetting("More Packets", "Send more packets.", false));

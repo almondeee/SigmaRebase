@@ -15,7 +15,7 @@ public class BoatFly extends Module {
 
     public BoatFly() {
         super(ModuleCategory.MOVEMENT, "BoatFly", "Fly with a boat");
-        this.registerSetting(new NumberSetting<Float>("Speed", "Fly speed", 4.0F, 0.28F, 10.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Speed", "Fly speed", 4.0F, 0.28F, 10.0F, 0.01F));
     }
 
     @EventTarget

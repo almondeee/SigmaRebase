@@ -21,8 +21,8 @@ import java.util.Objects;
  */
 public class VerusSpeed extends Module {
     private final ModeSetting mode;
-    private final NumberSetting<Float> damageBoostTime;
-    private final NumberSetting<Double> timer;
+    private final NumberSetting damageBoostTime;
+    private final NumberSetting timer;
     private final BooleanSetting doTimer;
     // we should go fast for ~3 seconds or more
     public TimerUtil damageTimer = new TimerUtil();
@@ -37,7 +37,7 @@ public class VerusSpeed extends Module {
         );
         registerSetting(new BooleanSetting("Damage boost", "Boost on damage", false));
         registerSetting(
-                this.damageBoostTime = new NumberSetting<>(
+                this.damageBoostTime = new NumberSetting(
                         "Damage boost time",
                         "How long in seconds to boost after damage?",
                         3,
@@ -54,7 +54,7 @@ public class VerusSpeed extends Module {
                 )
         );
         registerSetting(
-                this.timer = new NumberSetting<>(
+                this.timer = new NumberSetting(
                         "Timer Speed",
                         "Timer speed",
                         1.0f,

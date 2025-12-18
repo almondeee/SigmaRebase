@@ -31,7 +31,7 @@ public class AntiVoid extends Module {
     public AntiVoid() {
         super(ModuleCategory.PLAYER, "AntiVoid", "Avoids you from falling into the void");
         this.registerSetting(new BooleanSetting("Void", "Catch only above void", true));
-        this.registerSetting(new NumberSetting<>("Fall Distance", "Fall distance before catching you", 8.0F, 2.0F, 15.0F, 0.5F));
+        this.registerSetting(new NumberSetting("Fall Distance", "Fall distance before catching you", 8.0F, 2.0F, 15.0F, 0.5F));
         this.registerSetting(new ModeSetting("Mode", "AntiVoid method", 0, "Hypixel", "Motion", "TP", "Cubecraft", "Legit"));
     }
 

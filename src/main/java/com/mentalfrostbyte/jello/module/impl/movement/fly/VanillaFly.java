@@ -28,7 +28,7 @@ public class VanillaFly extends Module {
 
     public VanillaFly() {
         super(ModuleCategory.MOVEMENT, "Vanilla", "Regular vanilla fly");
-        this.registerSetting(new NumberSetting<>("Speed", "Fly speed", 4.0F, 0.28F, 10.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Speed", "Fly speed", 4.0F, 0.28F, 10.0F, 0.01F));
         this.registerSetting(new BooleanSetting("Kick bypass", "Bypass vanilla kick for flying", true));
     }
 

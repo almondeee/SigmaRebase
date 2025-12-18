@@ -49,7 +49,7 @@ public class Freecam extends Module {
 
     public Freecam() {
         super(ModuleCategory.RENDER, "Freecam", "Move client side but not server side");
-        this.registerSetting(new NumberSetting<Float>("Speed", "Speed value", 4.0F, 1.0F, 10.0F, 0.1F));
+        this.registerSetting(new NumberSetting("Speed", "Speed value", 4.0F, 1.0F, 10.0F, 0.1F));
     }
 
     @EventTarget

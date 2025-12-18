@@ -5,7 +5,7 @@ import com.mentalfrostbyte.jello.module.settings.Setting;
 import com.mentalfrostbyte.jello.module.settings.SettingType;
 import com.mentalfrostbyte.jello.util.system.other.GsonUtil;
 
-public class NumberSetting<T extends Number> extends Setting<Float> {
+public class NumberSetting extends Setting<Float> {
     private float minValue;
     private float maxValue;
     private float step;

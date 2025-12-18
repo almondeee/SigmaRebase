@@ -47,7 +47,7 @@ public class GamePlay extends ModuleWithModuleSettings {
         registerSetting(new InputSetting("First character", "The characters your sentences will start with.", ""));
         registerSetting(new BooleanSetting("AutoGG", "Automatically say gg at the end of the game", true));
         registerSetting(new BooleanSetting("Auto Join", "Automatically joins another game", true));
-        registerSetting(new NumberSetting<>("Auto Join delay", "Seconds before joining a new game", 4.0F, 1.0F, 10.0F, 1.0F));
+        registerSetting(new NumberSetting("Auto Join delay", "Seconds before joining a new game", 4.0F, 1.0F, 10.0F, 1.0F));
         timer = new TimerUtil();
     }
 

@@ -9,14 +9,14 @@ import net.minecraft.network.play.client.CPlayerPacket;
 import team.sdhq.eventBus.annotations.EventTarget;
 
 public class MinibloxHighJump extends Module {
-    private final NumberSetting<Float> motion;
+    private final NumberSetting motion;
     private boolean isJumping = false;
 
     public MinibloxHighJump() {
         super(ModuleCategory.MOVEMENT, "Miniblox", "HighJump for Miniblox");
         this.registerSetting(
                 this.motion =
-                        new NumberSetting<>(
+                        new NumberSetting(
                                 "Motion",
                                 "Motion",
                                 0.75F,

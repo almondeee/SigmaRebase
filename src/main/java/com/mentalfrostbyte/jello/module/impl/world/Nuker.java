@@ -33,10 +33,10 @@ public class Nuker extends Module {
 
     public Nuker() {
         super(ModuleCategory.WORLD, "Nuker", "Destroys blocks around you");
-        this.registerSetting(new NumberSetting<>("Range", "Range value for nuker", 6.0F, 2.0F, 10.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Range", "Range value for nuker", 6.0F, 2.0F, 10.0F, 1.0F));
         this.registerSetting(new ModeSetting("Mode", "Mode", 0, "All", "One hit", "Bed", "Egg"));
         this.registerSetting(new BooleanSetting("NoSwing", "Removes the swing animation.", false));
-        this.registerSetting(new BooleanListSetting("Blocks", "Blocks to destroy", true));
+        this.registerSetting(new BlockListSetting("Blocks", "Blocks to destroy", true));
         this.registerSetting(new ColorSetting("Color", "The rendered block color", ClientColors.MID_GREY.getColor(), true));
     }
 

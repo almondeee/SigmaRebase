@@ -14,7 +14,7 @@ public class SpartanAntiKB extends Module {
 
     public SpartanAntiKB() {
         super(ModuleCategory.COMBAT, "Spartan", "AntiKB for spartan antichet");
-        this.registerSetting(new NumberSetting<Float>("Ticks", "Ticks delay", 1.0F, 1.0F, 6.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Ticks", "Ticks delay", 1.0F, 1.0F, 6.0F, 1.0F));
     }
 
     @EventTarget

@@ -18,7 +18,6 @@ import com.mentalfrostbyte.jello.module.impl.movement.Speed;
 import com.mentalfrostbyte.jello.module.settings.impl.BooleanSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.ModeSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.NumberSetting;
-import com.mentalfrostbyte.jello.util.game.player.InvManagerUtil;
 import com.mentalfrostbyte.jello.util.game.player.MovementUtil;
 import com.mentalfrostbyte.jello.util.game.world.pathing.BlockCache;
 import com.mentalfrostbyte.jello.util.game.world.blocks.BlockUtil;
@@ -52,7 +51,7 @@ public class BlockFlyNCPMode extends Module {
         super(ModuleCategory.MOVEMENT, "NCP", "Places block underneath");
         this.registerSetting(new ModeSetting("Speed Mode", "Speed mode", 0, "None", "Jump", "AAC", "Slow", "Sneak"));
         this.registerSetting(new BooleanSetting("KeepRotations", "Keeps your rotations.", true));
-        this.registerSetting(new NumberSetting<>("Extend", "Extend value", 0.0F, 0.0F, 6.0F, 0.1F));
+        this.registerSetting(new NumberSetting("Extend", "Extend value", 0.0F, 0.0F, 6.0F, 0.1F));
         this.registerSetting(new BooleanSetting("Downwards", "Allows you to go down when sneaking.", true));
     }
 

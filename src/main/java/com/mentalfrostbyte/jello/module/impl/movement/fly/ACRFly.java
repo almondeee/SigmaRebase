@@ -25,7 +25,7 @@ public class ACRFly extends Module {
 
     public ACRFly() {
         super(ModuleCategory.MOVEMENT, "Reloaded", "A fly for AnticheatReloaded");
-        this.registerSetting(new NumberSetting<Float>("Speed", "Fly speed", 4.0F, 0.3F, 8.0F, 0.1F));
+        this.registerSetting(new NumberSetting("Speed", "Fly speed", 4.0F, 0.3F, 8.0F, 0.1F));
         this.registerSetting(new BooleanSetting("Offset", "Offset while flying", false));
         this.registerSetting(new BooleanSetting("NoFall", "Avoid getting fall damage when flying down", true));
     }

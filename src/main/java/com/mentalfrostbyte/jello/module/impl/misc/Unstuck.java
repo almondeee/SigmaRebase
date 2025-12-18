@@ -22,7 +22,7 @@ public class Unstuck extends Module {
 
     public Unstuck() {
         super(ModuleCategory.MISC, "Unstuck", "Toggle this when an anticheat freeze you mid-air");
-        this.registerSetting(new NumberSetting<>("Flags", "Maximum flag before trying to unstuck", 5.0F, 2.0F, 20.0F, 1.0F));
+        this.registerSetting(new NumberSetting("Flags", "Maximum flag before trying to unstuck", 5.0F, 2.0F, 20.0F, 1.0F));
     }
 
     @Override

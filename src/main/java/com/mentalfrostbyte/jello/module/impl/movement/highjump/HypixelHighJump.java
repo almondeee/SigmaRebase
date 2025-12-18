@@ -16,7 +16,7 @@ public class HypixelHighJump extends Module {
 
     public HypixelHighJump() {
         super(ModuleCategory.MOVEMENT, "Hypixel", "Highjump for Hypixel");
-        this.registerSetting(new NumberSetting<Float>("Motion", "Highjump motion", 0.75F, 0.42F, 5.0F, 0.05F));
+        this.registerSetting(new NumberSetting("Motion", "Highjump motion", 0.75F, 0.42F, 5.0F, 0.05F));
     }
 
     @Override

@@ -15,7 +15,7 @@ public class CubecraftLongJump extends Module {
 
     public CubecraftLongJump() {
         super(ModuleCategory.MOVEMENT, "Cubecraft", "Longjump for Cubecraft.");
-        this.registerSetting(new NumberSetting<>("Boost", "Longjump boost", 3.0F, 1.0F, 5.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Boost", "Longjump boost", 3.0F, 1.0F, 5.0F, 0.01F));
     }
 
     @Override

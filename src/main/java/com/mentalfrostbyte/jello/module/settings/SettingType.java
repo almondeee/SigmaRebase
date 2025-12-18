@@ -6,7 +6,6 @@ public enum SettingType {
     INPUT,
     MODE,
     SUBOPTION,
-    TEXTBOX,
-    BOOLEAN2,
+    BLOCKS,
     COLOR
 }

@@ -107,7 +107,7 @@ public class InfoHUD extends Module {
             if (!(armorPiece.getItem() instanceof AirItem)) {
                 armorCount++;
                 int armorY = y - 32 * armorCount;
-                RenderUtil.renderItem(armorPiece, x, armorY, 32, 32);
+                RenderUtil.renderItemStack(armorPiece, x, armorY, 32, 32);
                 GL11.glDisable(GL11.GL_LIGHTING);
                 float durability = 1.0F - (float) armorPiece.getDamage() / (float) armorPiece.getMaxDamage();
                 if (durability != 1.0F) {

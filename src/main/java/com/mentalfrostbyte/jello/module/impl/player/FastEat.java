@@ -19,7 +19,7 @@ public class FastEat extends Module {
         this.registerSetting(new ModeSetting("Mode", "Mode", 0, "Basic", "Hypixel", "Timer")
 
         );
-        this.registerSetting(new NumberSetting<Float>("Speed", "Eating speed.", 0.55F, 0.0F, 1.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Speed", "Eating speed.", 0.55F, 0.0F, 1.0F, 0.01F));
     }
 
     @EventTarget

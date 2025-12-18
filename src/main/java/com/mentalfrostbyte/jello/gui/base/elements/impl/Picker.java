@@ -21,17 +21,17 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Picker extends Element {
-    private final List<String> field20641 = new ArrayList<String>();
+    private final List<String> values = new ArrayList<>();
     private ScrollableContentPanel field20642;
-    private final TextField field20643;
+    private final TextField textField;
     private final boolean field20644;
 
-    public Picker(CustomGuiScreen var1, String var2, int var3, int var4, int var5, int var6, boolean var7, String... var8) {
-        super(var1, var2, var3, var4, var5, var6, false);
+    public Picker(CustomGuiScreen parent, String text, int x, int y, int width, int height, boolean var7, String... var8) {
+        super(parent, text, x, y, width, height, false);
         this.field20644 = var7;
-        this.addToList(this.field20643 = new TextField(this, "textbox", 0, 0, var5, 32, TextField.field20741, "", "Search...", ResourceRegistry.JelloLightFont14));
-        this.field20643.setFont(ResourceRegistry.JelloLightFont18);
-        this.field20643.addChangeListener(var1x -> this.method13069(this.field20643.getText()));
+        this.addToList(this.textField = new TextField(this, "textbox", 0, 0, width, 32, TextField.field20741, "", "Search...", ResourceRegistry.JelloLightFont14));
+        this.textField.setFont(ResourceRegistry.JelloLightFont18);
+        this.textField.addChangeListener(var1x -> this.method13069(this.textField.getText()));
         this.method13071(var8);
         this.method13069("");
     }
@@ -43,36 +43,36 @@ public class Picker extends Element {
             }
 
             this.addToList(this.field20642 = new ScrollableContentPanel(this, "scrollview", 0, 40, this.width, this.height - 40));
-            ArrayList<Item> var5 = new ArrayList<>();
+            List<Item> items = new ArrayList<>();
 
-            for (Item var7 : Registry.ITEM) {
-                var5.add(var7);
+            for (Item item : Registry.ITEM) {
+                items.add(item);
             }
 
-            var5.add(new BlockItem(Blocks.NETHER_PORTAL, new Item.Properties().group(ItemGroup.MISC)));
-            var5.add(new BlockItem(Blocks.END_PORTAL, new Item.Properties().group(ItemGroup.MISC)));
+            items.add(new BlockItem(Blocks.NETHER_PORTAL, new Item.Properties().group(ItemGroup.MISC)));
+            items.add(new BlockItem(Blocks.END_PORTAL, new Item.Properties().group(ItemGroup.MISC)));
 
-            for (Item var13 : method13070(var5, var1)) {
-                if (var13 != Items.AIR && (!this.field20644 || var13 instanceof BlockItem)) {
-                    ResourceLocation var8 = Registry.ITEM.getKey(var13);
+            for (Item item : prioritizeItemsByName(items, var1)) {
+                if (item != Items.AIR && (!this.field20644 || item instanceof BlockItem)) {
+                    ResourceLocation texture = Registry.ITEM.getKey(item);
                     String var9;
-                    if (var13 instanceof BlockItem && var8.getPath().equals("air")) {
-                        var9 = Registry.BLOCK.getKey(((BlockItem) var13).getBlock()).toString();
+                    if (item instanceof BlockItem && texture.getPath().equals("air")) {
+                        var9 = Registry.BLOCK.getKey(((BlockItem) item).getBlock()).toString();
                     } else {
-                        var9 = var8.toString();
+                        var9 = texture.toString();
                     }
 
                     BlockButton var10;
-                    this.field20642.addToList(var10 = new BlockButton(this, "btn" + var9, 0, 0, 40, 40, var13.getDefaultInstance()));
-                    var10.method13702(this.field20641.contains(var9), false);
+                    this.field20642.addToList(var10 = new BlockButton(this, "btn" + var9, 0, 0, 40, 40, item.getDefaultInstance()));
+                    var10.method13702(this.values.contains(var9), false);
                     var10.onPress(var3 -> {
-                        int var6 = this.field20641.size();
-                        this.field20641.remove(var9);
+                        int var6 = this.values.size();
+                        this.values.remove(var9);
                         if (var10.method13700()) {
-                            this.field20641.add(var9);
+                            this.values.add(var9);
                         }
 
-                        if (var6 != this.field20641.size()) {
+                        if (var6 != this.values.size()) {
                             this.callUIHandlers();
                         }
                     });
@@ -83,34 +83,33 @@ public class Picker extends Element {
         });
     }
 
-    public static List<Item> method13070(List<Item> var0, String var1) {
-        var1 = var1.toLowerCase();
-        if (!var1.isEmpty()) {
-            ArrayList<Item> var4 = new ArrayList<>();
-            Iterator<Item> var5 = var0.iterator();
+    public static List<Item> prioritizeItemsByName(List<Item> items, String searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
+        if (!searchTerm.isEmpty()) {
+            List<Item> prioritized = new ArrayList<>();
+            Iterator<Item> iterator = items.iterator();
 
-            while (var5.hasNext()) {
-                Item var6 = var5.next();
-                if (var6.getName().getString().toLowerCase().startsWith(var1.toLowerCase())) {
-                    var4.add(var6);
-                    var5.remove();
+            while (iterator.hasNext()) {
+                Item item = iterator.next();
+                if (item.getName().getString().toLowerCase().startsWith(searchTerm)) {
+                    prioritized.add(item);
+                    iterator.remove();
                 }
             }
 
-            Iterator<Item> var9 = var0.iterator();
-
-            while (var9.hasNext()) {
-                Item var7 = var9.next();
-                if (var7.getName().getString().toLowerCase().contains(var1.toLowerCase())) {
-                    var4.add(var7);
-                    var9.remove();
+            iterator = items.iterator();
+            while (iterator.hasNext()) {
+                Item item = iterator.next();
+                if (item.getName().getString().toLowerCase().contains(searchTerm)) {
+                    prioritized.add(item);
+                    iterator.remove();
                 }
             }
 
-            var4.addAll(var0);
-            return var4;
+            prioritized.addAll(items);
+            return prioritized;
         } else {
-            return var0;
+            return items;
         }
     }
 
@@ -120,16 +119,15 @@ public class Picker extends Element {
     }
 
     public void method13071(String... var1) {
-        this.field20641.clear();
-        this.field20641.addAll(Arrays.asList(var1));
+        this.values.clear();
+        this.values.addAll(Arrays.asList(var1));
     }
 
     public List<String> method13072() {
-        return this.field20641;
+        return this.values;
     }
 
     public static class Class7260 implements Class7261 {
-        private static String[] field31148;
         public int field31149;
 
         public Class7260(int var1) {
@@ -137,15 +135,15 @@ public class Picker extends Element {
         }
 
         @Override
-        public void method22796(CustomGuiScreen var1) {
-            if (var1.getChildren().size() > 0) {
+        public void method22796(CustomGuiScreen screen) {
+            if (!screen.getChildren().isEmpty()) {
                 int var4 = 0;
                 int var5 = 0;
                 int var6 = 0;
 
-                for (int var7 = 0; var7 < var1.getChildren().size(); var7++) {
-                    CustomGuiScreen var8 = var1.getChildren().get(var7);
-                    if (var4 + var8.getWidth() + this.field31149 > var1.getWidth()) {
+                for (int var7 = 0; var7 < screen.getChildren().size(); var7++) {
+                    CustomGuiScreen var8 = screen.getChildren().get(var7);
+                    if (var4 + var8.getWidth() + this.field31149 > screen.getWidth()) {
                         var4 = 0;
                         var5 += var6;
                     }

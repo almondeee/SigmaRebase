@@ -28,7 +28,7 @@ public class AutoArmor extends Module {
     public AutoArmor() {
         super(ModuleCategory.ITEM, "AutoArmor", "Automaticly equips your armor");
         this.registerSetting(new BooleanSetting("Fake Items", "Bypass for fake items (AAC).", false));
-        this.registerSetting(new NumberSetting<Float>("Delay", "Inventory clicks delay", 0.3F, 0.0F, 1.0F, 0.01F));
+        this.registerSetting(new NumberSetting("Delay", "Inventory clicks delay", 0.3F, 0.0F, 1.0F, 0.01F));
         this.registerSetting(new ModeSetting("Mode", "The way it will move armor in your inventory", 0, "Basic", "OpenInv", "FakeInv"));
         this.registerSetting(new ModeSetting("Elytra", "Elytra Equip Mode", 0, "Ignore", "Equip", "On Use"));
     }

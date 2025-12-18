@@ -890,7 +890,7 @@ public class RenderUtil implements MinecraftUtil {
         RenderSystem.disableBlend();
     }
 
-    public static void method11464(float var0, float var1, float var2, float var3, float var4, float var5) {
+    public static void drawShadow(float var0, float var1, float var2, float var3, float var4, float var5) {
         int var8 = RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), var5);
         drawImage(var0, var1, var4, var3, Resources.shadowRightPNG, var8, false);
         drawImage(var0 + var2 - var4, var1, var4, var3, Resources.shadowLeftPNG, var8, false);
@@ -1333,31 +1333,39 @@ public class RenderUtil implements MinecraftUtil {
         }
     }
 
-    public static void renderItem(ItemStack var0, int var1, int var2, int var3, int var4) {
-        if (var0 != null) {
+    public static void renderItemStack(ItemStack stack, int x, int y, int width, int height) {
+        if (stack != null) {
             mc.getTextureManager().bindTexture(TextureManager.RESOURCE_LOCATION_EMPTY);
+
             GL11.glPushMatrix();
-            GL11.glTranslatef((float) var1, (float) var2, 0.0F);
-            GL11.glScalef((float) var3 / 16.0F, (float) var4 / 16.0F, 0.0F);
-            ItemRenderer var7 = mc.getItemRenderer();
-            if (var0.getCount() == 0) {
-                var0 = new ItemStack(var0.getItem());
+            GL11.glTranslatef((float) x, (float) y, 0.0F);
+            GL11.glScalef((float) width / 16.0F, (float) height / 16.0F, 0.0F);
+
+            ItemRenderer itemRenderer = mc.getItemRenderer();
+            if (stack.getCount() == 0) {
+                stack = new ItemStack(stack.getItem());
             }
 
             RenderHelper.setupGuiFlatDiffuseLighting();
             GL11.glLightModelfv(2899, new float[]{0.4F, 0.4F, 0.4F, 1.0F});
+
             RenderSystem.enableColorMaterial();
             RenderSystem.disableLighting();
             RenderSystem.enableBlend();
+
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             GL11.glDepthFunc(519);
-            var7.renderItemIntoGUI(var0, 0, 0);
+
+            itemRenderer.renderItemIntoGUI(stack, 0, 0);
+
             GL11.glDepthFunc(515);
             RenderSystem.popMatrix();
+
             GL11.glAlphaFunc(519, 0.0F);
             RenderSystem.glMultiTexCoord2f(33986, 240.0F, 240.0F);
             RenderSystem.disableDepthTest();
             TextureImpl.unbind();
+
             mc.getTextureManager().bindTexture(TextureManager.RESOURCE_LOCATION_EMPTY);
             RenderHelper.setupGui3DDiffuseLighting();
         }
