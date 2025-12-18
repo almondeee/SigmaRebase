@@ -143,6 +143,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 panel.addToList(var34);
                 panel.addToList(var42);
                 var4 += 27 + var5;
+                break;
             case SUBOPTION:
                 CustomGuiScreen var17 = new CustomGuiScreen(panel, setting.getName() + "view", var3, var4, panel.getWidth(), 0);
                 int var25 = 0;
