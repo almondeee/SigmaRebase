@@ -8,18 +8,18 @@ import com.mentalfrostbyte.jello.util.system.other.GsonUtil;
 public class NumberSetting extends Setting<Float> {
     private float minValue;
     private float maxValue;
-    private float step;
+    private float increment;
 
     public NumberSetting(String name, String description, float defaultValue, float minimum, float maximum, float increment) {
         super(name, description, SettingType.NUMBER, defaultValue);
         this.minValue = minimum;
         this.maxValue = maximum;
-        this.step = increment;
+        this.increment = increment;
     }
 
-    public int getDecimalPlaces() {
-        if (this.step != 1.0F) {
-            String stepString = Float.toString(Math.abs(this.step));
+    public int getPlaces() {
+        if (this.increment != 1.0F) {
+            String stepString = Float.toString(Math.abs(this.increment));
             int decimalPointIndex = stepString.indexOf('.');
             return stepString.length() - decimalPointIndex - 1;
         } else {
@@ -49,11 +49,11 @@ public class NumberSetting extends Setting<Float> {
         this.maxValue = var1;
     }
 
-    public float getStep() {
-        return this.step;
+    public float getIncrement() {
+        return this.increment;
     }
 
-    public void setStep(float var1) {
-        this.step = var1;
+    public void setIncrement(float var1) {
+        this.increment = var1;
     }
 }

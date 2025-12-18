@@ -23,7 +23,7 @@ import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.client.render.theme.ColorHelper;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.network.youtube.YoutubeUtil;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.system.network.ImageUtil;
 import org.newdawn.slick.opengl.Texture;
 import org.newdawn.slick.util.BufferedImageUtil;
@@ -100,7 +100,7 @@ public class MusicPlayer extends AnimatedIconPanel {
         var5.setListening(false);
         this.musicControls.setListening(false);
         this.field20865.setListening(false);
-        ColorHelper color = new ColorHelper(1250067, -15329770).setTextColor(ClientColors.LIGHT_GREYISH_BLUE.getColor()).method19414(FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+        ColorHelper color = new ColorHelper(1250067, -15329770).setTextColor(ClientColors.LIGHT_GREYISH_BLUE.getColor()).method19414(FontAlignment.CENTER);
         List<Thread> threads = new ArrayList<>();
         MusicPlayer player = this;
 

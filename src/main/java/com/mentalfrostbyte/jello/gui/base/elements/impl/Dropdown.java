@@ -5,7 +5,7 @@ import com.mentalfrostbyte.jello.gui.base.elements.Element;
 import com.mentalfrostbyte.jello.gui.base.elements.impl.button.Button;
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import com.mentalfrostbyte.jello.gui.base.elements.impl.dropdown.Class7262;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.client.render.theme.ColorHelper;
@@ -21,7 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 public class Dropdown extends Element {
-    public static final ColorHelper field21325 = new ColorHelper(1250067, -15329770).setTextColor(ClientColors.DEEP_TEAL.getColor()).method19414(FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+    public static final ColorHelper field21325 = new ColorHelper(1250067, -15329770).setTextColor(ClientColors.DEEP_TEAL.getColor()).method19414(FontAlignment.CENTER);
     public List<String> values;
     public int selectedIdx;
     public boolean field21328;
@@ -85,8 +85,8 @@ public class Dropdown extends Element {
                                     -1381654,
                                     this.textColor.getPrimaryColor(),
                                     this.textColor.getPrimaryColor(),
-                                    FontSizeAdjust.field14488,
-                                    FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                                    FontAlignment.LEFT,
+                                    FontAlignment.CENTER
                             ),
                             mode,
                             this.getFont()

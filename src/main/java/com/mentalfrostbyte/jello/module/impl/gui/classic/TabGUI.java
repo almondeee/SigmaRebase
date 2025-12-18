@@ -136,9 +136,9 @@ public class TabGUI extends Module {
                     if (obj != null) {
                         Float value = numberSetting.getCurrentValue();
                         if (goDown) {
-                            value = value - numberSetting.getStep();
+                            value = value - numberSetting.getIncrement();
                         } else {
-                            value = value + numberSetting.getStep();
+                            value = value + numberSetting.getIncrement();
                         }
 
                         value = Math.min(Math.max(value, numberSetting.getMin()), numberSetting.getMax());

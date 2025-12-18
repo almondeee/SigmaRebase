@@ -9,7 +9,7 @@ import com.mentalfrostbyte.jello.gui.impl.jello.buttons.ScrollableContentPanel;
 import com.mentalfrostbyte.jello.gui.impl.jello.ingame.clickgui.groups.PanelGroup;
 import com.mentalfrostbyte.jello.module.Module;
 import com.mentalfrostbyte.jello.module.data.ModuleCategory;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.client.render.theme.ColorHelper;
@@ -41,7 +41,7 @@ public class ModListView extends ScrollableContentPanel implements Class4342 {
             int var9 = RenderUtil2.applyAlpha(-3487030, 0.0F);
             ColorHelper var12 = new ColorHelper(!var5.isEnabled() ? 1895167477 : -14047489, !var5.isEnabled() ? var9 : -14042881)
                     .setTextColor(!var5.isEnabled() ? ClientColors.DEEP_TEAL.getColor() : ClientColors.LIGHT_GREYISH_BLUE.getColor());
-            var12.method19412(FontSizeAdjust.field14488);
+            var12.method19412(FontAlignment.LEFT);
             Button var13;
             this.getButton()
                     .addToList(
@@ -74,7 +74,7 @@ public class ModListView extends ScrollableContentPanel implements Class4342 {
                                 var7.method13034(30);
                             }
 
-                            var9x.method19412(FontSizeAdjust.field14488);
+                            var9x.method19412(FontAlignment.LEFT);
                             var7.setTextColor(var9x);
                         }
                     }

@@ -2,7 +2,7 @@ package com.mentalfrostbyte.jello.gui.base.elements.impl.button;
 
 import com.mentalfrostbyte.jello.gui.base.elements.Element;
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.theme.ColorHelper;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
@@ -59,15 +59,15 @@ public class Button extends Element {
 
         int var10 = this.getX()
                 + (
-                this.textColor.method19411() != FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                this.textColor.method19411() != FontAlignment.CENTER
                         ? 0
-                        : (this.textColor.method19411() != FontSizeAdjust.WIDTH_NEGATE ? this.getWidth() / 2 : this.getWidth())
+                        : (this.textColor.method19411() != FontAlignment.RIGHT ? this.getWidth() / 2 : this.getWidth())
         );
         int var11 = this.getY()
                 + (
-                this.textColor.method19413() != FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                this.textColor.method19413() != FontAlignment.CENTER
                         ? 0
-                        : (this.textColor.method19413() != FontSizeAdjust.HEIGHT_NEGATE ? this.getHeight() / 2 : this.getHeight())
+                        : (this.textColor.method19413() != FontAlignment.BOTTOM ? this.getHeight() / 2 : this.getHeight())
         );
         if (this.getText() != null) {
             RenderUtil.drawString(

@@ -1,7 +1,7 @@
 package com.mentalfrostbyte.jello.util.client.render.theme;
 
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 
 /**
  * A utility class for managing colors, likely used for UI rendering.
@@ -31,11 +31,11 @@ public class ColorHelper {
    /**
     * An associated Class2218 instance, purpose unclear without further context.
     */
-   public FontSizeAdjust field27966;
+   public FontAlignment field27966;
    /**
     * Another associated Class2218 instance, purpose unclear without further context.
     */
-   public FontSizeAdjust field27967;
+   public FontAlignment field27967;
 
    /**
     * Constructs a ColorHelper with the given color and a darker shade of it.
@@ -72,7 +72,7 @@ public class ColorHelper {
 
    /**
     * Constructs a ColorHelper with primary, secondary, tertiary, and text colors.
-    * The Class2218 instances are set to default values ({@link FontSizeAdjust#NEGATE_AND_DIVIDE_BY_2}).
+    * The Class2218 instances are set to default values ({@link FontAlignment#CENTER}).
     *
     * @param primary The primary color.
     * @param secondary The secondary color.
@@ -80,7 +80,7 @@ public class ColorHelper {
     * @param text The text color.
     */
    public ColorHelper(int primary, int secondary, int tertiary, int text) {
-      this(primary, secondary, tertiary, text, FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2, FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+      this(primary, secondary, tertiary, text, FontAlignment.CENTER, FontAlignment.CENTER);
    }
 
    /**
@@ -93,7 +93,7 @@ public class ColorHelper {
     * @param var5 The first Class2218 instance.
     * @param var6 The second Class2218 instance.
     */
-   public ColorHelper(int primary, int secondary, int tertiary, int text, FontSizeAdjust var5, FontSizeAdjust var6) {
+   public ColorHelper(int primary, int secondary, int tertiary, int text, FontAlignment var5, FontAlignment var6) {
       this.primaryColor = primary;
       this.secondaryColor = secondary;
       this.tertiaryColor = tertiary;
@@ -196,7 +196,7 @@ public class ColorHelper {
     *
     * @return The first Class2218 instance.
     */
-   public FontSizeAdjust method19411() {
+   public FontAlignment method19411() {
       return this.field27966;
    }
 
@@ -206,7 +206,7 @@ public class ColorHelper {
     * @param var1 The new Class2218 instance.
     * @return This ColorHelper instance for chaining.
     */
-   public ColorHelper method19412(FontSizeAdjust var1) {
+   public ColorHelper method19412(FontAlignment var1) {
       this.field27966 = var1;
       return this;
    }
@@ -216,7 +216,7 @@ public class ColorHelper {
     *
     * @return The second Class2218 instance.
     */
-   public FontSizeAdjust method19413() {
+   public FontAlignment method19413() {
       return this.field27967;
    }
 
@@ -226,7 +226,7 @@ public class ColorHelper {
     * @param var1 The new Class2218 instance.
     * @return This ColorHelper instance for chaining.
     */
-   public ColorHelper method19414(FontSizeAdjust var1) {
+   public ColorHelper method19414(FontAlignment var1) {
       this.field27967 = var1;
       return this;
    }

@@ -9,7 +9,7 @@ import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.system.math.counter.TimerUtil;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import org.newdawn.slick.TrueTypeFont;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.InputMappings;
@@ -23,9 +23,9 @@ import static org.lwjgl.glfw.GLFW.GLFW_KEY_RIGHT_SHIFT;
 
 public class TextField extends AnimatedIconPanel {
    public static final ColorHelper field20741 = new ColorHelper(
-      -892679478, -892679478, -892679478, ClientColors.DEEP_TEAL.getColor(), FontSizeAdjust.field14488, FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+      -892679478, -892679478, -892679478, ClientColors.DEEP_TEAL.getColor(), FontAlignment.LEFT, FontAlignment.CENTER
    );
-   public static final ColorHelper field20742 = new ColorHelper(-1, -1, -1, ClientColors.LIGHT_GREYISH_BLUE.getColor(), FontSizeAdjust.field14488, FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+   public static final ColorHelper field20742 = new ColorHelper(-1, -1, -1, ClientColors.LIGHT_GREYISH_BLUE.getColor(), FontAlignment.LEFT, FontAlignment.CENTER);
    private String placeholder = "";
    private float field20744;
    private final float field20745 = 2.0F;
@@ -377,8 +377,8 @@ public class TextField extends AnimatedIconPanel {
          (float)(this.y + this.height / 2 + this.font.getHeight(var6) / 2),
          RenderUtil2.applyAlpha(-5516546, partialTicks)
       );
-      FontSizeAdjust var12 = this.textColor.method19411();
-      FontSizeAdjust var13 = this.textColor.method19413();
+      FontAlignment var12 = this.textColor.method19411();
+      FontAlignment var13 = this.textColor.method19413();
       RenderUtil.drawString(
          this.font,
          (float)var7 + this.field20746,

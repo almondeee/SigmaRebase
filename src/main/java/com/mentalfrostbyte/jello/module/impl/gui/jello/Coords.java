@@ -6,7 +6,7 @@ import com.mentalfrostbyte.jello.gui.base.animations.Animation;
 import com.mentalfrostbyte.jello.module.Module;
 import com.mentalfrostbyte.jello.module.data.ModuleCategory;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
@@ -74,8 +74,8 @@ public class Coords extends Module {
                     (float) textY,
                     coordinatesText,
                     RenderUtil2.applyAlpha(-16777216, 0.5F * animationScale),
-                    FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                    FontSizeAdjust.field14488
+                    FontAlignment.CENTER,
+                    FontAlignment.LEFT
             );
 
             RenderUtil.drawString(
@@ -84,8 +84,8 @@ public class Coords extends Module {
                     (float) textY,
                     coordinatesText,
                     RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), 0.8F * animationScale),
-                    FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                    FontSizeAdjust.field14488
+                    FontAlignment.CENTER,
+                    FontAlignment.LEFT
             );
 
             GL11.glPopMatrix();

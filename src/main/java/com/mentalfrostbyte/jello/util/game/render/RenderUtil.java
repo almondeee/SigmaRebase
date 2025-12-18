@@ -6,7 +6,7 @@ import com.mentalfrostbyte.jello.managers.GuiManager;
 import com.mentalfrostbyte.jello.module.Module;
 import com.mentalfrostbyte.jello.module.data.ModuleCategory;
 import com.mentalfrostbyte.jello.module.impl.render.jello.esp.util.Class2329;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.Resources;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
@@ -638,24 +638,24 @@ public class RenderUtil implements MinecraftUtil {
         RenderSystem.disableBlend();
     }
 
-    public static void drawString(TrueTypeFont res, float var1, float var2, String string, int var4, FontSizeAdjust var5, FontSizeAdjust var6) {
+    public static void drawString(TrueTypeFont res, float var1, float var2, String string, int var4, FontAlignment var5, FontAlignment var6) {
         drawString(res, var1, var2, string, var4, var5, var6, false);
     }
 
-    public static void drawString(TrueTypeFont font, float x, float y, String text, int color, FontSizeAdjust widthAdjust, FontSizeAdjust heightAdjust, boolean var7) {
+    public static void drawString(TrueTypeFont font, float x, float y, String text, int color, FontAlignment widthAdjust, FontAlignment heightAdjust, boolean var7) {
         RenderSystem.color4f(0.0F, 0.0F, 0.0F, 1.0F);
         GL11.glColor4f(0.0F, 0.0F, 0.0F, 0.0F);
         int adjustedWidth = 0;
         int adjustedHeight = 0;
         adjustedWidth = switch (widthAdjust) {
-            case NEGATE_AND_DIVIDE_BY_2 -> -font.getWidth(text) / 2;
-            case WIDTH_NEGATE -> -font.getWidth(text);
+            case CENTER -> -font.getWidth(text) / 2;
+            case RIGHT -> -font.getWidth(text);
             default -> adjustedWidth;
         };
 
         adjustedHeight = switch (heightAdjust) {
-            case NEGATE_AND_DIVIDE_BY_2 -> -font.getHeight(text) / 2;
-            case HEIGHT_NEGATE -> -font.getHeight(text);
+            case CENTER -> -font.getHeight(text) / 2;
+            case BOTTOM -> -font.getHeight(text);
             default -> adjustedHeight;
         };
 
@@ -726,7 +726,7 @@ public class RenderUtil implements MinecraftUtil {
     }
 
     public static void drawString(TrueTypeFont font, float x, float y, String text, int color) {
-        drawString(font, x, y, text, color, FontSizeAdjust.field14488, FontSizeAdjust.field14489, false);
+        drawString(font, x, y, text, color, FontAlignment.LEFT, FontAlignment.TOP, false);
     }
 
     public static void drawRoundedRect(float var0, float var1, float var2, float var3, float var4, float var5) {

@@ -2,7 +2,7 @@ package com.mentalfrostbyte.jello.gui.base.elements.impl.button.types;
 
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import com.mentalfrostbyte.jello.gui.combined.AnimatedIconPanel;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
@@ -45,8 +45,8 @@ public class AltManagerButton extends AnimatedIconPanel {
                 (float) (this.getY() + this.getHeight() / 2),
                 this.text,
                 RenderUtil2.applyAlpha(ClientColors.LIGHT_GREYISH_BLUE.getColor(), !this.isHovered() ? 0.5F : 1.0F),
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                FontAlignment.CENTER,
+                FontAlignment.CENTER
         );
         super.draw(partialTicks);
     }

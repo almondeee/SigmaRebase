@@ -2,7 +2,7 @@ package com.mentalfrostbyte.jello.gui.base.elements.impl;
 
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import com.mentalfrostbyte.jello.gui.combined.AnimatedIconPanel;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
 import com.mentalfrostbyte.jello.util.client.render.theme.ColorHelper;
@@ -17,8 +17,8 @@ public class Text extends AnimatedIconPanel {
             ClientColors.DEEP_TEAL.getColor(),
             ClientColors.DEEP_TEAL.getColor(),
             ClientColors.DEEP_TEAL.getColor(),
-            FontSizeAdjust.field14488,
-            FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+            FontAlignment.LEFT,
+            FontAlignment.CENTER
     );
     public boolean shadow = false;
 

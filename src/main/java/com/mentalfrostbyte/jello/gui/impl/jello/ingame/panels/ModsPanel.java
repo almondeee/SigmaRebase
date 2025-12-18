@@ -19,7 +19,7 @@ import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
 import com.mentalfrostbyte.jello.util.system.math.smoothing.EasingFunctions;
 import com.mentalfrostbyte.jello.util.system.math.smoothing.QuadraticEasing;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import net.minecraft.client.gui.screen.Screen;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class ModsPanel extends Element {
          Class6984 var14 = new Class6984((Class<? extends Screen>)var13.getKey());
          ColorHelper var15 = new ColorHelper(RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.02F), -986896)
             .setTextColor(RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.5F))
-            .method19412(FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+            .method19412(FontAlignment.CENTER);
          Button var16;
          this.field21308
             .addToList(
@@ -89,7 +89,7 @@ public class ModsPanel extends Element {
       var11 += 50;
 
       for (Module var19 : Client.getInstance().moduleManager.getModuleMap().values()) {
-         ColorHelper var20 = new ColorHelper(16777215, -986896).setTextColor(ClientColors.DEEP_TEAL.getColor()).method19412(FontSizeAdjust.field14488);
+         ColorHelper var20 = new ColorHelper(16777215, -986896).setTextColor(ClientColors.DEEP_TEAL.getColor()).method19412(FontAlignment.LEFT);
          Button var21;
          this.field21308
             .addToList(

@@ -17,7 +17,7 @@ import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
 import com.mentalfrostbyte.jello.util.client.render.Resources;
 import com.mentalfrostbyte.jello.util.system.math.MathHelper;
 import com.mentalfrostbyte.jello.util.system.math.SmoothInterpolator;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 
 import java.io.File;
 import java.io.IOException;
@@ -70,7 +70,7 @@ public class ProfileGroup extends AnimatedIconPanel {
       ConfigButton deleteButton;
       this.buttonList.addToList(deleteButton = new ConfigButton(this.buttonList, "remove", this.field21270 / 2, 0, this.field21270 / 2, var6, var12, "Delete"));
       this.buttonList.setHovered(false);
-      ColorHelper var15 = new ColorHelper(-892679478, -892679478, -892679478, ClientColors.DEEP_TEAL.getColor(), FontSizeAdjust.field14488, FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+      ColorHelper var15 = new ColorHelper(-892679478, -892679478, -892679478, ClientColors.DEEP_TEAL.getColor(), FontAlignment.LEFT, FontAlignment.CENTER);
       this.addToList(this.profileName = new TextField(this, "profileName", 16, 8, this.getWidth() - 60, 50, var15, config.profileName));
       this.profileName.setRoundedThingy(false);
       this.profileName.setFont(ResourceRegistry.JelloLightFont24);

@@ -9,13 +9,13 @@ import com.mentalfrostbyte.jello.util.client.render.theme.ColorHelper;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil2;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;
 
 public class Sub extends Element {
-   public static final ColorHelper color = new ColorHelper(1250067, -15329770).setTextColor(ClientColors.DEEP_TEAL.getColor()).method19414(FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2);
+   public static final ColorHelper color = new ColorHelper(1250067, -15329770).setTextColor(ClientColors.DEEP_TEAL.getColor()).method19414(FontAlignment.CENTER);
    public List<String> values;
    public int field21324 = 0;
 
@@ -45,8 +45,8 @@ public class Sub extends Element {
                   -1381654,
                   this.textColor.getPrimaryColor(),
                   this.textColor.getPrimaryColor(),
-                  FontSizeAdjust.field14488,
-                  FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                  FontAlignment.LEFT,
+                  FontAlignment.CENTER
                ),
                value,
                this.getFont()

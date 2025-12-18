@@ -3,7 +3,7 @@ package com.mentalfrostbyte.jello.gui.base.elements.impl.altmanager;
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import com.mentalfrostbyte.jello.gui.impl.jello.buttons.LoadingIndicator;
 import com.mentalfrostbyte.jello.gui.combined.AnimatedIconPanel;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.Resources;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
@@ -136,8 +136,8 @@ public class Account extends AnimatedIconPanel {
                 (float) (this.y + 20),
                 var3,
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), 0.4F),
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                FontAlignment.CENTER,
+                FontAlignment.CENTER
         );
         RenderUtil.drawString(
                 ResourceRegistry.DefaultClientFont,
@@ -145,8 +145,8 @@ public class Account extends AnimatedIconPanel {
                 (float) (this.y + 18),
                 var3,
                 ClientColors.LIGHT_GREYISH_BLUE.getColor(),
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                FontAlignment.CENTER,
+                FontAlignment.CENTER
         );
         if (!this.field21249.isEmailAValidEmailFormat()) {
             RenderUtil.drawString(
@@ -155,8 +155,8 @@ public class Account extends AnimatedIconPanel {
                     (float) (this.y + 32),
                     this.field21249.getPassword().replaceAll(".", "*"),
                     -8355712,
-                    FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                    FontSizeAdjust.field14489,
+                    FontAlignment.CENTER,
+                    FontAlignment.TOP,
                     true
             );
         } else {
@@ -166,8 +166,8 @@ public class Account extends AnimatedIconPanel {
                     (float) (this.y + 29),
                     "Cracked",
                     ClientColors.PALE_YELLOW.getColor(),
-                    FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2,
-                    FontSizeAdjust.field14489,
+                    FontAlignment.CENTER,
+                    FontAlignment.TOP,
                     true
             );
         }

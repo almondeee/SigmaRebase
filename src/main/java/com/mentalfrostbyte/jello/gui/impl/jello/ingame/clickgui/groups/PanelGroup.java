@@ -6,7 +6,7 @@ import com.mentalfrostbyte.jello.gui.impl.jello.ingame.clickgui.panels.ModListVi
 import com.mentalfrostbyte.jello.gui.impl.jello.ingame.clickgui.panels.ModListViewSize;
 import com.mentalfrostbyte.jello.module.Module;
 import com.mentalfrostbyte.jello.module.data.ModuleCategory;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.Resources;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
@@ -133,8 +133,8 @@ public class PanelGroup extends AnimatedIconPanel {
                 (float) (this.getY() + 30),
                 categoryName,
                 RenderUtil2.applyAlpha(ClientColors.DEEP_TEAL.getColor(), partialTicks * 0.5F * this.field21195),
-                FontSizeAdjust.field14488,
-                FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+                FontAlignment.LEFT,
+                FontAlignment.CENTER
         );
         GL11.glPushMatrix();
         super.draw(partialTicks * partialTicks);

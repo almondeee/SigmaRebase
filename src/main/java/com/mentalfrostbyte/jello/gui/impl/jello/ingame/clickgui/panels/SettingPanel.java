@@ -64,10 +64,10 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 var47.setText(Float.toString((Float) setting.getCurrentValue()));
                 var47.method13140(Slider.method13134(numbaSetting.getMin(), numbaSetting.getMax(), (Float) numbaSetting.getCurrentValue()), false);
                 var47.method13143(-1.0F);
-                int var13 = numbaSetting.getDecimalPlaces();
+                int var13 = numbaSetting.getPlaces();
                 numbaSetting.addObserver(
                         var3x -> {
-                            if (Slider.method13135(var47.method13138(), numbaSetting.getMin(), numbaSetting.getMax(), numbaSetting.getStep(), var13)
+                            if (Slider.method13135(var47.method13138(), numbaSetting.getMin(), numbaSetting.getMax(), numbaSetting.getIncrement(), var13)
                                     != (Float) var3x.getCurrentValue()) {
                                 var47.setText(Float.toString((Float) var3x.getCurrentValue()));
                                 var47.method13140(Slider.method13134(numbaSetting.getMin(), numbaSetting.getMax(), (Float) var3x.getCurrentValue()), false);
@@ -76,7 +76,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 );
                 var47.onPress(var4x -> {
                     float var7 = ((Slider) var4x).method13138();
-                    float var8x = Slider.method13135(var7, numbaSetting.getMin(), numbaSetting.getMax(), numbaSetting.getStep(), var13);
+                    float var8x = Slider.method13135(var7, numbaSetting.getMin(), numbaSetting.getMax(), numbaSetting.getIncrement(), var13);
                     if (var8x != (Float) setting.getCurrentValue()) {
                         var47.setText(Float.toString(var8x));
                         setting.setCurrentValue(var8x);

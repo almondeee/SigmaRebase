@@ -6,7 +6,7 @@ import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
 import com.mentalfrostbyte.jello.gui.impl.jello.buttons.ScrollableContentPanel;
 import com.mentalfrostbyte.jello.gui.combined.AnimatedIconPanel;
 import com.mentalfrostbyte.jello.util.client.network.youtube.YoutubeVideoData;
-import com.mentalfrostbyte.jello.util.client.render.FontSizeAdjust;
+import com.mentalfrostbyte.jello.util.client.render.FontAlignment;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.client.render.Resources;
 import com.mentalfrostbyte.jello.util.client.render.theme.ClientColors;
@@ -30,8 +30,8 @@ public class ThumbnailButton extends AnimatedIconPanel {
             ClientColors.DEEP_TEAL.getColor(),
             ClientColors.DEEP_TEAL.getColor(),
             ClientColors.DEEP_TEAL.getColor(),
-            FontSizeAdjust.field14488,
-            FontSizeAdjust.NEGATE_AND_DIVIDE_BY_2
+            FontAlignment.LEFT,
+            FontAlignment.CENTER
     );
     public URL videoUrl = null;
     public BufferedImage field20773;

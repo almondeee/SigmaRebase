@@ -57,10 +57,10 @@ public class ModuleSettingPanel extends ScrollableContentPanel {
                 var13.setText(Float.toString((Float) setting.getCurrentValue()));
                 name.setText(setting.getName() + ": " + setting.getCurrentValue());
                 var13.method13699(Slider.method13134(sett.getMin(), sett.getMax(), (Float) sett.getCurrentValue()), false);
-                int decimalPlacs = sett.getDecimalPlaces();
+                int decimalPlacs = sett.getPlaces();
                 sett.addObserver(
                         var5x -> {
-                            if (com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Slider.method13694(var13.method13697(), sett.getMin(), sett.getMax(), sett.getStep(), decimalPlacs)
+                            if (com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Slider.method13694(var13.method13697(), sett.getMin(), sett.getMax(), sett.getIncrement(), decimalPlacs)
                                     != (Float) var5x.getCurrentValue()) {
                                 var13.setText(Float.toString((Float) var5x.getCurrentValue()));
                                 var13.method13699(com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Slider.method13693(sett.getMin(), sett.getMax(), (Float) var5x.getCurrentValue()), false);
@@ -70,7 +70,7 @@ public class ModuleSettingPanel extends ScrollableContentPanel {
                 );
                 var13.onPress(var5x -> {
                     float var8x = ((com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Slider) var5x).method13697();
-                    float var9x = com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Slider.method13694(var8x, sett.getMin(), sett.getMax(), sett.getStep(), decimalPlacs);
+                    float var9x = com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Slider.method13694(var8x, sett.getMin(), sett.getMax(), sett.getIncrement(), decimalPlacs);
                     if (var9x != (Float) setting.getCurrentValue()) {
                         var13.setText(Float.toString(var9x));
                         setting.setCurrentValue(var9x);
