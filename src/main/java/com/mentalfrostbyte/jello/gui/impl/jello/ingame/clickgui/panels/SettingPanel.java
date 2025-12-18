@@ -6,7 +6,6 @@ import com.mentalfrostbyte.jello.gui.base.elements.impl.colorpicker.ColorPicker;
 import com.mentalfrostbyte.jello.gui.base.interfaces.Class4342;
 import com.mentalfrostbyte.jello.gui.combined.ContentSize;
 import com.mentalfrostbyte.jello.gui.combined.CustomGuiScreen;
-import com.mentalfrostbyte.jello.gui.impl.classic.clickgui.buttons.Textbox;
 import com.mentalfrostbyte.jello.gui.impl.jello.buttons.ScrollableContentPanel;
 import com.mentalfrostbyte.jello.gui.impl.jello.buttons.TextField;
 import com.mentalfrostbyte.jello.module.Module;
@@ -145,9 +144,6 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 panel.addToList(var34);
                 panel.addToList(var42);
                 var4 += 27 + var5;
-            case UNUSED:
-            default:
-                break;
             case SUBOPTION:
                 CustomGuiScreen var17 = new CustomGuiScreen(panel, setting.getName() + "view", var3, var4, panel.getWidth(), 0);
                 int var25 = 0;
@@ -160,23 +156,6 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 var17.setSize((var1x, var2x) -> var1x.setWidth(var2x.getWidth() - var5));
                 panel.addToList(var17);
                 var4 += var17.getHeight() + var5;
-                break;
-            case TEXTBOX:
-                Text var32 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 27, Text.defaultColorHelper, setting.getName());
-                Textbox var40 = new Textbox(
-                        panel, setting.getName() + "btn", panel.getWidth() - var5, var4 + 6, 123, 27, ((TextBoxSetting) setting).getOptions(), (Integer) setting.getCurrentValue()
-                );
-                this.field21223.put(var32, setting);
-                setting.addObserver(var1x -> {
-                    if (var40.method13720() != (Integer) var1x.getCurrentValue()) {
-                        var40.method13722((Integer) var1x.getCurrentValue(), false);
-                    }
-                });
-                var40.onPress(var1x -> setting.setCurrentValue(((Textbox) var1x).method13720()));
-                var40.setSize((var2x, var3x) -> var2x.setX(panel.getWidth() - 123 - var5));
-                panel.addToList(var32);
-                panel.addToList(var40);
-                var4 += 27 + var5;
                 break;
             case BOOLEAN2:
                 Text var31 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 200, Text.defaultColorHelper, setting.getName());
@@ -216,33 +195,6 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
                 panel.addToList(var46);
                 var4 += 114 + var5 - 10;
                 break;
-            case SPEEDRAMP:
-                SpeedRampSetting.SpeedRamp var10 = (SpeedRampSetting.SpeedRamp) setting.getCurrentValue();
-                Text var11 = new Text(panel, setting.getName() + "lbl", var3, var4, this.field21222, 24, Text.defaultColorHelper, setting.getName());
-                Bezier var12 = new Bezier(
-                        panel,
-                        setting.getName() + "color",
-                        panel.getWidth() - 150 - var5 + 10,
-                        var4,
-                        150,
-                        150,
-                        20,
-                        var10.startValue,
-                        var10.middleValue,
-                        var10.endValue,
-                        var10.maxValue
-                );
-                this.field21223.put(var11, setting);
-                setting.addObserver(var2x -> {
-                    SpeedRampSetting.SpeedRamp var5x = (SpeedRampSetting.SpeedRamp) setting.getCurrentValue();
-                    var12.method13041(var5x.startValue, var5x.middleValue, var5x.endValue, var5x.maxValue);
-                });
-                var12.onPress(
-                        var2x -> ((SpeedRampSetting) setting).updateValues(var12.method13040()[0], var12.method13040()[1], var12.method13040()[2], var12.method13040()[3])
-                );
-                panel.addToList(var11);
-                panel.addToList(var12);
-                var4 += 150 + var5 - 10;
         }
 
         return var4 - (var5 - 10);
@@ -252,7 +204,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
         int var4 = 20;
 
         for (Setting<?> setting : this.module.getSettingMap().values()) {
-            if(setting.isHidden()) continue;
+            if (setting.isHidden()) continue;
 
             var4 = this.method13531(this, setting, 20, var4, 20);
         }
@@ -260,7 +212,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
         int var17 = var4;
         if (this.module instanceof ModuleWithModuleSettings var18) {
 
-			for (Module var10 : var18.moduleArray) {
+            for (Module var10 : var18.moduleArray) {
                 int var11 = 0;
                 CustomGuiScreen var12 = new CustomGuiScreen(this, var10.getName() + "SubView", 0, var17, this.width, this.height - var4);
                 var12.setSize((var0, var1) -> var0.setWidth(var1.getWidth()));
@@ -273,7 +225,7 @@ public class SettingPanel extends ScrollableContentPanel implements Class4342 {
 
                 for (CustomGuiScreen var20 : var12.getChildren()) {
                     if (var20 instanceof Dropdown var15) {
-						int var16 = var15.method13649() + var15.getY() + var15.getHeight() + 14;
+                        int var16 = var15.method13649() + var15.getY() + var15.getHeight() + 14;
                         var11 = Math.max(var11, var16);
                     }
                 }

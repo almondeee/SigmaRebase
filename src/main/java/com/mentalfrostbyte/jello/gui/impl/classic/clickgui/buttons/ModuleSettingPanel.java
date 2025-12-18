@@ -12,7 +12,6 @@ import com.mentalfrostbyte.jello.module.settings.SettingType;
 import com.mentalfrostbyte.jello.module.settings.impl.InputSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.ModeSetting;
 import com.mentalfrostbyte.jello.module.settings.impl.NumberSetting;
-import com.mentalfrostbyte.jello.module.settings.impl.TextBoxSetting;
 import com.mentalfrostbyte.jello.util.system.math.MathHelper;
 import com.mentalfrostbyte.jello.util.client.render.ResourceRegistry;
 import com.mentalfrostbyte.jello.util.game.render.RenderUtil;
@@ -21,13 +20,13 @@ import org.newdawn.slick.TrueTypeFont;
 
 import java.util.HashMap;
 
-public class Class4345 extends ScrollableContentPanel {
+public class ModuleSettingPanel extends ScrollableContentPanel {
     private final Module module;
     public TrueTypeFont settingsNameFont = Resources.regular20;
     public Animation anim = new Animation(150, 150);
     public HashMap<Module, CustomGuiScreen> moduleWithSettingGuiMap = new HashMap<>();
 
-    public Class4345(CustomGuiScreen var1, String var2, int var3, int var4, int var5, int var6, Module var7) {
+    public ModuleSettingPanel(CustomGuiScreen var1, String var2, int var3, int var4, int var5, int var6, Module var7) {
         super(var1, var2, var3, var4, var5, var6);
         this.module = var7;
         this.setListening(false);
@@ -122,22 +121,6 @@ public class Class4345 extends ScrollableContentPanel {
                 screen.addToList(var23);
                 y += 65;
                 break;
-            case TEXTBOX:
-                Textbox var12 = new Textbox(
-                        screen, setting.getName() + "btn", screen.getWidth() - value, y + 6, 123, 27, ((TextBoxSetting) setting).getOptions(), (Integer) setting.getCurrentValue()
-                );
-                setting.addObserver(var1x -> {
-                    if (var12.method13720() != (Integer) var1x.getCurrentValue()) {
-                        var12.method13722((Integer) var1x.getCurrentValue(), false);
-                    }
-                });
-                var12.onPress(var1x -> setting.setCurrentValue(((Textbox) var1x).method13720()));
-                var12.setSize((var2x, var3x) -> var2x.setX(screen.getWidth() - 123 - value));
-                screen.addToList(var12);
-                y += 27 + value;
-            case SUBOPTION:
-            case BOOLEAN2:
-            case UNUSED:
         }
 
         return y - (value - 10);
@@ -151,14 +134,14 @@ public class Class4345 extends ScrollableContentPanel {
         int var6 = 35;
 
         for (Setting var8 : this.module.getSettingMap().values()) {
-            if (var8.getSettingType() != SettingType.SPEEDRAMP && var8.getSettingType() != SettingType.COLOR) {
+            if (var8.getSettingType() != SettingType.COLOR) {
                 var6 = this.renderModuleSettings(this, var8, 30, var6, 20);
             }
         }
 
         if (this.module instanceof ModuleWithModuleSettings moduleWithModuleSettings) {
 
-			for (Module var11 : moduleWithModuleSettings.moduleArray) {
+            for (Module var11 : moduleWithModuleSettings.moduleArray) {
                 int var12 = 10;
                 CustomGuiScreen var13 = new CustomGuiScreen(this, var11.getName() + "SubView", 0, var6, this.width, this.height - var6);
                 var13.setSize((var0, var1) -> var0.setWidth(var1.getWidth()));

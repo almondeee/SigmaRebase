@@ -5,10 +5,8 @@ public enum SettingType {
     NUMBER,
     INPUT,
     MODE,
-    UNUSED,
     SUBOPTION,
     TEXTBOX,
     BOOLEAN2,
-    COLOR,
-    SPEEDRAMP
+    COLOR
 }
